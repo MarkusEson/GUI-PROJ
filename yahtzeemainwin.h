@@ -29,7 +29,7 @@ public:
     void displayDiceOnScreen();
     void playerTurn(int _numOfPlayers);
 
-
+    std::map<QObject*, WIPenum> _keyPressedFromUI;
 
 
 private:

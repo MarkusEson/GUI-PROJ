@@ -2305,7 +2305,7 @@ border-bottom-left-radius: 20;</string>
    <widget class="QGraphicsView" name="playerBlockerB">
     <property name="geometry">
      <rect>
-      <x>219</x>
+      <x>220</x>
       <y>40</y>
       <width>71</width>
       <height>599</height>
