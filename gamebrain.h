@@ -32,6 +32,10 @@ enum class WIPenum {
     total,
 };
 
+inline int intFromKey(WIPenum key) {
+    return int(key);
+}
+
 class Die {
 public:
     Die();
