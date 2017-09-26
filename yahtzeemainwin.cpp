@@ -27,9 +27,9 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
         {ui->D2, WIPenum::twos},
 
         {ui->A3, WIPenum::threes},
-        {ui->A3, WIPenum::threes},
-        {ui->A3, WIPenum::threes},
-        {ui->A3, WIPenum::threes},
+        {ui->B3, WIPenum::threes},
+        {ui->C3, WIPenum::threes},
+        {ui->D3, WIPenum::threes},
 
         {ui->A4, WIPenum::fours},
         {ui->B4, WIPenum::fours},
@@ -47,9 +47,9 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
         {ui->D6, WIPenum::sixes},
 
         {ui->A7, WIPenum::sum},
-        {ui->A7, WIPenum::sum},
-        {ui->A7, WIPenum::sum},
-        {ui->A7, WIPenum::sum},
+        {ui->B7, WIPenum::sum},
+        {ui->C7, WIPenum::sum},
+        {ui->D7, WIPenum::sum},
 
         {ui->A8, WIPenum::bonus},
         {ui->B8, WIPenum::bonus},
@@ -107,9 +107,9 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
         {ui->D18, WIPenum::yahzeebonus},
 
         {ui->A19, WIPenum::total},
-        {ui->A19, WIPenum::total},
-        {ui->A19, WIPenum::total},
-        {ui->A19, WIPenum::total},
+        {ui->B19, WIPenum::total},
+        {ui->C19, WIPenum::total},
+        {ui->D19, WIPenum::total},
 
     };
 
@@ -228,6 +228,11 @@ void YahtzeeMainWin::aButtonWasClicked()
      * And finally disbles the button so that it cannot be clicked again.
      * Inspired and copied from Ragnar Nohre - Lab 5
      */
+
+    WIPenum keyValue = _keyPressedFromUI[theButton];
+        int keyId = intFromKey(keyValue);
+        dynamic_cast<QPushButton*>(sender())->setText(endTurnChoice(keyId, _activePlayer));
+
     if(theButton){
         //dynamic_cast<QPushButton*>(sender())->setText("12");
         //dynamic_cast<QPushButton*>(sender())->setEnabled(false);

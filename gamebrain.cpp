@@ -120,7 +120,7 @@ int GameBrain::oneToSix(int keyId)
     int sum = 0;
       for( int i = 0; i < 5; i++ )
       {
-        if( _diceArray[i].getValue() == keyId )
+        if( throwValue[i] == keyId )
             sum += keyId;
       }
       return sum;
