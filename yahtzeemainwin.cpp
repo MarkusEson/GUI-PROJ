@@ -314,6 +314,7 @@ void YahtzeeMainWin::on_onePlayerButton_triggered()
     _numOfPlayers = 1;
     chooseAmountOfPlayers();
     GameBrain::resetScoreBoard();
+    resetScoreboardUI();
     ui->helpLabel->setText("Press New Game to restart!");
 }
 
@@ -323,6 +324,7 @@ void YahtzeeMainWin::on_twoPlayerButton_triggered()
     _numOfPlayers = 2;
     chooseAmountOfPlayers();
     GameBrain::resetScoreBoard();
+    resetScoreboardUI();
     ui->helpLabel->setText("Press New Game to restart!");
 }
 
@@ -332,6 +334,7 @@ void YahtzeeMainWin::on_threePlayerButton_triggered()
     _numOfPlayers = 3;
     chooseAmountOfPlayers();
     GameBrain::resetScoreBoard();
+    resetScoreboardUI();
     ui->helpLabel->setText("Press New Game to restart!");
 }
 
@@ -341,5 +344,31 @@ void YahtzeeMainWin::on_fourPlayerButton_triggered()
     _numOfPlayers = 4;
     chooseAmountOfPlayers();
     GameBrain::resetScoreBoard();
+    resetScoreboardUI();
     ui->helpLabel->setText("Press New Game to restart!");
 }
+
+void YahtzeeMainWin::resetScoreboardUI()
+{
+    for(int i = 0; i < ui->Agrid->count(); i++){
+        QWidget *button = ui->Agrid->itemAt(i)->widget();
+        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
+        resetButton->setText("");
+    }
+    for(int i = 0; i < ui->Bgrid->count(); i++){
+        QWidget *button = ui->Bgrid->itemAt(i)->widget();
+        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
+        resetButton->setText("");
+    }
+    for(int i = 0; i < ui->Cgrid->count(); i++){
+        QWidget *button = ui->Cgrid->itemAt(i)->widget();
+        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
+        resetButton->setText("");
+    }
+    for(int i = 0; i < ui->Dgrid->count(); i++){
+        QWidget *button = ui->Dgrid->itemAt(i)->widget();
+        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
+        resetButton->setText("");
+    }
+}
+

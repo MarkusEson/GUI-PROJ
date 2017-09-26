@@ -12,14 +12,17 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     ui(new Ui::YahtzeeMainWin)
 {
     ui->setupUi(this);
+    //chance();
+    //functionHandler(10);
 
-<<<<<<< Updated upstream
-=======
     _keyPressedFromUI = {
         {ui->rollDiceButton, WIPenum::rolldice},
 
         // Maps the keys in the 1st section of the grid to the FUNK ones
-        {ui->A1, WIPenum::ones}, {ui->B1, WIPenum::ones}, {ui->C1, WIPenum::ones}, {ui->D1, WIPenum::ones},
+        {ui->A1, WIPenum::ones},
+        {ui->B1, WIPenum::ones},
+        {ui->C1, WIPenum::ones},
+        {ui->D1, WIPenum::ones},
 
         {ui->A2, WIPenum::twos},
         {ui->B2, WIPenum::twos},
@@ -27,9 +30,9 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
         {ui->D2, WIPenum::twos},
 
         {ui->A3, WIPenum::threes},
-        {ui->A3, WIPenum::threes},
-        {ui->A3, WIPenum::threes},
-        {ui->A3, WIPenum::threes},
+        {ui->B3, WIPenum::threes},
+        {ui->C3, WIPenum::threes},
+        {ui->D3, WIPenum::threes},
 
         {ui->A4, WIPenum::fours},
         {ui->B4, WIPenum::fours},
@@ -47,9 +50,9 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
         {ui->D6, WIPenum::sixes},
 
         {ui->A7, WIPenum::sum},
-        {ui->A7, WIPenum::sum},
-        {ui->A7, WIPenum::sum},
-        {ui->A7, WIPenum::sum},
+        {ui->B7, WIPenum::sum},
+        {ui->C7, WIPenum::sum},
+        {ui->D7, WIPenum::sum},
 
         {ui->A8, WIPenum::bonus},
         {ui->B8, WIPenum::bonus},
@@ -107,13 +110,12 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
         {ui->D18, WIPenum::yahzeebonus},
 
         {ui->A19, WIPenum::total},
-        {ui->A19, WIPenum::total},
-        {ui->A19, WIPenum::total},
-        {ui->A19, WIPenum::total},
+        {ui->B19, WIPenum::total},
+        {ui->C19, WIPenum::total},
+        {ui->D19, WIPenum::total},
 
     };
 
->>>>>>> Stashed changes
     /*
      * A function that connects all the buttons in the grids A,B,C, and D.
      * Funktionen är inspirerad från GUI labbarna samt stackexchange sidan https://stackoverflow.com/questions/4065378/qt-get-children-from-layout
@@ -194,7 +196,6 @@ void YahtzeeMainWin::playerTurn(int numplayers)
     _timesRolled = 0;                           // resets _timesRolled, so next player can now roll again.
     ui->rollDiceButton->setEnabled(true);       // sets the rollDice button to enabled, so it can be clicked.
 
-<<<<<<< Updated upstream
         if(_activePlayer > numplayers)
             _activePlayer = PLAYERONE;
 
@@ -219,31 +220,6 @@ void YahtzeeMainWin::playerTurn(int numplayers)
             ui->playerBlockerD->hide();
             break;
         }
-=======
-    for(int i = 0; i < numplayers; i++){
-        if(_activePlayer > numplayers)
-            _activePlayer = PLAYERONE;
-
-        if(_activePlayer == PLAYERONE){
-            showPlayerBlockersOnClick();
-            ui->playerBlockerA->hide();
-        }
-        else if(_activePlayer == PLAYERTWO){
-            showPlayerBlockersOnClick();
-            ui->playerBlockerB->hide();
-        }
-        else if(_activePlayer == PLAYERTHREE){
-            showPlayerBlockersOnClick();
-            ui->playerBlockerC->hide();
-        }
-        else if(_activePlayer == PLAYERFOUR){
-            showPlayerBlockersOnClick();
-            ui->playerBlockerD->hide();
-        }
-    }
-
-    qDebug() << _activePlayer << endl;
->>>>>>> Stashed changes
 }
 
 void YahtzeeMainWin::aButtonWasClicked()
@@ -254,12 +230,13 @@ void YahtzeeMainWin::aButtonWasClicked()
      * This function gets called every time a player clicks the scoreboard.
      * Adds the players sum, Bonus, and total scores to the board.
      * And finally disbles the button so that it cannot be clicked again.
-<<<<<<< Updated upstream
      * Inspired and copied from Ragnar Nohre - Lab 5
-=======
-     * - Markus
->>>>>>> Stashed changes
      */
+
+    WIPenum keyValue = _keyPressedFromUI[theButton];
+        int keyId = intFromKey(keyValue);
+        dynamic_cast<QPushButton*>(sender())->setText(endTurnChoice(keyId, _activePlayer));
+
     if(theButton){
         //dynamic_cast<QPushButton*>(sender())->setText("12");
         //dynamic_cast<QPushButton*>(sender())->setEnabled(false);
@@ -292,11 +269,7 @@ void YahtzeeMainWin::aButtonWasClicked()
 
         for(int i = 0; i < ui->diceButtonLayout->count() - 1; i++){
             QWidget *button = ui->diceButtonLayout->itemAt(i)->widget();
-<<<<<<< Updated upstream
-            button->setDisabled(true);
-=======
                 button->setDisabled(true);
->>>>>>> Stashed changes
         }
     }
 }
@@ -341,6 +314,7 @@ void YahtzeeMainWin::on_onePlayerButton_triggered()
     _numOfPlayers = 1;
     chooseAmountOfPlayers();
     GameBrain::resetScoreBoard();
+    resetScoreboardUI();
     ui->helpLabel->setText("Press New Game to restart!");
 }
 
@@ -350,6 +324,7 @@ void YahtzeeMainWin::on_twoPlayerButton_triggered()
     _numOfPlayers = 2;
     chooseAmountOfPlayers();
     GameBrain::resetScoreBoard();
+    resetScoreboardUI();
     ui->helpLabel->setText("Press New Game to restart!");
 }
 
@@ -359,6 +334,7 @@ void YahtzeeMainWin::on_threePlayerButton_triggered()
     _numOfPlayers = 3;
     chooseAmountOfPlayers();
     GameBrain::resetScoreBoard();
+    resetScoreboardUI();
     ui->helpLabel->setText("Press New Game to restart!");
 }
 
@@ -368,5 +344,30 @@ void YahtzeeMainWin::on_fourPlayerButton_triggered()
     _numOfPlayers = 4;
     chooseAmountOfPlayers();
     GameBrain::resetScoreBoard();
+    resetScoreboardUI();
     ui->helpLabel->setText("Press New Game to restart!");
+}
+
+void YahtzeeMainWin::resetScoreboardUI()
+{
+    for(int i = 0; i < ui->Agrid->count(); i++){
+        QWidget *button = ui->Agrid->itemAt(i)->widget();
+        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
+        resetButton->setText("");
+    }
+    for(int i = 0; i < ui->Bgrid->count(); i++){
+        QWidget *button = ui->Bgrid->itemAt(i)->widget();
+        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
+        resetButton->setText("");
+    }
+    for(int i = 0; i < ui->Cgrid->count(); i++){
+        QWidget *button = ui->Cgrid->itemAt(i)->widget();
+        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
+        resetButton->setText("");
+    }
+    for(int i = 0; i < ui->Dgrid->count(); i++){
+        QWidget *button = ui->Dgrid->itemAt(i)->widget();
+        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
+        resetButton->setText("");
+    }
 }

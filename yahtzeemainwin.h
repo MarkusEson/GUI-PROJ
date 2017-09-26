@@ -28,9 +28,8 @@ public:
     void setDieImage(QPushButton * button, Die die);
     void displayDiceOnScreen();
     void playerTurn(int _numOfPlayers);
-
+    void resetScoreboardUI();
     std::map<QObject*, WIPenum> _keyPressedFromUI;
-
 
 private:
     Ui::YahtzeeMainWin *ui;

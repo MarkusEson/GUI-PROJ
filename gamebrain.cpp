@@ -190,8 +190,6 @@ int GameBrain::chance()
     //QString numToPrint = QString::number();
 }*/
 
-
-
 QString GameBrain::calculateScoreBoard(int player, int sumBonusOrTotal)
 {
     /*
@@ -318,7 +316,6 @@ void GameBrain::calculateScoreFromChoice(int keyId, int playerNr)
     score = functionHandler(keyId);
     addScoreToArray(keyId,playerNr,score);
 }
-
 
 // ------ Die - koden -----------------
 
