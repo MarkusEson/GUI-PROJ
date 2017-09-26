@@ -21,6 +21,8 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     //functionHandler(10);
     //chance();
     //functionHandler(10);
+    //chance();
+    //functionHandler(10);
 
     _keyPressedFromUI = {
         {ui->rollDiceButton, WIPenum::rolldice},
