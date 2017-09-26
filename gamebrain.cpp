@@ -317,7 +317,6 @@ void GameBrain::calculateScoreFromChoice(int keyId, int playerNr)
     addScoreToArray(keyId,playerNr,score);
 }
 
-
 // ------ Die - koden -----------------
 
 Die::Die()

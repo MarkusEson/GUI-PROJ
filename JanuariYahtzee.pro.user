@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <!-- Written by QtCreator 4.4.0, 2017-09-26T14:37:15. -->
 =======
 <<<<<<< HEAD
@@ -17,6 +18,13 @@
  <data>
   <variable>EnvironmentId</variable>
   <value type="QByteArray">{4465171c-0ffb-4b47-986a-af0e42d61911}</value>
+=======
+<!-- Written by QtCreator 4.4.0, 2017-09-26T12:10:58. -->
+<qtcreator>
+ <data>
+  <variable>EnvironmentId</variable>
+  <value type="QByteArray">{4f423d37-2966-48be-8777-76df14dfb8b4}</value>
+>>>>>>> Kristoffer
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -80,6 +88,7 @@
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/Users/markus/git/GUI-PROJ</value>
 =======
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/Users/Josef/Documents/Kurser/GUI/Gitmappen/GUI-Projekt-Januari-master/build-JanuariYahtzee-Desktop_Qt_5_5_1_MinGW_32bit-Debug</value>
@@ -87,6 +96,9 @@
 =======
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/Users/Josef/Documents/Kurser/GUI/Gitmappen/GUI-Projekt-Januari-master/build-JanuariYahtzee-Desktop_Qt_5_5_1_MinGW_32bit-Debug</value>
 >>>>>>> Josef
+=======
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/Users/Totte/OneDrive - Jonkoping University/GitKraken2.0/build-JanuariYahtzee-Desktop_Qt_5_9_1_MinGW_32bit-Debug</value>
+>>>>>>> Kristoffer
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -140,7 +152,11 @@
     <value type="bool" key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild">true</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.1">
+<<<<<<< HEAD
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/Users/Josef/Documents/Kurser/GUI/Gitmappen/GUI-Projekt-Januari-master/build-JanuariYahtzee-Desktop_Qt_5_5_1_MinGW_32bit-Release</value>
+=======
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/Users/Totte/OneDrive - Jonkoping University/GitKraken2.0/build-JanuariYahtzee-Desktop_Qt_5_9_1_MinGW_32bit-Release</value>
+>>>>>>> Kristoffer
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -194,7 +210,11 @@
     <value type="bool" key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild">true</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.2">
+<<<<<<< HEAD
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/Users/Josef/Documents/Kurser/GUI/Gitmappen/GUI-Projekt-Januari-master/build-JanuariYahtzee-Desktop_Qt_5_5_1_MinGW_32bit-Profile</value>
+=======
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/Users/Totte/OneDrive - Jonkoping University/GitKraken2.0/build-JanuariYahtzee-Desktop_Qt_5_9_1_MinGW_32bit-Profile</value>
+>>>>>>> Kristoffer
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -304,6 +324,7 @@
     </valuelist>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+<<<<<<< HEAD
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">JanuariYahtzee</value>
 <<<<<<< HEAD
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
@@ -325,6 +346,14 @@
 =======
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default"></value>
 >>>>>>> master
+=======
+    <value type="QString" key="ProjectExplorer.CustomExecutableRunConfiguration.Arguments"></value>
+    <value type="QString" key="ProjectExplorer.CustomExecutableRunConfiguration.Executable"></value>
+    <value type="QString" key="ProjectExplorer.CustomExecutableRunConfiguration.WorkingDirectory">%{buildDir}</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Custom Executable</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.CustomExecutableRunConfiguration</value>
+>>>>>>> Kristoffer
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>

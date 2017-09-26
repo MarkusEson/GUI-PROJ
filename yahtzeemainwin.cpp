@@ -28,7 +28,10 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
         {ui->rollDiceButton, WIPenum::rolldice},
 
         // Maps the keys in the 1st section of the grid to the FUNK ones
-        {ui->A1, WIPenum::ones}, {ui->B1, WIPenum::ones}, {ui->C1, WIPenum::ones}, {ui->D1, WIPenum::ones},
+        {ui->A1, WIPenum::ones},
+        {ui->B1, WIPenum::ones},
+        {ui->C1, WIPenum::ones},
+        {ui->D1, WIPenum::ones},
 
         {ui->A2, WIPenum::twos},
         {ui->B2, WIPenum::twos},
@@ -355,8 +358,9 @@ void YahtzeeMainWin::on_onePlayerButton_triggered()
 {
     ui->rollDiceButton->setEnabled(true);
     _numOfPlayers = 1;
-    chooseAmountOfPlayers(1);
-    gameBrain.resetScoreBoard();
+    chooseAmountOfPlayers();
+    GameBrain::resetScoreBoard();
+    resetScoreboardUI();
     ui->helpLabel->setText("Press New Game to restart!");
 }
 
@@ -364,8 +368,9 @@ void YahtzeeMainWin::on_twoPlayerButton_triggered()
 {
     ui->rollDiceButton->setEnabled(true);
     _numOfPlayers = 2;
-    chooseAmountOfPlayers(2);
-    gameBrain.resetScoreBoard();
+    chooseAmountOfPlayers();
+    GameBrain::resetScoreBoard();
+    resetScoreboardUI();
     ui->helpLabel->setText("Press New Game to restart!");
 }
 
@@ -373,8 +378,9 @@ void YahtzeeMainWin::on_threePlayerButton_triggered()
 {
     ui->rollDiceButton->setEnabled(true);
     _numOfPlayers = 3;
-    chooseAmountOfPlayers(3);
-    gameBrain.resetScoreBoard();
+    chooseAmountOfPlayers();
+    GameBrain::resetScoreBoard();
+    resetScoreboardUI();
     ui->helpLabel->setText("Press New Game to restart!");
 }
 
@@ -382,7 +388,33 @@ void YahtzeeMainWin::on_fourPlayerButton_triggered()
 {
     ui->rollDiceButton->setEnabled(true);
     _numOfPlayers = 4;
-    chooseAmountOfPlayers(4);
-    gameBrain.resetScoreBoard();
+    chooseAmountOfPlayers();
+    GameBrain::resetScoreBoard();
+    resetScoreboardUI();
     ui->helpLabel->setText("Press New Game to restart!");
 }
+
+void YahtzeeMainWin::resetScoreboardUI()
+{
+    for(int i = 0; i < ui->Agrid->count(); i++){
+        QWidget *button = ui->Agrid->itemAt(i)->widget();
+        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
+        resetButton->setText("");
+    }
+    for(int i = 0; i < ui->Bgrid->count(); i++){
+        QWidget *button = ui->Bgrid->itemAt(i)->widget();
+        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
+        resetButton->setText("");
+    }
+    for(int i = 0; i < ui->Cgrid->count(); i++){
+        QWidget *button = ui->Cgrid->itemAt(i)->widget();
+        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
+        resetButton->setText("");
+    }
+    for(int i = 0; i < ui->Dgrid->count(); i++){
+        QWidget *button = ui->Dgrid->itemAt(i)->widget();
+        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
+        resetButton->setText("");
+    }
+}
+

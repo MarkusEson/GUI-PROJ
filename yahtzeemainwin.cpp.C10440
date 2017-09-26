@@ -13,13 +13,21 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     ui(new Ui::YahtzeeMainWin)
 {
     ui->setupUi(this);
+<<<<<<< HEAD:yahtzeemainwin.cpp.C10440
     ui->rollDiceButton->setEnabled(false);
+=======
+    //chance();
+    //functionHandler(10);
+>>>>>>> Kristoffer:yahtzeemainwin.cpp.autosave
 
     _keyPressedFromUI = {
         {ui->rollDiceButton, WIPenum::rolldice},
 
         // Maps the keys in the 1st section of the grid to the FUNK ones
-        {ui->A1, WIPenum::ones}, {ui->B1, WIPenum::ones}, {ui->C1, WIPenum::ones}, {ui->D1, WIPenum::ones},
+        {ui->A1, WIPenum::ones},
+        {ui->B1, WIPenum::ones},
+        {ui->C1, WIPenum::ones},
+        {ui->D1, WIPenum::ones},
 
         {ui->A2, WIPenum::twos},
         {ui->B2, WIPenum::twos},
@@ -27,9 +35,9 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
         {ui->D2, WIPenum::twos},
 
         {ui->A3, WIPenum::threes},
-        {ui->A3, WIPenum::threes},
-        {ui->A3, WIPenum::threes},
-        {ui->A3, WIPenum::threes},
+        {ui->B3, WIPenum::threes},
+        {ui->C3, WIPenum::threes},
+        {ui->D3, WIPenum::threes},
 
         {ui->A4, WIPenum::fours},
         {ui->B4, WIPenum::fours},
@@ -47,9 +55,9 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
         {ui->D6, WIPenum::sixes},
 
         {ui->A7, WIPenum::sum},
-        {ui->A7, WIPenum::sum},
-        {ui->A7, WIPenum::sum},
-        {ui->A7, WIPenum::sum},
+        {ui->B7, WIPenum::sum},
+        {ui->C7, WIPenum::sum},
+        {ui->D7, WIPenum::sum},
 
         {ui->A8, WIPenum::bonus},
         {ui->B8, WIPenum::bonus},
@@ -107,9 +115,9 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
         {ui->D18, WIPenum::yahzeebonus},
 
         {ui->A19, WIPenum::total},
-        {ui->A19, WIPenum::total},
-        {ui->A19, WIPenum::total},
-        {ui->A19, WIPenum::total},
+        {ui->B19, WIPenum::total},
+        {ui->C19, WIPenum::total},
+        {ui->D19, WIPenum::total},
 
     }
 
@@ -204,6 +212,7 @@ void YahtzeeMainWin::playerTurn(int numplayers)
     _timesRolled = 0;                           // resets _timesRolled, so next player can now roll again.
     ui->rollDiceButton->setEnabled(true);       // sets the rollDice button to enabled, so it can be clicked.
 
+<<<<<<< HEAD:yahtzeemainwin.cpp.C10440
     // If there are one player playing do this:
     if(numplayers == 1){
         _activePlayer = PLAYERONE;
@@ -213,6 +222,9 @@ void YahtzeeMainWin::playerTurn(int numplayers)
     if(numplayers == 2){
         _activePlayer++;
         if(_activePlayer == 3)
+=======
+        if(_activePlayer > numplayers)
+>>>>>>> Kristoffer:yahtzeemainwin.cpp.autosave
             _activePlayer = PLAYERONE;
 
 
@@ -237,6 +249,7 @@ void YahtzeeMainWin::playerTurn(int numplayers)
             ui->playerBlockerB->show();
             ui->playerBlockerC->show();
         }
+<<<<<<< HEAD:yahtzeemainwin.cpp.C10440
         else if(_activePlayer == PLAYERTWO){
             ui->playerBlockerA->show();
             ui->playerBlockerB->hide();
@@ -283,6 +296,8 @@ void YahtzeeMainWin::playerTurn(int numplayers)
 
 
     qDebug() << _activePlayer << endl;
+=======
+>>>>>>> Kristoffer:yahtzeemainwin.cpp.autosave
 }
 
 
@@ -299,6 +314,11 @@ void YahtzeeMainWin::aButtonWasClicked()
      * And finally disbles the button so that it cannot be clicked again.
      * Inspired and copied from Ragnar Nohre - Lab 5
      */
+
+    WIPenum keyValue = _keyPressedFromUI[theButton];
+        int keyId = intFromKey(keyValue);
+        dynamic_cast<QPushButton*>(sender())->setText(endTurnChoice(keyId, _activePlayer));
+
     if(theButton){
         //dynamic_cast<QPushButton*>(sender())->setText("12");
         //dynamic_cast<QPushButton*>(sender())->setEnabled(false);
@@ -324,6 +344,15 @@ void YahtzeeMainWin::aButtonWasClicked()
             ui->D19->setText(GameBrain::calculateScoreBoard(_activePlayer, 2));
         }
         playerTurn(_numOfPlayers); // player func that changes turns to next player.
+<<<<<<< HEAD:yahtzeemainwin.cpp.C10440
+=======
+        displayDiceOnScreen();
+
+        for(int i = 0; i < ui->diceButtonLayout->count() - 1; i++){
+            QWidget *button = ui->diceButtonLayout->itemAt(i)->widget();
+                button->setDisabled(true);
+        }
+>>>>>>> Kristoffer:yahtzeemainwin.cpp.autosave
     }
 }
 
@@ -372,6 +401,12 @@ void YahtzeeMainWin::on_onePlayerButton_triggered()
     ui->rollDiceButton->setEnabled(true);
     _numOfPlayers = 1;
     chooseAmountOfPlayers();
+<<<<<<< HEAD:yahtzeemainwin.cpp.C10440
+=======
+    GameBrain::resetScoreBoard();
+    resetScoreboardUI();
+    ui->helpLabel->setText("Press New Game to restart!");
+>>>>>>> Kristoffer:yahtzeemainwin.cpp.autosave
 }
 
 void YahtzeeMainWin::on_twoPlayerButton_triggered()
@@ -379,6 +414,12 @@ void YahtzeeMainWin::on_twoPlayerButton_triggered()
     ui->rollDiceButton->setEnabled(true);
     _numOfPlayers = 2;
     chooseAmountOfPlayers();
+<<<<<<< HEAD:yahtzeemainwin.cpp.C10440
+=======
+    GameBrain::resetScoreBoard();
+    resetScoreboardUI();
+    ui->helpLabel->setText("Press New Game to restart!");
+>>>>>>> Kristoffer:yahtzeemainwin.cpp.autosave
 }
 
 void YahtzeeMainWin::on_threePlayerButton_triggered()
@@ -386,6 +427,12 @@ void YahtzeeMainWin::on_threePlayerButton_triggered()
     ui->rollDiceButton->setEnabled(true);
     _numOfPlayers = 3;
     chooseAmountOfPlayers();
+<<<<<<< HEAD:yahtzeemainwin.cpp.C10440
+=======
+    GameBrain::resetScoreBoard();
+    resetScoreboardUI();
+    ui->helpLabel->setText("Press New Game to restart!");
+>>>>>>> Kristoffer:yahtzeemainwin.cpp.autosave
 }
 
 void YahtzeeMainWin::on_fourPlayerButton_triggered()
@@ -393,6 +440,37 @@ void YahtzeeMainWin::on_fourPlayerButton_triggered()
     ui->rollDiceButton->setEnabled(true);
     _numOfPlayers = 4;
     chooseAmountOfPlayers();
+<<<<<<< HEAD:yahtzeemainwin.cpp.C10440
 }
 
 
+=======
+    GameBrain::resetScoreBoard();
+    resetScoreboardUI();
+    ui->helpLabel->setText("Press New Game to restart!");
+}
+
+void YahtzeeMainWin::resetScoreboardUI()
+{
+    for(int i = 0; i < ui->Agrid->count(); i++){
+        QWidget *button = ui->Agrid->itemAt(i)->widget();
+        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
+        resetButton->setText("");
+    }
+    for(int i = 0; i < ui->Bgrid->count(); i++){
+        QWidget *button = ui->Bgrid->itemAt(i)->widget();
+        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
+        resetButton->setText("");
+    }
+    for(int i = 0; i < ui->Cgrid->count(); i++){
+        QWidget *button = ui->Cgrid->itemAt(i)->widget();
+        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
+        resetButton->setText("");
+    }
+    for(int i = 0; i < ui->Dgrid->count(); i++){
+        QWidget *button = ui->Dgrid->itemAt(i)->widget();
+        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
+        resetButton->setText("");
+    }
+}
+>>>>>>> Kristoffer:yahtzeemainwin.cpp.autosave
