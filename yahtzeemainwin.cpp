@@ -336,14 +336,6 @@ void YahtzeeMainWin::aButtonWasClicked()
 {
     QPushButton *theButton = dynamic_cast<QPushButton*>(sender());
 
-    if(theButton == ui->A16)
-        ui->A18->setEnabled(true);
-    if(theButton == ui->B16)
-        ui->B18->setEnabled(true);
-    if(theButton == ui->C16)
-        ui->C18->setEnabled(true);
-    if(theButton == ui->D16)
-        ui->D18->setEnabled(true);
 
     /*
      * Calls the function calculateScoreBoard, which is called every time a player clicks the score board.
@@ -362,21 +354,25 @@ void YahtzeeMainWin::aButtonWasClicked()
         dynamic_cast<QPushButton*>(sender())->setEnabled(false);
 
         if(_activePlayer == PLAYERONE){
+            ui->gameBackground->setStyleSheet("background-image: url(:/new/pictures/backgroundplayer2.png);");
             ui->A7->setText(gameBrain.calculateScoreBoard(_activePlayer, 0));
             ui->A8->setText(gameBrain.calculateScoreBoard(_activePlayer, 1));
             ui->A19->setText(gameBrain.calculateScoreBoard(_activePlayer, 2));
         }
         if(_activePlayer == PLAYERTWO){
+            ui->gameBackground->setStyleSheet("background-image: url(:/new/pictures/backgroundplayer3.png);");
             ui->B7->setText(gameBrain.calculateScoreBoard(_activePlayer, 0));
             ui->B8->setText(gameBrain.calculateScoreBoard(_activePlayer, 1));
             ui->B19->setText(gameBrain.calculateScoreBoard(_activePlayer, 2));
         }
         if(_activePlayer == PLAYERTHREE){
+            ui->gameBackground->setStyleSheet("background-image: url(:/new/pictures/backgroundplayer4.png);");
             ui->C7->setText(gameBrain.calculateScoreBoard(_activePlayer, 0));
             ui->C8->setText(gameBrain.calculateScoreBoard(_activePlayer, 1));
             ui->C19->setText(gameBrain.calculateScoreBoard(_activePlayer, 2));
         }
         if(_activePlayer == PLAYERFOUR){
+            ui->gameBackground->setStyleSheet("background-image: url(:/new/pictures/backgroundplayer1.png);");
             ui->D7->setText(gameBrain.calculateScoreBoard(_activePlayer, 0));
             ui->D8->setText(gameBrain.calculateScoreBoard(_activePlayer, 1));
             ui->D19->setText(gameBrain.calculateScoreBoard(_activePlayer, 2));
@@ -431,7 +427,7 @@ void YahtzeeMainWin::aDiceWasClicked()
     }
     else{
         showPlayerBlockersOnClick();
-        ui->playerBlockerB->hide();
+        ui->playerBlockerD->hide();
     }
 
 }

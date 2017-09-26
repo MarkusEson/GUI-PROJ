@@ -980,21 +980,21 @@ public:
         playerBlockerA = new QGraphicsView(centralWidget);
         playerBlockerA->setObjectName(QStringLiteral("playerBlockerA"));
         playerBlockerA->setGeometry(QRect(150, 40, 71, 599));
-        playerBlockerA->setStyleSheet(QLatin1String("background-color: rgba(114, 110, 168, 76);\n"
+        playerBlockerA->setStyleSheet(QLatin1String("background-color: rgba(147, 173, 255, 76);\n"
 "border-top-left-radius: 20;\n"
 "border-bottom-left-radius: 20;"));
         playerBlockerB = new QGraphicsView(centralWidget);
         playerBlockerB->setObjectName(QStringLiteral("playerBlockerB"));
         playerBlockerB->setGeometry(QRect(220, 40, 71, 599));
-        playerBlockerB->setStyleSheet(QStringLiteral("background-color: rgba(114, 110, 168, 76);"));
+        playerBlockerB->setStyleSheet(QStringLiteral("background-color: rgba(147, 173, 255, 76);"));
         playerBlockerC = new QGraphicsView(centralWidget);
         playerBlockerC->setObjectName(QStringLiteral("playerBlockerC"));
         playerBlockerC->setGeometry(QRect(290, 40, 71, 599));
-        playerBlockerC->setStyleSheet(QStringLiteral("background-color: rgba(114, 110, 168, 76);"));
+        playerBlockerC->setStyleSheet(QStringLiteral("background-color: rgba(147, 173, 255, 76);"));
         playerBlockerD = new QGraphicsView(centralWidget);
         playerBlockerD->setObjectName(QStringLiteral("playerBlockerD"));
         playerBlockerD->setGeometry(QRect(360, 40, 74, 598));
-        playerBlockerD->setStyleSheet(QLatin1String("background-color: rgba(114, 110, 168, 76);\n"
+        playerBlockerD->setStyleSheet(QLatin1String("background-color: rgba(147, 173, 255, 76);\n"
 "border-top-right-radius: 20;\n"
 "border-bottom-right-radius: 20;"));
         verticalLayoutWidget = new QWidget(centralWidget);
