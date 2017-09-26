@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <cstdlib>
 #include <QString>
+#include <QSound>
 
 
 YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
@@ -308,6 +309,7 @@ void YahtzeeMainWin::aDiceWasClicked()
 
 void YahtzeeMainWin::on_rollDiceButton_clicked() // Added rollDice func
 {
+    QSound::play(":/new/pictures/shakedice.wav");
     if(_timesRolled <= 2 )
         gameBrain.rollDice();
         displayDiceOnScreen();
