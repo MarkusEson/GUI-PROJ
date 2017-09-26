@@ -167,7 +167,7 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(gameBackground->sizePolicy().hasHeightForWidth());
         gameBackground->setSizePolicy(sizePolicy);
-        gameBackground->setStyleSheet(QStringLiteral("background-image: url(:/new/pictures/YAHTZEE BACKGROUND THREE.png);"));
+        gameBackground->setStyleSheet(QStringLiteral("background-image: url(:/new/pictures/backgroundplayer4.png);"));
         gridLayoutWidget_4 = new QWidget(centralWidget);
         gridLayoutWidget_4->setObjectName(QStringLiteral("gridLayoutWidget_4"));
         gridLayoutWidget_4->setGeometry(QRect(150, 40, 71, 601));

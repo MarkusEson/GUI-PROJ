@@ -197,36 +197,36 @@ void YahtzeeMainWin::chooseAmountOfPlayers(int num)
     resetScoreboardUI();            // resets the UI scores
 
     if(num == 1){
+        ui->gameBackground->setStyleSheet("background-image: url(:/new/pictures/backgroundplayer1test.png);");
         ui->rollDiceButton->setEnabled(true);
         _numOfPlayers = 1;
-        ui->helpLabel->setText("Press New Game to restart!");
         ui->player1Label->setText("Player 1");
         ui->player2Label->setText("");
         ui->player3Label->setText("");
         ui->player4Label->setText("");
     }
     else if(num == 2){
+        ui->gameBackground->setStyleSheet("background-image: url(:/new/pictures/backgroundplayer2test.png);");
         ui->rollDiceButton->setEnabled(true);
         _numOfPlayers = 2;
-        ui->helpLabel->setText("Press New Game to restart!");
         ui->player1Label->setText("Player 1");
         ui->player2Label->setText("Player 2");
         ui->player3Label->setText("");
         ui->player4Label->setText("");
     }
     else if(num == 3){
+        ui->gameBackground->setStyleSheet("background-image: url(:/new/pictures/backgroundplayer3test.png);");
         ui->rollDiceButton->setEnabled(true);
         _numOfPlayers = 3;
-        ui->helpLabel->setText("Press New Game to restart!");
         ui->player1Label->setText("Player 1");
         ui->player2Label->setText("Player 2");
         ui->player3Label->setText("Player 3");
         ui->player4Label->setText("");
     }
     else{
+        ui->gameBackground->setStyleSheet("background-image: url(:/new/pictures/backgroundplayer4.png);");
         ui->rollDiceButton->setEnabled(true);
         _numOfPlayers = 4;
-        ui->helpLabel->setText("Press New Game to restart!");
         ui->player1Label->setText("Player 1");
         ui->player2Label->setText("Player 2");
         ui->player3Label->setText("Player 3");
@@ -271,22 +271,22 @@ void YahtzeeMainWin::playerTurn(int numplayers)
         switch (_activePlayer){
         case 1:
             showPlayerBlockersOnClick();
-            //ui->playerBlockerA->hide();
+            ui->helpLabel->setText("Player 1:s turn!");
             break;
 
         case 2:
             showPlayerBlockersOnClick();
-            //ui->playerBlockerB->hide();
+            ui->helpLabel->setText("Player 2:s turn!");
             break;
 
         case 3:
             showPlayerBlockersOnClick();
-            //ui->playerBlockerC->hide();
+            ui->helpLabel->setText("Player 3:s turn!");
             break;
 
         case 4:
             showPlayerBlockersOnClick();
-            //ui->playerBlockerD->hide();
+            ui->helpLabel->setText("Player 4:s turn!");
             break;
         }
 }
@@ -354,25 +354,21 @@ void YahtzeeMainWin::aButtonWasClicked()
         dynamic_cast<QPushButton*>(sender())->setEnabled(false);
 
         if(_activePlayer == PLAYERONE){
-            ui->gameBackground->setStyleSheet("background-image: url(:/new/pictures/backgroundplayer2.png);");
             ui->A7->setText(gameBrain.calculateScoreBoard(_activePlayer, 0));
             ui->A8->setText(gameBrain.calculateScoreBoard(_activePlayer, 1));
             ui->A19->setText(gameBrain.calculateScoreBoard(_activePlayer, 2));
         }
         if(_activePlayer == PLAYERTWO){
-            ui->gameBackground->setStyleSheet("background-image: url(:/new/pictures/backgroundplayer3.png);");
             ui->B7->setText(gameBrain.calculateScoreBoard(_activePlayer, 0));
             ui->B8->setText(gameBrain.calculateScoreBoard(_activePlayer, 1));
             ui->B19->setText(gameBrain.calculateScoreBoard(_activePlayer, 2));
         }
         if(_activePlayer == PLAYERTHREE){
-            ui->gameBackground->setStyleSheet("background-image: url(:/new/pictures/backgroundplayer4.png);");
             ui->C7->setText(gameBrain.calculateScoreBoard(_activePlayer, 0));
             ui->C8->setText(gameBrain.calculateScoreBoard(_activePlayer, 1));
             ui->C19->setText(gameBrain.calculateScoreBoard(_activePlayer, 2));
         }
         if(_activePlayer == PLAYERFOUR){
-            ui->gameBackground->setStyleSheet("background-image: url(:/new/pictures/backgroundplayer1.png);");
             ui->D7->setText(gameBrain.calculateScoreBoard(_activePlayer, 0));
             ui->D8->setText(gameBrain.calculateScoreBoard(_activePlayer, 1));
             ui->D19->setText(gameBrain.calculateScoreBoard(_activePlayer, 2));

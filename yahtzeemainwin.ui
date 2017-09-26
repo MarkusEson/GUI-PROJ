@@ -45,7 +45,7 @@
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-image: url(:/new/pictures/YAHTZEE BACKGROUND THREE.png);</string>
+     <string notr="true">background-image: url(:/new/pictures/backgroundplayer4.png);</string>
     </property>
    </widget>
    <widget class="QWidget" name="gridLayoutWidget_4">
