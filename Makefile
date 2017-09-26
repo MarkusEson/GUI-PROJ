@@ -12,10 +12,10 @@ MAKEFILE      = Makefile
 
 CC            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
 CXX           = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
-DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk -mmacosx-version-min=10.10 -Wall -W -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -stdlib=libc++ -g -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk -mmacosx-version-min=10.10 -Wall -W -fPIC $(DEFINES)
-INCPATH       = -I. -I../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers -I../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers -I../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -I../../Qt/5.9.1/clang_64/mkspecs/macx-clang -F/Users/markus/Qt/5.9.1/clang_64/lib
+INCPATH       = -I. -I../../Qt/5.9.1/clang_64/lib/QtMultimedia.framework/Headers -I../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers -I../../Qt/5.9.1/clang_64/lib/QtGui.framework/Headers -I../../Qt/5.9.1/clang_64/lib/QtNetwork.framework/Headers -I../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -I../../Qt/5.9.1/clang_64/mkspecs/macx-clang -F/Users/markus/Qt/5.9.1/clang_64/lib
 QMAKE         = /Users/markus/Qt/5.9.1/clang_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -35,10 +35,10 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = JanuariYahtzee1.0.0
-DISTDIR = /Users/markus/gitProject/GUI-Projekt-Januari/.tmp/JanuariYahtzee1.0.0
+DISTDIR = /Users/markus/git/GUI-PROJ/.tmp/JanuariYahtzee1.0.0
 LINK          = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
 LFLAGS        = -stdlib=libc++ -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -Wl,-syslibroot,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk -mmacosx-version-min=10.10 -Wl,-rpath,@executable_path/Frameworks -Wl,-rpath,/Users/markus/Qt/5.9.1/clang_64/lib
-LIBS          = $(SUBLIBS) -F/Users/markus/Qt/5.9.1/clang_64/lib -framework QtWidgets -framework QtGui -framework QtCore -framework DiskArbitration -framework IOKit -framework OpenGL -framework AGL 
+LIBS          = $(SUBLIBS) -F/Users/markus/Qt/5.9.1/clang_64/lib -framework QtMultimedia -framework QtNetwork -framework QtCore -framework DiskArbitration -framework IOKit -framework QtGui -framework QtWidgets -framework OpenGL -framework AGL 
 AR            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar cq
 RANLIB        = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib -s
 SED           = sed
@@ -217,6 +217,7 @@ DIST          = ../../Qt/5.9.1/clang_64/mkspecs/features/spec_pre.prf \
 		../../Qt/5.9.1/clang_64/mkspecs/features/qt_config.prf \
 		../../Qt/5.9.1/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../Qt/5.9.1/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../Qt/5.9.1/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../Qt/5.9.1/clang_64/mkspecs/features/mac/sdk.prf \
 		../../Qt/5.9.1/clang_64/mkspecs/features/toolchain.prf \
@@ -422,6 +423,7 @@ Makefile: JanuariYahtzee.pro ../../Qt/5.9.1/clang_64/mkspecs/macx-clang/qmake.co
 		../../Qt/5.9.1/clang_64/mkspecs/features/qt_config.prf \
 		../../Qt/5.9.1/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../Qt/5.9.1/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../Qt/5.9.1/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../Qt/5.9.1/clang_64/mkspecs/features/mac/sdk.prf \
 		../../Qt/5.9.1/clang_64/mkspecs/features/toolchain.prf \
@@ -450,8 +452,10 @@ Makefile: JanuariYahtzee.pro ../../Qt/5.9.1/clang_64/mkspecs/macx-clang/qmake.co
 		../../Qt/5.9.1/clang_64/mkspecs/features/lex.prf \
 		JanuariYahtzee.pro \
 		resources.qrc \
+		../../Qt/5.9.1/clang_64/lib/QtMultimedia.framework/QtMultimedia.prl \
 		../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/QtWidgets.prl \
 		../../Qt/5.9.1/clang_64/lib/QtGui.framework/QtGui.prl \
+		../../Qt/5.9.1/clang_64/lib/QtNetwork.framework/QtNetwork.prl \
 		../../Qt/5.9.1/clang_64/lib/QtCore.framework/QtCore.prl
 	$(QMAKE) -o Makefile JanuariYahtzee.pro -spec macx-clang CONFIG+=debug CONFIG+=x86_64 CONFIG+=qml_debug
 ../../Qt/5.9.1/clang_64/mkspecs/features/spec_pre.prf:
@@ -612,6 +616,7 @@ Makefile: JanuariYahtzee.pro ../../Qt/5.9.1/clang_64/mkspecs/macx-clang/qmake.co
 ../../Qt/5.9.1/clang_64/mkspecs/features/qt_config.prf:
 ../../Qt/5.9.1/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../Qt/5.9.1/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../Qt/5.9.1/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../Qt/5.9.1/clang_64/mkspecs/features/mac/sdk.prf:
 ../../Qt/5.9.1/clang_64/mkspecs/features/toolchain.prf:
@@ -640,8 +645,10 @@ Makefile: JanuariYahtzee.pro ../../Qt/5.9.1/clang_64/mkspecs/macx-clang/qmake.co
 ../../Qt/5.9.1/clang_64/mkspecs/features/lex.prf:
 JanuariYahtzee.pro:
 resources.qrc:
+../../Qt/5.9.1/clang_64/lib/QtMultimedia.framework/QtMultimedia.prl:
 ../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/QtWidgets.prl:
 ../../Qt/5.9.1/clang_64/lib/QtGui.framework/QtGui.prl:
+../../Qt/5.9.1/clang_64/lib/QtNetwork.framework/QtNetwork.prl:
 ../../Qt/5.9.1/clang_64/lib/QtCore.framework/QtCore.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile JanuariYahtzee.pro -spec macx-clang CONFIG+=debug CONFIG+=x86_64 CONFIG+=qml_debug
@@ -686,6 +693,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r JanuariYahtzee.app
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -715,7 +723,8 @@ qrc_resources.cpp: resources.qrc \
 		6diceClicked.png \
 		1dice.png \
 		5dice.png \
-		5diceClicked.png
+		5diceClicked.png \
+		shakedice.wav
 	/Users/markus/Qt/5.9.1/clang_64/bin/rcc -name resources resources.qrc -o qrc_resources.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
@@ -739,7 +748,7 @@ moc_yahtzeemainwin.cpp: ../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/
 		yahtzeemainwin.h \
 		moc_predefs.h \
 		../../Qt/5.9.1/clang_64/bin/moc
-	/Users/markus/Qt/5.9.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/markus/Qt/5.9.1/clang_64/mkspecs/macx-clang -I/Users/markus/gitProject/GUI-Projekt-Januari -I/Users/markus/Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/markus/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers -I/Users/markus/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Users/markus/Qt/5.9.1/clang_64/lib yahtzeemainwin.h -o moc_yahtzeemainwin.cpp
+	/Users/markus/Qt/5.9.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/markus/Qt/5.9.1/clang_64/mkspecs/macx-clang -I/Users/markus/git/GUI-PROJ -I/Users/markus/Qt/5.9.1/clang_64/lib/QtMultimedia.framework/Headers -I/Users/markus/Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/markus/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers -I/Users/markus/Qt/5.9.1/clang_64/lib/QtNetwork.framework/Headers -I/Users/markus/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Users/markus/Qt/5.9.1/clang_64/lib yahtzeemainwin.h -o moc_yahtzeemainwin.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -790,7 +799,9 @@ yahtzeemainwin.o: yahtzeemainwin.cpp yahtzeemainwin.h \
 		../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QAbstractButton \
 		../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qabstractbutton.h \
 		../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QString \
-		../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qstring.h
+		../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../Qt/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/QSound \
+		../../Qt/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/qsound.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o yahtzeemainwin.o yahtzeemainwin.cpp
 
 gamebrain.o: gamebrain.cpp gamebrain.h \

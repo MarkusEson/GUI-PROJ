@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <cstdlib>
 #include <QString>
+#include <QSound>
 
 
 YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
@@ -12,6 +13,10 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     ui(new Ui::YahtzeeMainWin)
 {
     ui->setupUi(this);
+    ui->A18->setEnabled(false);
+    ui->B18->setEnabled(false);
+    ui->C18->setEnabled(false);
+    ui->D18->setEnabled(false);
 
     _keyPressedFromUI = {
         {ui->rollDiceButton, WIPenum::rolldice},
@@ -221,19 +226,34 @@ void YahtzeeMainWin::aButtonWasClicked()
 {
     QPushButton *theButton = dynamic_cast<QPushButton*>(sender());
 
+    if(theButton == ui->A16)
+        ui->A18->setEnabled(true);
+    if(theButton == ui->B16)
+        ui->B18->setEnabled(true);
+    if(theButton == ui->C16)
+        ui->C18->setEnabled(true);
+    if(theButton == ui->D16)
+        ui->D18->setEnabled(true);
+
+
+
+
     /*
-     * This function gets called every time a player clicks the scoreboard.
-     * Adds the players sum, Bonus, and total scores to the board.
-     * And finally disbles the button so that it cannot be clicked again.
-     * Inspired and copied from Ragnar Nohre - Lab 5
+     * Calls the function calculateScoreBoard, which is called every time a player clicks the score board.
+     * This Function updates the ui scoreboard to show the updated points in "score", "bonus", and "total score"
+     * calculateScoreBoard(<the players index in _scoreArray>, <the scoreIndexer>)
+     *
+     * The function then advances to next player. it also locks the score button so that it cannot be clicked agin.
+     * - Markus
      */
-    if(theButton){
+    if(theButton)
+    {
         //dynamic_cast<QPushButton*>(sender())->setText("12");
         //dynamic_cast<QPushButton*>(sender())->setEnabled(false);
 
         if(_activePlayer == PLAYERONE){
-            ui->A7->setText(GameBrain::calculateScoreBoard(_activePlayer, 0));  // calculateScoreBoard(<the players index in _scoreArray>, <the scoreIndexer>)
-            ui->A8->setText(GameBrain::calculateScoreBoard(_activePlayer, 1));  // score indexer = 1: score, 2: bonus, 3: Total Score
+            ui->A7->setText(GameBrain::calculateScoreBoard(_activePlayer, 0));
+            ui->A8->setText(GameBrain::calculateScoreBoard(_activePlayer, 1));
             ui->A19->setText(GameBrain::calculateScoreBoard(_activePlayer, 2));
         }
         if(_activePlayer == PLAYERTWO){
@@ -261,11 +281,16 @@ void YahtzeeMainWin::aButtonWasClicked()
             QWidget *button = ui->diceButtonLayout->itemAt(i)->widget();
                 button->setDisabled(true);
         }
+        dynamic_cast<QPushButton*>(sender())->setEnabled(false);
     }
 }
 
 void YahtzeeMainWin::aDiceWasClicked()
 {
+    /*
+     * If you click a dice then it gets checked, so that it does not roll again.
+     * Then it calls the function to display the new dice image.
+     */
     QPushButton *theButton = dynamic_cast<QPushButton*>(sender());
 
     if (theButton == ui->dice1Button)
@@ -284,6 +309,7 @@ void YahtzeeMainWin::aDiceWasClicked()
 
 void YahtzeeMainWin::on_rollDiceButton_clicked() // Added rollDice func
 {
+    QSound::play(":/new/pictures/shakedice.wav");
     if(_timesRolled <= 2 )
         gameBrain.rollDice();
         displayDiceOnScreen();
