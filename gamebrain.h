@@ -61,16 +61,19 @@ public:
     void rollDice();
     Die *getDiceArray();
     void checkDie(int dieNumber);
+    int pairs();
+    int twoPairs();
     int oneToSix(int keyId);
     int xOfAKind(int player);
     int fullHouse();
     int smallLargeStraight(int player);
+    int chance();
     //QString getScoreFromArray();
     QString getScoreFromArray(int keyID, int playerNr);
     QString calculateScoreBoard(int player, int sumBonusOrTotal);
     void resetChecked();
     void resetScoreBoard();
-    int functionHandler(int keyId, int playerNr);
+    int functionHandler(int keyId);
     void addScoreToArray(int keyId, int playerNr, int sumFromRound);
     QString endTurnChoice(int keyId, int playerNr);
     void calculateScoreFromChoice(int keyId, int playerNr);
@@ -78,7 +81,7 @@ public:
 private:
     Die _diceArray[5];
 
-    int throwValue [5] = {2,3,4,5,6};           //testvariabler för funktionerna
+    int throwValue [5] = {2,2,1,2,3};           //testvariabler för funktionerna
     int _scoreArray[19][4];
 };
 

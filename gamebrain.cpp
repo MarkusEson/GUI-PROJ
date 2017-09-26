@@ -5,8 +5,8 @@
 #define gridFours 4
 #define gridFives 5
 #define gridSixes 6
-#define gridPair 9
-#define gridTwoPair 10
+#define gridPairs 9
+#define gridTwoPairs 10
 #define gridThreeOfAkind 11
 #define gridFourOfAkind 12
 #define gridFullHouse 13
@@ -56,6 +56,41 @@ void GameBrain::checkDie(int dieNumber)
 {
     _diceArray[dieNumber - 1].checkDie();
     qDebug() << "Tärning nr: " << dieNumber << "blev checkad/avcheckad";
+}
+
+int GameBrain::pairs()
+{
+    int sum = 0;
+    for(int i=0; i<4; i++){
+     if(throwValue[i]==throwValue[i+1]){
+             sum = throwValue[i] + throwValue[i+1];
+         }
+    }
+     qDebug() << sum;
+     return sum;
+}
+
+int GameBrain::twoPairs()
+{
+    int firstPairSum=0;
+    int countPairs=0;
+    int sum = 0;
+    for(int i=0; i<4; i++){
+     if(throwValue[i]==throwValue[i+1]){
+             firstPairSum += throwValue[i] + throwValue[i+1];
+             countPairs++;
+             i++;
+         }
+    }
+    if(countPairs==2)
+    {
+        qDebug() << firstPairSum;
+        return firstPairSum;
+    }
+    else
+        return false;
+
+    qDebug() << "firstPairSumfalse";
 }
 
 int GameBrain::xOfAKind(int keyId)
@@ -139,6 +174,17 @@ int GameBrain::smallLargeStraight(int keyId)
     return sum;
 }
 
+int GameBrain::chance()
+{
+    int sum = 0;
+    for(int i=0; i<5; i++){
+        //sum += _diceArray[i];
+        sum += throwValue[i];
+    }
+    qDebug() << sum;
+    return sum;
+}
+
 /*QString GameBrain::getScoreFromArray()
 {
     //QString numToPrint = QString::number();
@@ -194,7 +240,7 @@ void GameBrain::resetScoreBoard()
             _scoreArray[i][j] = 0;
 }
 
-int GameBrain::functionHandler(int keyId, int playerNr)
+int GameBrain::functionHandler(int keyId)
 {
     int functionId = keyId;
     int summa = 0;
@@ -205,12 +251,17 @@ int GameBrain::functionHandler(int keyId, int playerNr)
         qDebug() << "0netosix";
     }
 
-    /*else if (functionId == 7 ){
-        summa = oneToSix(keyId);
-        _scoreArray[keyId][playerNr] = summa;
+    else if (functionId == gridPairs ){
+        summa = pairs();
         qDebug() << summa;
-        qDebug() << "summa";
-    }*/
+        qDebug() << "pairs";
+    }
+
+    else if (functionId == gridTwoPairs ){
+        summa = twoPairs();
+        qDebug() << summa;
+        qDebug() << "twoPairs";
+    }
 
     else if (functionId == gridThreeOfAkind || functionId == gridFourOfAkind || functionId == gridYahzee ){
         summa = xOfAKind(keyId);
@@ -228,6 +279,11 @@ int GameBrain::functionHandler(int keyId, int playerNr)
         summa = smallLargeStraight(keyId);
         qDebug() << summa;
         qDebug() << "straight";
+    }
+    else if (functionId == gridChance ){
+        summa = chance();
+        qDebug() << summa;
+        qDebug() << "chance";
     }
     return summa;
 
@@ -259,7 +315,7 @@ QString GameBrain::endTurnChoice(int keyId, int playerNr)
 void GameBrain::calculateScoreFromChoice(int keyId, int playerNr)
 {
     int score = 0;
-    score = functionHandler(keyId, playerNr);
+    score = functionHandler(keyId);
     addScoreToArray(keyId,playerNr,score);
 }
 

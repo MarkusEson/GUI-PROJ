@@ -12,6 +12,8 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     ui(new Ui::YahtzeeMainWin)
 {
     ui->setupUi(this);
+    //chance();
+    //functionHandler(10);
 
     _keyPressedFromUI = {
         {ui->rollDiceButton, WIPenum::rolldice},
@@ -230,6 +232,11 @@ void YahtzeeMainWin::aButtonWasClicked()
      * And finally disbles the button so that it cannot be clicked again.
      * Inspired and copied from Ragnar Nohre - Lab 5
      */
+
+    WIPenum keyValue = _keyPressedFromUI[theButton];
+        int keyId = intFromKey(keyValue);
+        dynamic_cast<QPushButton*>(sender())->setText(endTurnChoice(keyId, _activePlayer));
+
     if(theButton){
         //dynamic_cast<QPushButton*>(sender())->setText("12");
         //dynamic_cast<QPushButton*>(sender())->setEnabled(false);
