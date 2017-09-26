@@ -24,10 +24,11 @@ public:
     explicit YahtzeeMainWin(QWidget *parent = 0);
     ~YahtzeeMainWin();
     void showPlayerBlockersOnClick();
-    void chooseAmountOfPlayers();
+    void chooseAmountOfPlayers(int numOfPlayers);
     void setDieImage(QPushButton * button, Die die);
     void displayDiceOnScreen();
     void playerTurn(int _numOfPlayers);
+
 
     std::map<QObject*, WIPenum> _keyPressedFromUI;
 

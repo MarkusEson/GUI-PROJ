@@ -16,5 +16,6 @@
         <file>6diceClicked.png</file>
         <file>YAHTZEE BACKGROUND THREE.png</file>
         <file>shakedice.wav</file>
+        <file>dicethrowshort.wav</file>
     </qresource>
 </RCC>

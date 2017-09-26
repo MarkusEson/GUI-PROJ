@@ -724,7 +724,8 @@ qrc_resources.cpp: resources.qrc \
 		1dice.png \
 		5dice.png \
 		5diceClicked.png \
-		shakedice.wav
+		shakedice.wav \
+		dicethrowshort.wav
 	/Users/markus/Qt/5.9.1/clang_64/bin/rcc -name resources resources.qrc -o qrc_resources.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
