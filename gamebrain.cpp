@@ -66,7 +66,7 @@ int GameBrain::pairs()
              sum = throwValue[i] + throwValue[i+1];
          }
     }
-     qDebug() << sum;
+     qDebug() <<"pair sum: " << sum;
      return sum;
 }
 
@@ -84,7 +84,7 @@ int GameBrain::twoPairs()
     }
     if(countPairs==2)
     {
-        qDebug() << firstPairSum;
+        qDebug() << "firstPairSum:" << firstPairSum;
         return firstPairSum;
     }
     else
@@ -120,11 +120,13 @@ int GameBrain::oneToSix(int keyId)
     int sum = 0;
       for( int i = 0; i < 5; i++ )
       {
-        if( throwValue[i] == keyId )
+        if( _diceArray[i].getValue() == keyId )
             sum += keyId;
       }
+      for (unsigned int i = 0; i < sizeof(_diceArray)/sizeof(_diceArray[0]); i++)
+          qDebug() << "Dice nummer " << (i + 1) << " har värdet" << _diceArray[i].getValue();
       return sum;
-      qDebug() << sum;
+      qDebug() << "Sum i oneToSix: " << sum;
 }
 
 int GameBrain::fullHouse()
@@ -141,7 +143,7 @@ int GameBrain::fullHouse()
     }
     return  sum;
 
-    qDebug() << sum;
+    qDebug() << "Sum i fullhouse:" << sum;
 }
 
 int GameBrain::smallLargeStraight(int keyId)
@@ -181,14 +183,9 @@ int GameBrain::chance()
         //sum += _diceArray[i];
         sum += throwValue[i];
     }
-    qDebug() << sum;
+    qDebug() << "chance sum: " << sum;
     return sum;
 }
-
-/*QString GameBrain::getScoreFromArray()
-{
-    //QString numToPrint = QString::number();
-}*/
 
 
 
@@ -250,8 +247,6 @@ int GameBrain::functionHandler(int keyId)
 
     if (functionId >= gridOnes && functionId <=gridSixes ){
         summa = oneToSix(keyId);
-        qDebug() << summa;
-        qDebug() << "0netosix";
     }
 
     else if (functionId == gridPairs ){
@@ -357,4 +352,3 @@ void Die::checkDie()
     else
         _isChecked = true;
 }
-

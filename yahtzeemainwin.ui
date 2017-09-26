@@ -116,7 +116,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -144,7 +144,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -172,7 +172,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -200,7 +200,7 @@
         </size>
        </property>
        <property name="text">
-        <string>1</string>
+        <string> </string>
        </property>
        <property name="checkable">
         <bool>false</bool>
@@ -231,7 +231,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -259,7 +259,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -287,7 +287,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -315,7 +315,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -343,7 +343,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -371,7 +371,7 @@
         </size>
        </property>
        <property name="text">
-        <string>3</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -399,7 +399,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -458,7 +458,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -486,7 +486,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0 </string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -514,7 +514,7 @@
         </size>
        </property>
        <property name="text">
-        <string>2</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -573,7 +573,7 @@
         </size>
        </property>
        <property name="text">
-        <string>5</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -601,7 +601,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -647,7 +647,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -675,7 +675,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -734,7 +734,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -762,7 +762,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -790,7 +790,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -818,7 +818,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -846,7 +846,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -874,7 +874,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -902,7 +902,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -961,7 +961,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1020,7 +1020,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1048,7 +1048,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1076,7 +1076,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1104,7 +1104,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1132,7 +1132,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1160,7 +1160,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1206,7 +1206,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1234,7 +1234,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1262,7 +1262,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1290,7 +1290,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1318,7 +1318,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1346,7 +1346,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1374,7 +1374,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1433,7 +1433,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1461,7 +1461,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1489,7 +1489,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1517,7 +1517,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1545,7 +1545,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1573,7 +1573,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1663,7 +1663,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1691,7 +1691,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1719,7 +1719,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1765,7 +1765,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1793,7 +1793,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1821,7 +1821,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1849,7 +1849,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1877,7 +1877,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1905,7 +1905,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1933,7 +1933,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1961,7 +1961,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1989,7 +1989,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -2017,7 +2017,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -2107,7 +2107,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -2135,7 +2135,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -2163,7 +2163,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -2191,7 +2191,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -2219,7 +2219,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -2247,7 +2247,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string> </string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -2353,6 +2353,38 @@ border-bottom-right-radius: 20;</string>
      </rect>
     </property>
     <layout class="QGridLayout" name="diceButtonLayout">
+     <item row="3" column="0">
+      <widget class="QPushButton" name="dice4Button">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/new/pictures/6dice.png);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QPushButton" name="dice3Button">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/new/pictures/6dice.png);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
      <item row="0" column="0">
       <widget class="QPushButton" name="dice1Button">
        <property name="sizePolicy">
@@ -2372,22 +2404,6 @@ border-bottom-right-radius: 20;</string>
        </property>
        <property name="checked">
         <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QPushButton" name="dice3Button">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-image: url(:/new/pictures/6dice.png);</string>
-       </property>
-       <property name="text">
-        <string/>
        </property>
       </widget>
      </item>
@@ -2426,22 +2442,6 @@ border-bottom-right-radius: 20;</string>
        </property>
        <property name="flat">
         <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0">
-      <widget class="QPushButton" name="dice4Button">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-image: url(:/new/pictures/6dice.png);</string>
-       </property>
-       <property name="text">
-        <string/>
        </property>
       </widget>
      </item>
@@ -2493,6 +2493,62 @@ border-bottom-right-radius: 20;</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>20</y>
+      <width>281</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="playerIndicatorLayout">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="player1Label">
+       <property name="text">
+        <string> </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="player2Label">
+       <property name="text">
+        <string> </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="player3Label">
+       <property name="text">
+        <string> </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="player4Label">
+       <property name="text">
+        <string> </string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <zorder>gameBackground</zorder>
+   <zorder>gridLayoutWidget_4</zorder>
+   <zorder>gridLayoutWidget_5</zorder>
+   <zorder>gridLayoutWidget_6</zorder>
+   <zorder>gridLayoutWidget_7</zorder>
+   <zorder>playerBlockerA</zorder>
+   <zorder>playerBlockerB</zorder>
+   <zorder>playerBlockerC</zorder>
+   <zorder>playerBlockerD</zorder>
+   <zorder>verticalLayoutWidget</zorder>
+   <zorder>helpLabel</zorder>
+   <zorder>rollDiceButton</zorder>
+   <zorder>horizontalLayoutWidget</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

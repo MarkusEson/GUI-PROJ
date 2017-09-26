@@ -16,7 +16,7 @@ namespace Ui {
 class YahtzeeMainWin;
 }
 
-class YahtzeeMainWin : public QMainWindow, GameBrain
+class YahtzeeMainWin : public QMainWindow
 {
     Q_OBJECT
 
@@ -24,7 +24,7 @@ public:
     explicit YahtzeeMainWin(QWidget *parent = 0);
     ~YahtzeeMainWin();
     void showPlayerBlockersOnClick();
-    void chooseAmountOfPlayers();
+    void chooseAmountOfPlayers(int numOfPlayers);
     void setDieImage(QPushButton * button, Die die);
     void displayDiceOnScreen();
     void playerTurn(int _numOfPlayers);
