@@ -5,8 +5,8 @@
 #define gridFours 4
 #define gridFives 5
 #define gridSixes 6
-#define gridPair 9
-#define gridTwoPair 10
+#define gridPairs 9
+#define gridTwoPairs 10
 #define gridThreeOfAkind 11
 #define gridFourOfAkind 12
 #define gridFullHouse 13
@@ -58,6 +58,40 @@ void GameBrain::checkDie(int dieNumber)
     qDebug() << "Tärning nr: " << dieNumber << "blev checkad/avcheckad";
 }
 
+int GameBrain::pairs()
+{
+    int sum = 0;
+    for(int i=0; i<4; i++){
+     if(_diceArray[i].getValue()==_diceArray[i+1].getValue()){
+             sum = _diceArray[i].getValue() + _diceArray[i+1].getValue();
+         }
+    }
+     qDebug() <<"pair sum: " << sum;
+     return sum;
+}
+
+int GameBrain::twoPairs()
+{
+    int countPairs=0;
+    int sum = 0;
+    for(int i=0; i<4; i++){
+     if(_diceArray[i].getValue()==_diceArray[i+1].getValue()){
+             sum += _diceArray[i].getValue() + _diceArray[i+1].getValue();
+             countPairs++;
+             i++;
+         }
+    }
+    if(countPairs==2)
+    {
+        qDebug() << "firstPairSum:" << sum;
+        return sum;
+    }
+    else
+        return false;
+
+    qDebug() << "firstPair false";
+}
+
 int GameBrain::xOfAKind(int keyId)
 {
     int xOfAKindValue = 0;
@@ -71,7 +105,7 @@ int GameBrain::xOfAKind(int keyId)
         int count = 0;
         for( int i = 0; i < 5; i++ )
         {
-            if( throwValue[i] == j )
+            if( _diceArray[i].getValue() == j )
                 count +=1;
             if(count >= xOfAKindValue)
               sum = j * xOfAKindValue;
@@ -85,28 +119,31 @@ int GameBrain::oneToSix(int keyId)
     int sum = 0;
       for( int i = 0; i < 5; i++ )
       {
-        if( throwValue[i] == keyId )
+        if( _diceArray[i].getValue() == keyId )
             sum += keyId;
       }
+      for (unsigned int i = 0; i < sizeof(_diceArray)/sizeof(_diceArray[0]); i++)
+          qDebug() << "Dice nummer " << (i + 1) << " har värdet" << _diceArray[i].getValue();
       return sum;
-      qDebug() << sum;
+      qDebug() << "Sum i oneToSix: " << sum;
 }
 
 int GameBrain::fullHouse()
 {
     int sum = 0;
-    if( (((throwValue[0] == throwValue[1]) && (throwValue[1] == throwValue[2])) && // Three of a Kind
-        (throwValue[3] == throwValue[4]) && // Two of a Kind
-        (throwValue[2] != throwValue[3])) ||
-        ((throwValue[0] == throwValue[1]) && // Two of a Kind
-        ((throwValue[2] == throwValue[3]) && (throwValue[3] == throwValue[4])) && // Three of a Kind
-        (throwValue[1] != throwValue[2])) )
+    if( (((_diceArray[0].getValue() == _diceArray[1].getValue()) && (_diceArray[1].getValue() == _diceArray[2].getValue())) && // Three of a Kind
+        (_diceArray[3].getValue() == _diceArray[4].getValue()) && // Two of a Kind
+        (_diceArray[2].getValue() != _diceArray[3].getValue())) ||
+        ((_diceArray[0].getValue() == _diceArray[1].getValue()) && // Two of a Kind
+        ((_diceArray[2].getValue() == _diceArray[3].getValue()) && (_diceArray[3].getValue() == _diceArray[4].getValue())) && // Three of a Kind
+        (_diceArray[1].getValue() != _diceArray[2].getValue())) )
     {
-        sum = throwValue[0]+throwValue[1]+throwValue[2]+throwValue[3]+throwValue[4];
+        sum = _diceArray[0].getValue()+_diceArray[1].getValue()+_diceArray[2].getValue()+_diceArray[3].getValue()+_diceArray[4].getValue();
+        sum = _diceArray[0].getValue() + _diceArray[1].getValue() + _diceArray[2].getValue() + _diceArray[3].getValue() + _diceArray[4].getValue();
     }
     return  sum;
 
-    qDebug() << sum;
+    qDebug() << "Sum i fullhouse:" << sum;
 }
 
 int GameBrain::smallLargeStraight(int keyId)
@@ -121,11 +158,11 @@ int GameBrain::smallLargeStraight(int keyId)
         firstStraight = 2;
     }
 
-    if( ((throwValue[0] == firstStraight) &&
-     (throwValue[1] == firstStraight +1) &&
-     (throwValue[2] == firstStraight +2) &&
-     (throwValue[3] == firstStraight +3) &&
-     (throwValue[4] == firstStraight +4)))
+    if( ((_diceArray[0].getValue() == firstStraight) &&
+     (_diceArray[1].getValue() == firstStraight +1) &&
+     (_diceArray[2].getValue() == firstStraight +2) &&
+     (_diceArray[3].getValue() == firstStraight +3) &&
+     (_diceArray[4].getValue() == firstStraight +4)))
     {
         int straightNumber = firstStraight;
         int straightValue = firstStraight;
@@ -139,50 +176,36 @@ int GameBrain::smallLargeStraight(int keyId)
     return sum;
 }
 
-/*QString GameBrain::getScoreFromArray()
+int GameBrain::chance()
 {
-    //QString numToPrint = QString::number();
-}*/
+    int sum = 0;
+    for(int i=0; i<5; i++){
+        //sum += _diceArray[i];
+        sum += _diceArray[i].getValue();
+    }
+    qDebug() << "chance sum: " << sum;
+    return sum;
+}
 
 
 
 QString GameBrain::calculateScoreBoard(int player, int sumBonusOrTotal)
 {
     /*
-    _scoreArray[0][1] = 5;
-    _scoreArray[1][1] = 5;
-    _scoreArray[2][1] = 2;
-    _scoreArray[3][1] = 20;
-    _scoreArray[4][1] = 20;
-    _scoreArray[5][1] = 20;
-
-    _scoreArray[0][2] = 5;
-    _scoreArray[1][2] = 5;
-    _scoreArray[2][2] = 2;
-    _scoreArray[3][2] = 20;
-    _scoreArray[4][2] = 30;
-    _scoreArray[5][2] = 30;
-
-    _scoreArray[0][3] = 5;
-    _scoreArray[1][3] = 5;
-    _scoreArray[2][3] = 2;
-    _scoreArray[3][3] = 10;
-    _scoreArray[4][3] = 0;
-    _scoreArray[5][3] = 1;
-    */
-    /*
      * A function that takes the active player, and on click sums all the players currents points and returns these to be displayed.
      * Calculates the Sum, Bonus, and Total scores.
      */
     int score = 0;
     switch(sumBonusOrTotal){
-        case 0:{                                            // sums up the first scores.
+        case 0:
+        {                                            // sums up the first scores.
             for(int i = 0; i < 6; i++)
                 score += _scoreArray[i][player];
             _scoreArray[6][player] = score;
             break;
         }
-        case 1:{                                            // adds bonus scores based on the sum.
+        case 1:
+        {                                            // adds bonus scores based on the sum.
             if(_scoreArray[6][player] >= 63)
                 _scoreArray[7][player] = 35;
             else
@@ -191,7 +214,8 @@ QString GameBrain::calculateScoreBoard(int player, int sumBonusOrTotal)
             score = _scoreArray[7][player];
             break;
         }
-        case 2:{                                            // sums upp the total score.
+        case 2:
+        {                                            // sums upp the total score.
             for(int i = 6; i < 19; i++)
                 score += _scoreArray[i][player];
             break;
@@ -216,23 +240,26 @@ void GameBrain::resetScoreBoard()
             _scoreArray[i][j] = 0;
 }
 
-int GameBrain::functionHandler(int keyId, int playerNr)
+int GameBrain::functionHandler(int keyId)
 {
     int functionId = keyId;
     int summa = 0;
 
     if (functionId >= gridOnes && functionId <=gridSixes ){
         summa = oneToSix(keyId);
-        qDebug() << summa;
-        qDebug() << "0netosix";
     }
 
-    /*else if (functionId == 7 ){
-        summa = oneToSix(keyId);
-        _scoreArray[keyId][playerNr] = summa;
+    else if (functionId == gridPairs ){
+        summa = pairs();
         qDebug() << summa;
-        qDebug() << "summa";
-    }*/
+        qDebug() << "pairs";
+    }
+
+    else if (functionId == gridTwoPairs ){
+        summa = twoPairs();
+        qDebug() << summa;
+        qDebug() << "twoPairs";
+    }
 
     else if (functionId == gridThreeOfAkind || functionId == gridFourOfAkind || functionId == gridYahzee ){
         summa = xOfAKind(keyId);
@@ -250,6 +277,11 @@ int GameBrain::functionHandler(int keyId, int playerNr)
         summa = smallLargeStraight(keyId);
         qDebug() << summa;
         qDebug() << "straight";
+    }
+    else if (functionId == gridChance ){
+        summa = chance();
+        qDebug() << summa;
+        qDebug() << "chance";
     }
     return summa;
 
@@ -281,10 +313,9 @@ QString GameBrain::endTurnChoice(int keyId, int playerNr)
 void GameBrain::calculateScoreFromChoice(int keyId, int playerNr)
 {
     int score = 0;
-    score = functionHandler(keyId, playerNr);
+    score = functionHandler(keyId);
     addScoreToArray(keyId,playerNr,score);
 }
-
 
 // ------ Die - koden -----------------
 
@@ -320,4 +351,3 @@ void Die::checkDie()
     else
         _isChecked = true;
 }
-
