@@ -163,7 +163,7 @@ public:
         gameBackground->setStyleSheet(QStringLiteral("background-image: url(:/new/pictures/YAHTZEE BACKGROUND THREE.png);"));
         gridLayoutWidget_4 = new QWidget(centralWidget);
         gridLayoutWidget_4->setObjectName(QStringLiteral("gridLayoutWidget_4"));
-        gridLayoutWidget_4->setGeometry(QRect(150, 40, 71, 642));
+        gridLayoutWidget_4->setGeometry(QRect(150, 40, 71, 601));
         Agrid = new QGridLayout(gridLayoutWidget_4);
         Agrid->setSpacing(0);
         Agrid->setContentsMargins(11, 11, 11, 11);
@@ -366,7 +366,7 @@ public:
 
         gridLayoutWidget_5 = new QWidget(centralWidget);
         gridLayoutWidget_5->setObjectName(QStringLiteral("gridLayoutWidget_5"));
-        gridLayoutWidget_5->setGeometry(QRect(220, 40, 71, 640));
+        gridLayoutWidget_5->setGeometry(QRect(220, 40, 71, 601));
         Bgrid = new QGridLayout(gridLayoutWidget_5);
         Bgrid->setSpacing(0);
         Bgrid->setContentsMargins(11, 11, 11, 11);
@@ -568,7 +568,7 @@ public:
 
         gridLayoutWidget_6 = new QWidget(centralWidget);
         gridLayoutWidget_6->setObjectName(QStringLiteral("gridLayoutWidget_6"));
-        gridLayoutWidget_6->setGeometry(QRect(290, 40, 71, 642));
+        gridLayoutWidget_6->setGeometry(QRect(290, 40, 71, 601));
         Cgrid = new QGridLayout(gridLayoutWidget_6);
         Cgrid->setSpacing(0);
         Cgrid->setContentsMargins(11, 11, 11, 11);
@@ -770,7 +770,7 @@ public:
 
         gridLayoutWidget_7 = new QWidget(centralWidget);
         gridLayoutWidget_7->setObjectName(QStringLiteral("gridLayoutWidget_7"));
-        gridLayoutWidget_7->setGeometry(QRect(360, 40, 71, 642));
+        gridLayoutWidget_7->setGeometry(QRect(360, 40, 71, 601));
         Dgrid = new QGridLayout(gridLayoutWidget_7);
         Dgrid->setSpacing(0);
         Dgrid->setContentsMargins(11, 11, 11, 11);
@@ -1072,7 +1072,7 @@ public:
         YahtzeeMainWin->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(YahtzeeMainWin);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 650, 21));
+        menuBar->setGeometry(QRect(0, 0, 650, 22));
         menuOptions = new QMenu(menuBar);
         menuOptions->setObjectName(QStringLiteral("menuOptions"));
         YahtzeeMainWin->setMenuBar(menuBar);
