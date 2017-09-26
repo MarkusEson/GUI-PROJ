@@ -240,7 +240,7 @@ void YahtzeeMainWin::displayDiceOnScreen() // Removed rollDice func
     setDieImage(ui->dice3Button, arrayWithDice[2]);
     setDieImage(ui->dice4Button, arrayWithDice[3]);
     setDieImage(ui->dice5Button, arrayWithDice[4]);
-    delete arrayWithDice;
+    //delete arrayWithDice;
 }
 
 void YahtzeeMainWin::playerTurn(int numplayers)
@@ -371,18 +371,15 @@ void YahtzeeMainWin::on_rollDiceButton_clicked() // Added rollDice func
     if(_timesRolled == 2)
         ui->rollDiceButton->setEnabled(false);
 
+    /*
     for(int i = 0; i < ui->Agrid->count(); i++){
         QWidget *button = ui->Agrid->itemAt(i)->widget();
         QPushButton *theButton = dynamic_cast<QPushButton*>(button);
 
         theButton->setText("YO");
     }
+    */
 
-    for(int i = 0; i < ui->diceButtonLayout->count(); i++){
-        QWidget *button = ui->diceButtonLayout->itemAt(i)->widget();
-            if(!button->isEnabled())
-                button->setEnabled(true);
-    }
     unlockDice();
     _timesRolled++;
 }
