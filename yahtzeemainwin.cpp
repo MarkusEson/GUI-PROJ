@@ -165,13 +165,31 @@ void YahtzeeMainWin::showPlayerBlockersOnClick()
 
 void YahtzeeMainWin::chooseAmountOfPlayers(int num)
 {
-
     /*
      * This function checks how many players are playing.
+     * It enables all the pushbuttons.
      * It enables the rollDice button, sets _numOfPlayers accordingly.
      * resets scoreboard to get freash clean start
      * sets texlabels to show how many players are playing.
      */
+
+    for(int i = 0; i < ui->Agrid->count(); i++){
+        QWidget *button = ui->Agrid->itemAt(i)->widget();
+        button->setEnabled(true);
+    }
+    for(int i = 0; i < ui->Bgrid->count(); i++){
+        QWidget *button = ui->Bgrid->itemAt(i)->widget();
+        button->setEnabled(true);
+    }
+    for(int i = 0; i < ui->Cgrid->count(); i++){
+        QWidget *button = ui->Cgrid->itemAt(i)->widget();
+        button->setEnabled(true);
+    }
+    for(int i = 0; i < ui->Dgrid->count(); i++){
+        QWidget *button = ui->Dgrid->itemAt(i)->widget();
+        button->setEnabled(true);
+    }
+
 
     _activePlayer = PLAYERONE;
     showPlayerBlockersOnClick();
@@ -301,8 +319,7 @@ void YahtzeeMainWin::aButtonWasClicked()
         dynamic_cast<QPushButton*>(sender())->setText(gameBrain.endTurnChoice(keyId, _activePlayer));
 
     if(theButton){
-        //dynamic_cast<QPushButton*>(sender())->setText("12");
-        //dynamic_cast<QPushButton*>(sender())->setEnabled(false);
+        dynamic_cast<QPushButton*>(sender())->setEnabled(false);
 
         if(_activePlayer == PLAYERONE){
             ui->A7->setText(gameBrain.calculateScoreBoard(_activePlayer, 0));
@@ -370,15 +387,6 @@ void YahtzeeMainWin::on_rollDiceButton_clicked() // Added rollDice func
     }
     if(_timesRolled == 2)
         ui->rollDiceButton->setEnabled(false);
-
-    /*
-    for(int i = 0; i < ui->Agrid->count(); i++){
-        QWidget *button = ui->Agrid->itemAt(i)->widget();
-        QPushButton *theButton = dynamic_cast<QPushButton*>(button);
-
-        theButton->setText("YO");
-    }
-    */
 
     unlockDice();
     _timesRolled++;
