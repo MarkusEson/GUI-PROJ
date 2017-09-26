@@ -82,7 +82,6 @@ public:
 private:
     Die _diceArray[5];
 
-    int throwValue [5] = {2,2,1,2,3};           //testvariabler för funktionerna
     int _scoreArray[19][4];
 };
 
