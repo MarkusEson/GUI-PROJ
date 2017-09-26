@@ -29,6 +29,8 @@ public:
     void displayDiceOnScreen();
     void playerTurn(int _numOfPlayers);
     void resetScoreboardUI();
+    void lockDice();
+    void unlockDice();
     std::map<QObject*, WIPenum> _keyPressedFromUI;
 
 private:

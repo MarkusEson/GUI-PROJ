@@ -266,11 +266,7 @@ void YahtzeeMainWin::aButtonWasClicked()
         gameBrain.resetChecked();
         playerTurn(_numOfPlayers); // player func that changes turns to next player.
         displayDiceOnScreen();
-
-        for(int i = 0; i < ui->diceButtonLayout->count() - 1; i++){
-            QWidget *button = ui->diceButtonLayout->itemAt(i)->widget();
-                button->setDisabled(true);
-        }
+        lockDice();
     }
 }
 
@@ -300,11 +296,7 @@ void YahtzeeMainWin::on_rollDiceButton_clicked() // Added rollDice func
     if(_timesRolled == 2)
         ui->rollDiceButton->setDisabled(true);
 
-    for(int i = 0; i < ui->diceButtonLayout->count(); i++){
-        QWidget *button = ui->diceButtonLayout->itemAt(i)->widget();
-            if(!button->isEnabled())
-                button->setEnabled(true);
-    }
+    unlockDice();
     _timesRolled++;
 }
 
@@ -372,3 +364,19 @@ void YahtzeeMainWin::resetScoreboardUI()
     }
 }
 
+void YahtzeeMainWin::lockDice()
+{
+    for(int i = 0; i < ui->diceButtonLayout->count() - 1; i++){
+        QWidget *button = ui->diceButtonLayout->itemAt(i)->widget();
+            button->setDisabled(true);
+    }
+}
+
+void YahtzeeMainWin::unlockDice()
+{
+    for(int i = 0; i < ui->diceButtonLayout->count(); i++){
+        QWidget *button = ui->diceButtonLayout->itemAt(i)->widget();
+            if(!button->isEnabled())
+                button->setEnabled(true);
+    }
+}
