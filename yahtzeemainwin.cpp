@@ -12,6 +12,8 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     ui(new Ui::YahtzeeMainWin)
 {
     ui->setupUi(this);
+    //chance();
+    //functionHandler(10);
 
     /*
      * A function that connects all the buttons in the grids A,B,C, and D.
