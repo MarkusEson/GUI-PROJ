@@ -16,7 +16,7 @@ namespace Ui {
 class YahtzeeMainWin;
 }
 
-class YahtzeeMainWin : public QMainWindow, GameBrain
+class YahtzeeMainWin : public QMainWindow
 {
     Q_OBJECT
 
@@ -29,7 +29,7 @@ public:
     void displayDiceOnScreen();
     void playerTurn(int _numOfPlayers);
 
-
+    std::map<QObject*, WIPenum> _keyPressedFromUI;
 
 
 private:
