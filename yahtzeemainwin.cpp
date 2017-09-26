@@ -19,10 +19,7 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     ui->D18->setEnabled(false);
     //chance();
     //functionHandler(10);
-    //chance();
-    //functionHandler(10);
-    //chance();
-    //functionHandler(10);
+
 
     _keyPressedFromUI = {
         {ui->rollDiceButton, WIPenum::rolldice},
@@ -187,6 +184,9 @@ void YahtzeeMainWin::chooseAmountOfPlayers(int num)
         _numOfPlayers = 1;
         ui->helpLabel->setText("Press New Game to restart!");
         ui->player1Label->setText("Player 1");
+        ui->player2Label->setText("");
+        ui->player3Label->setText("");
+        ui->player4Label->setText("");
     }
     else if(num == 2){
         ui->rollDiceButton->setEnabled(true);
@@ -194,6 +194,8 @@ void YahtzeeMainWin::chooseAmountOfPlayers(int num)
         ui->helpLabel->setText("Press New Game to restart!");
         ui->player1Label->setText("Player 1");
         ui->player2Label->setText("Player 2");
+        ui->player3Label->setText("");
+        ui->player4Label->setText("");
     }
     else if(num == 3){
         ui->rollDiceButton->setEnabled(true);
@@ -202,6 +204,7 @@ void YahtzeeMainWin::chooseAmountOfPlayers(int num)
         ui->player1Label->setText("Player 1");
         ui->player2Label->setText("Player 2");
         ui->player3Label->setText("Player 3");
+        ui->player4Label->setText("");
     }
     else{
         ui->rollDiceButton->setEnabled(true);
