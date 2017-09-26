@@ -15,6 +15,104 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     //chance();
     //functionHandler(10);
 
+    _keyPressedFromUI = {
+        {ui->rollDiceButton, WIPenum::rolldice},
+
+        // Maps the keys in the 1st section of the grid to the FUNK ones
+        {ui->A1, WIPenum::ones}, {ui->B1, WIPenum::ones}, {ui->C1, WIPenum::ones}, {ui->D1, WIPenum::ones},
+
+        {ui->A2, WIPenum::twos},
+        {ui->B2, WIPenum::twos},
+        {ui->C2, WIPenum::twos},
+        {ui->D2, WIPenum::twos},
+
+        {ui->A3, WIPenum::threes},
+        {ui->A3, WIPenum::threes},
+        {ui->A3, WIPenum::threes},
+        {ui->A3, WIPenum::threes},
+
+        {ui->A4, WIPenum::fours},
+        {ui->B4, WIPenum::fours},
+        {ui->C4, WIPenum::fours},
+        {ui->D4, WIPenum::fours},
+
+        {ui->A5, WIPenum::fives},
+        {ui->B5, WIPenum::fives},
+        {ui->C5, WIPenum::fives},
+        {ui->D5, WIPenum::fives},
+
+        {ui->A6, WIPenum::sixes},
+        {ui->B6, WIPenum::sixes},
+        {ui->C6, WIPenum::sixes},
+        {ui->D6, WIPenum::sixes},
+
+        {ui->A7, WIPenum::sum},
+        {ui->A7, WIPenum::sum},
+        {ui->A7, WIPenum::sum},
+        {ui->A7, WIPenum::sum},
+
+        {ui->A8, WIPenum::bonus},
+        {ui->B8, WIPenum::bonus},
+        {ui->C8, WIPenum::bonus},
+        {ui->D8, WIPenum::bonus},
+
+        {ui->A9, WIPenum::onepair},
+        {ui->B9, WIPenum::onepair},
+        {ui->C9, WIPenum::onepair},
+        {ui->D9, WIPenum::onepair},
+
+        {ui->A10, WIPenum::twopairs},
+        {ui->B10, WIPenum::twopairs},
+        {ui->C10, WIPenum::twopairs},
+        {ui->D10, WIPenum::twopairs},
+
+        {ui->A11, WIPenum::threeofakind},
+        {ui->B11, WIPenum::threeofakind},
+        {ui->C11, WIPenum::threeofakind},
+        {ui->D11, WIPenum::threeofakind},
+
+        {ui->A12, WIPenum::fourofakind},
+        {ui->B12, WIPenum::fourofakind},
+        {ui->C12, WIPenum::fourofakind},
+        {ui->D12, WIPenum::fourofakind},
+
+        {ui->A13, WIPenum::fullhouse},
+        {ui->B13, WIPenum::fullhouse},
+        {ui->C13, WIPenum::fullhouse},
+        {ui->D13, WIPenum::fullhouse},
+
+        {ui->A14, WIPenum::smallstraight},
+        {ui->B14, WIPenum::smallstraight},
+        {ui->C14, WIPenum::smallstraight},
+        {ui->D14, WIPenum::smallstraight},
+
+        {ui->A15, WIPenum::largestraight},
+        {ui->B15, WIPenum::largestraight},
+        {ui->C15, WIPenum::largestraight},
+        {ui->D15, WIPenum::largestraight},
+
+        {ui->A16, WIPenum::yahzee},
+        {ui->B16, WIPenum::yahzee},
+        {ui->C16, WIPenum::yahzee},
+        {ui->D16, WIPenum::yahzee},
+
+        {ui->A17, WIPenum::chance},
+        {ui->B17, WIPenum::chance},
+        {ui->C17, WIPenum::chance},
+        {ui->D17, WIPenum::chance},
+
+        {ui->A18, WIPenum::yahzeebonus},
+        {ui->B18, WIPenum::yahzeebonus},
+        {ui->C18, WIPenum::yahzeebonus},
+        {ui->D18, WIPenum::yahzeebonus},
+
+        {ui->A19, WIPenum::total},
+        {ui->A19, WIPenum::total},
+        {ui->A19, WIPenum::total},
+        {ui->A19, WIPenum::total},
+
+    };
+
     /*
      * A function that connects all the buttons in the grids A,B,C, and D.
      * Funktionen är inspirerad från GUI labbarna samt stackexchange sidan https://stackoverflow.com/questions/4065378/qt-get-children-from-layout

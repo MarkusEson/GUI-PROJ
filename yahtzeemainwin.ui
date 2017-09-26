@@ -54,7 +54,7 @@
       <x>150</x>
       <y>40</y>
       <width>71</width>
-      <height>601</height>
+      <height>642</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="Agrid">
@@ -616,7 +616,7 @@
       <x>220</x>
       <y>40</y>
       <width>71</width>
-      <height>601</height>
+      <height>640</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="Bgrid">
@@ -1175,7 +1175,7 @@
       <x>290</x>
       <y>40</y>
       <width>71</width>
-      <height>601</height>
+      <height>642</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="Cgrid">
@@ -1734,7 +1734,7 @@
       <x>360</x>
       <y>40</y>
       <width>71</width>
-      <height>601</height>
+      <height>642</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="Dgrid">
@@ -2305,7 +2305,7 @@ border-bottom-left-radius: 20;</string>
    <widget class="QGraphicsView" name="playerBlockerB">
     <property name="geometry">
      <rect>
-      <x>219</x>
+      <x>220</x>
       <y>40</y>
       <width>71</width>
       <height>599</height>
