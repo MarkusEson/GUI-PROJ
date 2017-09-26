@@ -297,7 +297,7 @@ void YahtzeeMainWin::on_rollDiceButton_clicked() // Added rollDice func
         ui->rollDiceButton->setDisabled(true);
 
     for(int i = 0; i < ui->Agrid->count(); i++){
-        QWidget *button = ui->Agrid->itemAt(i)->widget();
+        QWidget *button = ui->Agrid->itemAt(sorterA(i))->widget();
         QPushButton *theButton = dynamic_cast<QPushButton*>(button);
 
         theButton->setText("YO");
@@ -339,6 +339,8 @@ void YahtzeeMainWin::on_rollDiceButton_clicked() // Added rollDice func
     }
     _timesRolled++;
 }
+
+
 
 void YahtzeeMainWin::on_onePlayerButton_triggered()
 {

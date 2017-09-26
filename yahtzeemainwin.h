@@ -45,7 +45,6 @@ private slots:
     void aDiceWasClicked();
     void on_rollDiceButton_clicked();
 
-
     void on_threePlayerButton_triggered();
     void on_onePlayerButton_triggered();
     void on_twoPlayerButton_triggered();
