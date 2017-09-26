@@ -165,51 +165,68 @@ void YahtzeeMainWin::showPlayerBlockersOnClick()
 
 void YahtzeeMainWin::chooseAmountOfPlayers(int num)
 {
-
     /*
      * This function checks how many players are playing.
+     * It enables all the pushbuttons.
      * It enables the rollDice button, sets _numOfPlayers accordingly.
      * resets scoreboard to get freash clean start
      * sets texlabels to show how many players are playing.
      */
 
+    for(int i = 0; i < ui->Agrid->count(); i++){
+        QWidget *button = ui->Agrid->itemAt(i)->widget();
+        button->setEnabled(true);
+    }
+    for(int i = 0; i < ui->Bgrid->count(); i++){
+        QWidget *button = ui->Bgrid->itemAt(i)->widget();
+        button->setEnabled(true);
+    }
+    for(int i = 0; i < ui->Cgrid->count(); i++){
+        QWidget *button = ui->Cgrid->itemAt(i)->widget();
+        button->setEnabled(true);
+    }
+    for(int i = 0; i < ui->Dgrid->count(); i++){
+        QWidget *button = ui->Dgrid->itemAt(i)->widget();
+        button->setEnabled(true);
+    }
+
+
     _activePlayer = PLAYERONE;
     showPlayerBlockersOnClick();
-    ui->playerBlockerA->hide();
     gameBrain.resetScoreBoard();    // resets the score array
     resetScoreboardUI();            // resets the UI scores
 
     if(num == 1){
+        ui->gameBackground->setStyleSheet("background-image: url(:/new/pictures/backgroundplayer1test.png);");
         ui->rollDiceButton->setEnabled(true);
         _numOfPlayers = 1;
-        ui->helpLabel->setText("Press New Game to restart!");
         ui->player1Label->setText("Player 1");
         ui->player2Label->setText("");
         ui->player3Label->setText("");
         ui->player4Label->setText("");
     }
     else if(num == 2){
+        ui->gameBackground->setStyleSheet("background-image: url(:/new/pictures/backgroundplayer2test.png);");
         ui->rollDiceButton->setEnabled(true);
         _numOfPlayers = 2;
-        ui->helpLabel->setText("Press New Game to restart!");
         ui->player1Label->setText("Player 1");
         ui->player2Label->setText("Player 2");
         ui->player3Label->setText("");
         ui->player4Label->setText("");
     }
     else if(num == 3){
+        ui->gameBackground->setStyleSheet("background-image: url(:/new/pictures/backgroundplayer3test.png);");
         ui->rollDiceButton->setEnabled(true);
         _numOfPlayers = 3;
-        ui->helpLabel->setText("Press New Game to restart!");
         ui->player1Label->setText("Player 1");
         ui->player2Label->setText("Player 2");
         ui->player3Label->setText("Player 3");
         ui->player4Label->setText("");
     }
     else{
+        ui->gameBackground->setStyleSheet("background-image: url(:/new/pictures/backgroundplayer4.png);");
         ui->rollDiceButton->setEnabled(true);
         _numOfPlayers = 4;
-        ui->helpLabel->setText("Press New Game to restart!");
         ui->player1Label->setText("Player 1");
         ui->player2Label->setText("Player 2");
         ui->player3Label->setText("Player 3");
@@ -240,7 +257,7 @@ void YahtzeeMainWin::displayDiceOnScreen() // Removed rollDice func
     setDieImage(ui->dice3Button, arrayWithDice[2]);
     setDieImage(ui->dice4Button, arrayWithDice[3]);
     setDieImage(ui->dice5Button, arrayWithDice[4]);
-    delete arrayWithDice;
+    //delete arrayWithDice;
 }
 
 void YahtzeeMainWin::playerTurn(int numplayers)
@@ -254,38 +271,71 @@ void YahtzeeMainWin::playerTurn(int numplayers)
         switch (_activePlayer){
         case 1:
             showPlayerBlockersOnClick();
-            ui->playerBlockerA->hide();
+            ui->helpLabel->setText("Player 1:s turn!");
             break;
 
         case 2:
             showPlayerBlockersOnClick();
-            ui->playerBlockerB->hide();
+            ui->helpLabel->setText("Player 2:s turn!");
             break;
 
         case 3:
             showPlayerBlockersOnClick();
-            ui->playerBlockerC->hide();
+            ui->helpLabel->setText("Player 3:s turn!");
             break;
 
         case 4:
             showPlayerBlockersOnClick();
-            ui->playerBlockerD->hide();
+            ui->helpLabel->setText("Player 4:s turn!");
             break;
         }
+}
+
+void YahtzeeMainWin::resetScoreboardUI()
+{
+    for(int i = 0; i < ui->Agrid->count(); i++){
+        QWidget *button = ui->Agrid->itemAt(i)->widget();
+        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
+        resetButton->setText("");
+    }
+    for(int i = 0; i < ui->Bgrid->count(); i++){
+        QWidget *button = ui->Bgrid->itemAt(i)->widget();
+        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
+        resetButton->setText("");
+    }
+    for(int i = 0; i < ui->Cgrid->count(); i++){
+        QWidget *button = ui->Cgrid->itemAt(i)->widget();
+        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
+        resetButton->setText("");
+    }
+    for(int i = 0; i < ui->Dgrid->count(); i++){
+        QWidget *button = ui->Dgrid->itemAt(i)->widget();
+        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
+        resetButton->setText("");
+    }
+}
+
+void YahtzeeMainWin::lockDice()
+{
+    for(int i = 0; i < ui->diceButtonLayout->count() - 1; i++){
+        QWidget *button = ui->diceButtonLayout->itemAt(i)->widget();
+            button->setDisabled(true);
+    }
+}
+
+void YahtzeeMainWin::unlockDice()
+{
+    for(int i = 0; i < ui->diceButtonLayout->count(); i++){
+        QWidget *button = ui->diceButtonLayout->itemAt(i)->widget();
+            if(!button->isEnabled())
+                button->setEnabled(true);
+    }
 }
 
 void YahtzeeMainWin::aButtonWasClicked()
 {
     QPushButton *theButton = dynamic_cast<QPushButton*>(sender());
 
-    if(theButton == ui->A16)
-        ui->A18->setEnabled(true);
-    if(theButton == ui->B16)
-        ui->B18->setEnabled(true);
-    if(theButton == ui->C16)
-        ui->C18->setEnabled(true);
-    if(theButton == ui->D16)
-        ui->D18->setEnabled(true);
 
     /*
      * Calls the function calculateScoreBoard, which is called every time a player clicks the score board.
@@ -301,8 +351,7 @@ void YahtzeeMainWin::aButtonWasClicked()
         dynamic_cast<QPushButton*>(sender())->setText(gameBrain.endTurnChoice(keyId, _activePlayer));
 
     if(theButton){
-        //dynamic_cast<QPushButton*>(sender())->setText("12");
-        //dynamic_cast<QPushButton*>(sender())->setEnabled(false);
+        dynamic_cast<QPushButton*>(sender())->setEnabled(false);
 
         if(_activePlayer == PLAYERONE){
             ui->A7->setText(gameBrain.calculateScoreBoard(_activePlayer, 0));
@@ -357,11 +406,30 @@ void YahtzeeMainWin::aDiceWasClicked()
         gameBrain.checkDie(5);
 
     displayDiceOnScreen();
+
+
+    // shows and hides playerblockers accordingly.
+    if(_activePlayer == 1){
+        showPlayerBlockersOnClick();
+        ui->playerBlockerA->hide();
+    }
+    else if(_activePlayer == 2){
+        showPlayerBlockersOnClick();
+        ui->playerBlockerB->hide();
+    }
+    else if(_activePlayer == 3){
+        showPlayerBlockersOnClick();
+        ui->playerBlockerC->hide();
+    }
+    else{
+        showPlayerBlockersOnClick();
+        ui->playerBlockerD->hide();
+    }
+
 }
 
 void YahtzeeMainWin::on_rollDiceButton_clicked() // Added rollDice func
 {
-
     if(_timesRolled <= 2 )
     {
         gameBrain.rollDice();
@@ -371,18 +439,6 @@ void YahtzeeMainWin::on_rollDiceButton_clicked() // Added rollDice func
     if(_timesRolled == 2)
         ui->rollDiceButton->setEnabled(false);
 
-    for(int i = 0; i < ui->Agrid->count(); i++){
-        QWidget *button = ui->Agrid->itemAt(i)->widget();
-        QPushButton *theButton = dynamic_cast<QPushButton*>(button);
-
-        theButton->setText("YO");
-    }
-
-    for(int i = 0; i < ui->diceButtonLayout->count(); i++){
-        QWidget *button = ui->diceButtonLayout->itemAt(i)->widget();
-            if(!button->isEnabled())
-                button->setEnabled(true);
-    }
     unlockDice();
     _timesRolled++;
 }
@@ -405,45 +461,4 @@ void YahtzeeMainWin::on_threePlayerButton_triggered()
 void YahtzeeMainWin::on_fourPlayerButton_triggered()
 {
     chooseAmountOfPlayers(4);
-}
-
-void YahtzeeMainWin::resetScoreboardUI()
-{
-    for(int i = 0; i < ui->Agrid->count(); i++){
-        QWidget *button = ui->Agrid->itemAt(i)->widget();
-        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
-        resetButton->setText("");
-    }
-    for(int i = 0; i < ui->Bgrid->count(); i++){
-        QWidget *button = ui->Bgrid->itemAt(i)->widget();
-        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
-        resetButton->setText("");
-    }
-    for(int i = 0; i < ui->Cgrid->count(); i++){
-        QWidget *button = ui->Cgrid->itemAt(i)->widget();
-        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
-        resetButton->setText("");
-    }
-    for(int i = 0; i < ui->Dgrid->count(); i++){
-        QWidget *button = ui->Dgrid->itemAt(i)->widget();
-        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
-        resetButton->setText("");
-    }
-}
-
-void YahtzeeMainWin::lockDice()
-{
-    for(int i = 0; i < ui->diceButtonLayout->count() - 1; i++){
-        QWidget *button = ui->diceButtonLayout->itemAt(i)->widget();
-            button->setDisabled(true);
-    }
-}
-
-void YahtzeeMainWin::unlockDice()
-{
-    for(int i = 0; i < ui->diceButtonLayout->count(); i++){
-        QWidget *button = ui->diceButtonLayout->itemAt(i)->widget();
-            if(!button->isEnabled())
-                button->setEnabled(true);
-    }
 }
