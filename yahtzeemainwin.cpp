@@ -28,7 +28,10 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
         {ui->rollDiceButton, WIPenum::rolldice},
 
         // Maps the keys in the 1st section of the grid to the FUNK ones
-        {ui->A1, WIPenum::ones}, {ui->B1, WIPenum::ones}, {ui->C1, WIPenum::ones}, {ui->D1, WIPenum::ones},
+        {ui->A1, WIPenum::ones},
+        {ui->B1, WIPenum::ones},
+        {ui->C1, WIPenum::ones},
+        {ui->D1, WIPenum::ones},
 
         {ui->A2, WIPenum::twos},
         {ui->B2, WIPenum::twos},
@@ -163,24 +166,47 @@ void YahtzeeMainWin::showPlayerBlockersOnClick()
     ui->playerBlockerD->show();
 }
 
-void YahtzeeMainWin::chooseAmountOfPlayers(int numOfPlayers)
+void YahtzeeMainWin::chooseAmountOfPlayers(int num)
 {
-    // First turns on the player blocker windows, then hides them according to how many players are playing.
+
+    /*
+     * This function checks how many players are playing.
+     * It enables the rollDice button, sets _numOfPlayers accordingly.
+     * resets scoreboard to get freash clean start
+     * sets texlabels to show how many players are playing.
+     */
+
     _activePlayer = PLAYERONE;
     showPlayerBlockersOnClick();
     ui->playerBlockerA->hide();
-    if(numOfPlayers == 1)
+    gameBrain.resetScoreBoard();    // resets the score array
+    resetScoreboardUI();            // resets the UI scores
+
+    if(num == 1){
+        ui->rollDiceButton->setEnabled(true);
+        _numOfPlayers = 1;
+        ui->helpLabel->setText("Press New Game to restart!");
         ui->player1Label->setText("Player 1");
-    else if(numOfPlayers == 2){
+    }
+    else if(num == 2){
+        ui->rollDiceButton->setEnabled(true);
+        _numOfPlayers = 2;
+        ui->helpLabel->setText("Press New Game to restart!");
         ui->player1Label->setText("Player 1");
         ui->player2Label->setText("Player 2");
     }
-    else if(numOfPlayers == 3){
+    else if(num == 3){
+        ui->rollDiceButton->setEnabled(true);
+        _numOfPlayers = 3;
+        ui->helpLabel->setText("Press New Game to restart!");
         ui->player1Label->setText("Player 1");
         ui->player2Label->setText("Player 2");
         ui->player3Label->setText("Player 3");
     }
     else{
+        ui->rollDiceButton->setEnabled(true);
+        _numOfPlayers = 4;
+        ui->helpLabel->setText("Press New Game to restart!");
         ui->player1Label->setText("Player 1");
         ui->player2Label->setText("Player 2");
         ui->player3Label->setText("Player 3");
@@ -353,36 +379,45 @@ void YahtzeeMainWin::on_rollDiceButton_clicked() // Added rollDice func
 
 void YahtzeeMainWin::on_onePlayerButton_triggered()
 {
-    ui->rollDiceButton->setEnabled(true);
-    _numOfPlayers = 1;
     chooseAmountOfPlayers(1);
-    gameBrain.resetScoreBoard();
-    ui->helpLabel->setText("Press New Game to restart!");
 }
 
 void YahtzeeMainWin::on_twoPlayerButton_triggered()
 {
-    ui->rollDiceButton->setEnabled(true);
-    _numOfPlayers = 2;
     chooseAmountOfPlayers(2);
-    gameBrain.resetScoreBoard();
-    ui->helpLabel->setText("Press New Game to restart!");
 }
 
 void YahtzeeMainWin::on_threePlayerButton_triggered()
 {
-    ui->rollDiceButton->setEnabled(true);
-    _numOfPlayers = 3;
     chooseAmountOfPlayers(3);
-    gameBrain.resetScoreBoard();
-    ui->helpLabel->setText("Press New Game to restart!");
 }
 
 void YahtzeeMainWin::on_fourPlayerButton_triggered()
 {
-    ui->rollDiceButton->setEnabled(true);
-    _numOfPlayers = 4;
     chooseAmountOfPlayers(4);
-    gameBrain.resetScoreBoard();
-    ui->helpLabel->setText("Press New Game to restart!");
 }
+
+void YahtzeeMainWin::resetScoreboardUI()
+{
+    for(int i = 0; i < ui->Agrid->count(); i++){
+        QWidget *button = ui->Agrid->itemAt(i)->widget();
+        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
+        resetButton->setText("");
+    }
+    for(int i = 0; i < ui->Bgrid->count(); i++){
+        QWidget *button = ui->Bgrid->itemAt(i)->widget();
+        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
+        resetButton->setText("");
+    }
+    for(int i = 0; i < ui->Cgrid->count(); i++){
+        QWidget *button = ui->Cgrid->itemAt(i)->widget();
+        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
+        resetButton->setText("");
+    }
+    for(int i = 0; i < ui->Dgrid->count(); i++){
+        QWidget *button = ui->Dgrid->itemAt(i)->widget();
+        QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
+        resetButton->setText("");
+    }
+}
+
