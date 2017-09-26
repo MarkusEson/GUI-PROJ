@@ -185,7 +185,7 @@ void YahtzeeMainWin::displayDiceOnScreen() // Removed rollDice func
     setDieImage(ui->dice3Button, arrayWithDice[2]);
     setDieImage(ui->dice4Button, arrayWithDice[3]);
     setDieImage(ui->dice5Button, arrayWithDice[4]);
-    //delete arrayWithDice;
+    delete arrayWithDice;
 }
 
 void YahtzeeMainWin::playerTurn(int numplayers)
