@@ -371,3 +371,9 @@ void YahtzeeMainWin::resetScoreboardUI()
         resetButton->setText("");
     }
 }
+
+void YahtzeeMainWin::lockDice()
+{
+    
+}
+
