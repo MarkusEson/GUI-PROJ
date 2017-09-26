@@ -38,6 +38,7 @@ private:
     int _numOfPlayers = 0;
     int _activePlayer = 1;
     int _timesRolled = 0;
+    int _rounds = 0;
     GameBrain gameBrain;
 
 
