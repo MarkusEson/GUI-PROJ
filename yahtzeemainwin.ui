@@ -88,7 +88,7 @@
         </size>
        </property>
        <property name="text">
-        <string> </string>
+        <string/>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -545,7 +545,7 @@
         </size>
        </property>
        <property name="text">
-        <string> </string>
+        <string/>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -706,7 +706,7 @@
         </size>
        </property>
        <property name="text">
-        <string> </string>
+        <string/>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -933,7 +933,7 @@
         </size>
        </property>
        <property name="text">
-        <string> </string>
+        <string/>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1604,7 +1604,7 @@
         </size>
        </property>
        <property name="text">
-        <string> </string>
+        <string/>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -1635,7 +1635,7 @@
         </size>
        </property>
        <property name="text">
-        <string> </string>
+        <string/>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -2079,7 +2079,7 @@
         </size>
        </property>
        <property name="text">
-        <string> </string>
+        <string/>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -2278,7 +2278,7 @@
         </size>
        </property>
        <property name="text">
-        <string> </string>
+        <string/>
        </property>
        <property name="flat">
         <bool>true</bool>
