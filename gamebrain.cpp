@@ -199,8 +199,9 @@ QString GameBrain::calculateScoreBoard(int player, int sumBonusOrTotal)
     switch(sumBonusOrTotal){
         case 0:
         {                                            // sums up the first scores.
-            for(int i = 0; i < 6; i++)
+            for(int i = 0; i <= 6; i++)
                 score += _scoreArray[i][player];
+
             _scoreArray[6][player] = score;
             break;
         }

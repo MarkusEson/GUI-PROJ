@@ -173,22 +173,6 @@ void YahtzeeMainWin::chooseAmountOfPlayers(int num)
      * sets texlabels to show how many players are playing.
      */
 
-    for(int i = 0; i < ui->Agrid->count(); i++){
-        QWidget *button = ui->Agrid->itemAt(i)->widget();
-        button->setEnabled(true);
-    }
-    for(int i = 0; i < ui->Bgrid->count(); i++){
-        QWidget *button = ui->Bgrid->itemAt(i)->widget();
-        button->setEnabled(true);
-    }
-    for(int i = 0; i < ui->Cgrid->count(); i++){
-        QWidget *button = ui->Cgrid->itemAt(i)->widget();
-        button->setEnabled(true);
-    }
-    for(int i = 0; i < ui->Dgrid->count(); i++){
-        QWidget *button = ui->Dgrid->itemAt(i)->widget();
-        button->setEnabled(true);
-    }
 
 
     _activePlayer = PLAYERONE;
