@@ -77,8 +77,9 @@ public:
     void addScoreToArray(int keyId, int playerNr, int sumFromRound);
     QString endTurnChoice(int keyId, int playerNr);
     void calculateScoreFromChoice(int keyId, int playerNr);
-        int getDieValue();
-
+    int getDieValue();
+    QString getPossibleScores(int keyId);
+    QString putPlayerScoreToUi(int keyId, int playerNr);
 private:
     Die _diceArray[5];
 
