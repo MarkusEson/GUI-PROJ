@@ -31,6 +31,7 @@ public:
     void resetScoreboardUI();
     void lockDice();
     void unlockDice();
+    void resetDice();
     std::map<QObject*, WIPenum> _keyPressedFromUI;
 
 private:
