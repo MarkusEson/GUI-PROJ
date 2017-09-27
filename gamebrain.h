@@ -83,7 +83,7 @@ public:
 private:
     Die _diceArray[5];
 
-    int _scoreArray[19][4];
+    int _scoreArray[19][5];
 };
 
 #endif // GAMEBRAIN_H

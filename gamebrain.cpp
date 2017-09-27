@@ -17,6 +17,7 @@
 
 GameBrain::GameBrain()
 {
+
 }
 
 GameBrain::~GameBrain()
@@ -187,6 +188,7 @@ int GameBrain::chance()
 
 QString GameBrain::calculateScoreBoard(int player, int sumBonusOrTotal)
 {
+
     /*
      * A function that takes the active player, and on click sums all the players currents points and returns these to be displayed.
      * Calculates the Sum, Bonus, and Total scores.
