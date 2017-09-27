@@ -45,7 +45,7 @@
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-image: url(:/new/pictures/YAHTZEE BACKGROUND THREE.png);</string>
+     <string notr="true">background-image: url(:/new/pictures/backgroundplayer4.png);</string>
     </property>
    </widget>
    <widget class="QWidget" name="gridLayoutWidget_4">
@@ -2297,7 +2297,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(114, 110, 168, 76);
+     <string notr="true">background-color: rgba(147, 173, 255, 76);
 border-top-left-radius: 20;
 border-bottom-left-radius: 20;</string>
     </property>
@@ -2312,7 +2312,7 @@ border-bottom-left-radius: 20;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(114, 110, 168, 76);</string>
+     <string notr="true">background-color: rgba(147, 173, 255, 76);</string>
     </property>
    </widget>
    <widget class="QGraphicsView" name="playerBlockerC">
@@ -2325,7 +2325,7 @@ border-bottom-left-radius: 20;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(114, 110, 168, 76);</string>
+     <string notr="true">background-color: rgba(147, 173, 255, 76);</string>
     </property>
    </widget>
    <widget class="QGraphicsView" name="playerBlockerD">
@@ -2338,7 +2338,7 @@ border-bottom-left-radius: 20;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(114, 110, 168, 76);
+     <string notr="true">background-color: rgba(147, 173, 255, 76);
 border-top-right-radius: 20;
 border-bottom-right-radius: 20;</string>
     </property>

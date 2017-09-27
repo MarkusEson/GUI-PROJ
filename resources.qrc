@@ -17,5 +17,12 @@
         <file>YAHTZEE BACKGROUND THREE.png</file>
         <file>shakedice.wav</file>
         <file>dicethrowshort.wav</file>
+        <file>backgroundplayer1.png</file>
+        <file>backgroundplayer2.png</file>
+        <file>backgroundplayer3.png</file>
+        <file>backgroundplayer4.png</file>
+        <file>backgroundplayer3test.png</file>
+        <file>backgroundplayer1test.png</file>
+        <file>backgroundplayer2test.png</file>
     </qresource>
 </RCC>
