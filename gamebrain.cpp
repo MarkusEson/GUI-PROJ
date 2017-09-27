@@ -238,7 +238,7 @@ void GameBrain::resetChecked()
 void GameBrain::resetScoreBoard()
 {
     for(int i = 0; i < 19; i++)
-        for(int j = 0; j < 4; j++)
+        for(int j = 0; j < 5; j++)
             _scoreArray[i][j] = 0;
 }
 
