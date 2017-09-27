@@ -169,7 +169,7 @@ void YahtzeeMainWin::chooseAmountOfPlayers(int num)
      * resets scoreboard to get fresh clean start
      * sets texlabels to show how many players are playing.
      */
-// Varför? Låste upp sum, bonus och total
+    // forloops unlocks all buttons except for the sum,bonus and totals
     for(int i = 0; i < ui->Agrid->count(); i++){
         QWidget *button = ui->Agrid->itemAt(i)->widget();
         if(button == ui->A7 || button == ui->A8 || button == ui->A19)
@@ -206,6 +206,10 @@ void YahtzeeMainWin::chooseAmountOfPlayers(int num)
     resetScoreboardUI();            // resets the UI scores
     resetDice();
 
+    /*
+     * This code changes the playertexts to show how many players are actively plaing.
+     * also changes background to visually show how many are playing.
+     */
     if(num == 1){
         ui->gameBackground->setStyleSheet("background-image: url(:/new/pictures/backgroundplayer1test.png);");
         ui->rollDiceButton->setEnabled(true);
@@ -305,6 +309,11 @@ void YahtzeeMainWin::playerTurn(int numplayers)
 
 void YahtzeeMainWin::resetScoreboardUI()
 {
+    /*
+     * Goes through the scoreboard Grids to reset the text on the PusshButtons.
+     * sets all text to "".
+     * this is only visual, i.e. UI. Another function resets the _scoreArray
+     */
     for(int i = 0; i < ui->Agrid->count(); i++){
         QWidget *button = ui->Agrid->itemAt(i)->widget();
         QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
@@ -385,6 +394,11 @@ void YahtzeeMainWin::aButtonWasClicked()
             ui->D8->setText(gameBrain.calculateScoreBoard(_activePlayer, 1));
             ui->D19->setText(gameBrain.calculateScoreBoard(_activePlayer, 2));
         }
+
+        /*
+         * Sets the possible scores on the screen, in green.
+         * increments player, so that it is next players turn.
+         */
         setPlayerScoreToUi();
         _activePlayer++;
         gameBrain.resetChecked();
@@ -492,13 +506,18 @@ void YahtzeeMainWin::on_fourPlayerButton_triggered()
 
 void YahtzeeMainWin::uiScoreCalculator()
 {
+    /*
+     * Shows the possible scores you can add to the board, it does this by printing the scores on the UI, and changing the text to a green color
+     * the green color differentiates the scores that CAN be placed, with the black scores that you have already placed.
+     * the green POSSIBLE scores are then removed after you are done.
+     */
     if(_activePlayer==1){
     for(int i = 1; i < ui->Agrid->count(); i++){
                 QWidget *button = ui->Agrid->itemAtPosition(i-1, 0)->widget();
                 QPushButton *theButton = dynamic_cast<QPushButton*>(button);
                 if(theButton->isEnabled()) {
                     theButton->setText(gameBrain.getPossibleScores(i));
-                    theButton->setStyleSheet("color: rgb(94, 255, 97);");
+                    theButton->setStyleSheet("color: rgb(30, 217, 4);");
                 }
     }
     }
@@ -509,7 +528,7 @@ void YahtzeeMainWin::uiScoreCalculator()
                 QPushButton *theButton = dynamic_cast<QPushButton*>(button);
                 if(theButton->isEnabled()) {
                     theButton->setText(gameBrain.getPossibleScores(i));
-                    theButton->setStyleSheet("color: rgb(94, 255, 97);");
+                    theButton->setStyleSheet("color: rgb(30, 217, 4);");
                 }
             }
     }
@@ -517,10 +536,9 @@ void YahtzeeMainWin::uiScoreCalculator()
         for(int i = 1; i < ui->Cgrid->count(); i++){
                 QWidget *button = ui->Cgrid->itemAtPosition(i-1, 0)->widget();
                 QPushButton *theButton = dynamic_cast<QPushButton*>(button);
-                qDebug() << theButton;
                 if(theButton->isEnabled()) {
                     theButton->setText(gameBrain.getPossibleScores(i));
-                    theButton->setStyleSheet("color: rgb(94, 255, 97);");
+                    theButton->setStyleSheet("color: rgb(30, 217, 4);");
                 }
             }
     }
@@ -528,10 +546,9 @@ void YahtzeeMainWin::uiScoreCalculator()
         for(int i = 1; i < ui->Dgrid->count(); i++){
                 QWidget *button = ui->Dgrid->itemAtPosition(i-1, 0)->widget();
                 QPushButton *theButton = dynamic_cast<QPushButton*>(button);
-                qDebug() << theButton;
                 if(theButton->isEnabled()) {
                     theButton->setText(gameBrain.getPossibleScores(i));
-                    theButton->setStyleSheet("color: rgb(94, 255, 97);");
+                    theButton->setStyleSheet("color: rgb(30, 217, 4);");
                 }
             }
     }
