@@ -7,7 +7,6 @@
 #include <QString>
 #include <QSound>
 
-
 YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::YahtzeeMainWin)
@@ -17,9 +16,6 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     ui->B18->setEnabled(false);
     ui->C18->setEnabled(false);
     ui->D18->setEnabled(false);
-    //chance();
-    //functionHandler(10);
-
 
     _keyPressedFromUI = {
         {ui->rollDiceButton, WIPenum::rolldice},
@@ -165,14 +161,15 @@ void YahtzeeMainWin::showPlayerBlockersOnClick()
 
 void YahtzeeMainWin::chooseAmountOfPlayers(int num)
 {
+
     /*
      * This function checks how many players are playing.
      * It enables all the pushbuttons.
      * It enables the rollDice button, sets _numOfPlayers accordingly.
-     * resets scoreboard to get freash clean start
+     * resets scoreboard to get fresh clean start
      * sets texlabels to show how many players are playing.
      */
-
+// Varför? Låste upp sum, bonus och total
     for(int i = 0; i < ui->Agrid->count(); i++){
         QWidget *button = ui->Agrid->itemAt(i)->widget();
         button->setEnabled(true);
@@ -190,11 +187,12 @@ void YahtzeeMainWin::chooseAmountOfPlayers(int num)
         button->setEnabled(true);
     }
 
-
     _activePlayer = PLAYERONE;
     showPlayerBlockersOnClick();
+    gameBrain.resetChecked();
     gameBrain.resetScoreBoard();    // resets the score array
     resetScoreboardUI();            // resets the UI scores
+    resetDice();
 
     if(num == 1){
         ui->gameBackground->setStyleSheet("background-image: url(:/new/pictures/backgroundplayer1test.png);");
@@ -336,7 +334,6 @@ void YahtzeeMainWin::aButtonWasClicked()
 {
     QPushButton *theButton = dynamic_cast<QPushButton*>(sender());
 
-
     /*
      * Calls the function calculateScoreBoard, which is called every time a player clicks the score board.
      * This Function updates the ui scoreboard to show the updated points in "score", "bonus", and "total score"
@@ -348,10 +345,10 @@ void YahtzeeMainWin::aButtonWasClicked()
 
     WIPenum keyValue = _keyPressedFromUI[theButton];
         int keyId = intFromKey(keyValue);
-        dynamic_cast<QPushButton*>(sender())->setText(gameBrain.endTurnChoice(keyId, _activePlayer));
+        dynamic_cast<QPushButton*>(sender())->setText(gameBrain.endTurnChoice(keyId, _activePlayer)); // theButton ist för dynamic cast?
 
     if(theButton){
-        dynamic_cast<QPushButton*>(sender())->setEnabled(false);
+        dynamic_cast<QPushButton*>(sender())->setEnabled(false); // theButton ist för dynamic cast?
 
         if(_activePlayer == PLAYERONE){
             ui->A7->setText(gameBrain.calculateScoreBoard(_activePlayer, 0));
@@ -378,11 +375,7 @@ void YahtzeeMainWin::aButtonWasClicked()
         gameBrain.resetChecked();
         playerTurn(_numOfPlayers); // player func that changes turns to next player.
         displayDiceOnScreen();
-
-        for(int i = 0; i < ui->diceButtonLayout->count() - 1; i++){
-            QWidget *button = ui->diceButtonLayout->itemAt(i)->widget();
-                button->setDisabled(true);
-        }
+        lockDice();
     }
 }
 
@@ -430,17 +423,34 @@ void YahtzeeMainWin::aDiceWasClicked()
 
 void YahtzeeMainWin::on_rollDiceButton_clicked() // Added rollDice func
 {
-    if(_timesRolled <= 2 )
+    _timesRolled++;
+    if(_timesRolled <= 3 )
     {
         gameBrain.rollDice();
         displayDiceOnScreen();
         QSound::play(":/new/pictures/dicethrowshort.wav");
     }
-    if(_timesRolled == 2)
+    if(_timesRolled == 3)
         ui->rollDiceButton->setEnabled(false);
 
     unlockDice();
-    _timesRolled++;
+    // Lägg till enkel counter under roll-knappen med ex _timesRolled << "/3"?
+}
+
+void YahtzeeMainWin::resetDice()
+{
+    Die *resetDiceArray = gameBrain.getDiceArray();
+
+    for(int i = 0; i < 5; i++)
+        resetDiceArray[i].setValue(6);
+
+    setDieImage(ui->dice1Button, resetDiceArray[0]);
+    setDieImage(ui->dice2Button, resetDiceArray[1]);
+    setDieImage(ui->dice3Button, resetDiceArray[2]);
+    setDieImage(ui->dice4Button, resetDiceArray[3]);
+    setDieImage(ui->dice5Button, resetDiceArray[4]);
+
+    //delete resetDiceArray;
 }
 
 void YahtzeeMainWin::on_onePlayerButton_triggered()
