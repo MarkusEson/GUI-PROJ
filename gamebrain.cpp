@@ -321,6 +321,29 @@ void GameBrain::calculateScoreFromChoice(int keyId, int playerNr)
     addScoreToArray(keyId,playerNr,score);
 }
 
+QString GameBrain::getPossibleScores(int keyId)
+{
+    QString score;
+    score = QString::number(functionHandler(keyId));
+    if(score== "0"){
+        return false;
+    }
+    else
+        return score;
+}
+
+QString GameBrain::putPlayerScoreToUi(int keyId, int playerNr)
+{
+    QString score;
+    score = QString::number(_scoreArray[keyId][playerNr]);
+
+    if(score== "0"){
+        return false;
+    }
+    else
+        return score;
+}
+
 // ------ Die - koden -----------------
 
 Die::Die()

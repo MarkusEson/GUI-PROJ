@@ -372,7 +372,7 @@ void YahtzeeMainWin::aButtonWasClicked()
             ui->D8->setText(gameBrain.calculateScoreBoard(_activePlayer, 1));
             ui->D19->setText(gameBrain.calculateScoreBoard(_activePlayer, 2));
         }
-
+        setPlayerScoreToUi();
         _activePlayer++;
         gameBrain.resetChecked();
         playerTurn(_numOfPlayers); // player func that changes turns to next player.
@@ -431,6 +431,7 @@ void YahtzeeMainWin::on_rollDiceButton_clicked() // Added rollDice func
         gameBrain.rollDice();
         displayDiceOnScreen();
         QSound::play(":/new/pictures/dicethrowshort.wav");
+        uiScoreCalculator();
     }
     if(_timesRolled == 3)
         ui->rollDiceButton->setEnabled(false);
@@ -474,4 +475,72 @@ void YahtzeeMainWin::on_threePlayerButton_triggered()
 void YahtzeeMainWin::on_fourPlayerButton_triggered()
 {
     chooseAmountOfPlayers(4);
+}
+
+void YahtzeeMainWin::uiScoreCalculator()
+{
+    if(_activePlayer==1){
+    for(int i = 1; i < ui->Agrid->count(); i++){
+                QWidget *button = ui->Agrid->itemAtPosition(i-1,_activePlayer - 1)->widget();
+                QPushButton *theButton = dynamic_cast<QPushButton*>(button);
+                if(theButton->isEnabled()) {theButton->setText(gameBrain.getPossibleScores(i));}
+    }
+    }
+
+    /*else if(_activePlayer==2){
+        for(int i = 1; i < ui->Bgrid->count(); i++){
+                QWidget *button = ui->Bgrid->itemAtPosition(i-1,_activePlayer - 1)->widget();
+                QPushButton *theButton = dynamic_cast<QPushButton*>(button);
+                if(theButton->isEnabled()) {theButton->setText(gameBrain.getPossibleScores(i));}
+            }
+    }
+   else if(_activePlayer==3){
+        for(int i = 1; i < ui->Cgrid->count(); i++){
+                QWidget *button = ui->Cgrid->itemAtPosition(i-1,_activePlayer - 1)->widget();
+                QPushButton *theButton = dynamic_cast<QPushButton*>(button);
+                qDebug() << theButton;
+                if(theButton->isEnabled()) {theButton->setText(gameBrain.getPossibleScores(i));}
+            }
+    }
+    else if(_activePlayer==4){
+        for(int i = 1; i < ui->Dgrid->count(); i++){
+                QWidget *button = ui->Dgrid->itemAtPosition(i-1,_activePlayer - 1)->widget();
+                QPushButton *theButton = dynamic_cast<QPushButton*>(button);
+                qDebug() << theButton;
+                if(theButton->isEnabled()) {theButton->setText(gameBrain.getPossibleScores(i));}
+            }
+    }*/
+}
+
+void YahtzeeMainWin::setPlayerScoreToUi()
+{
+    if(_activePlayer==1){
+        for(int i = 1; i < ui->Agrid->count(); i++){
+                QWidget *button = ui->Agrid->itemAtPosition(i-1,_activePlayer - 1)->widget();
+                QPushButton *theButton = dynamic_cast<QPushButton*>(button);
+                theButton->setText(gameBrain.putPlayerScoreToUi(i,_activePlayer));
+        }
+    }
+    /*else if(_activePlayer==2){
+        for(int i = 1; i < ui->Bgrid->count(); i++){
+                QWidget *button = ui->Bgrid->itemAtPosition(i-1,_activePlayer - 1)->widget();
+                QPushButton *theButton = dynamic_cast<QPushButton*>(button);
+                theButton->setText(gameBrain.putPlayerScoreToUi(i,_activePlayer));
+        }
+    }
+    else if(_activePlayer==3){
+        for(int i = 1; i < ui->Cgrid->count(); i++){
+                QWidget *button = ui->Cgrid->itemAtPosition(i-1,_activePlayer - 1)->widget();
+                QPushButton *theButton = dynamic_cast<QPushButton*>(button);
+                theButton->setText(gameBrain.putPlayerScoreToUi(i,_activePlayer));
+        }
+    }
+    else if(_activePlayer==4){
+        for(int i = 1; i < ui->Dgrid->count(); i++){
+                QWidget *button = ui->Dgrid->itemAtPosition(i-1,_activePlayer - 1)->widget();
+                QPushButton *theButton = dynamic_cast<QPushButton*>(button);
+                theButton->setText(gameBrain.putPlayerScoreToUi(i,_activePlayer));
+        }
+    }*/
+
 }

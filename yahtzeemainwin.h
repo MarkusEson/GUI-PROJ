@@ -33,6 +33,8 @@ public:
     void unlockDice();
     void resetDice();
     std::map<QObject*, WIPenum> _keyPressedFromUI;
+    void uiScoreCalculator();
+    void setPlayerScoreToUi();
 
 private:
     Ui::YahtzeeMainWin *ui;
