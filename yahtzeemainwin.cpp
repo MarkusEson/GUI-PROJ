@@ -168,11 +168,14 @@ void YahtzeeMainWin::chooseAmountOfPlayers(int num)
      * resets scoreboard to get fresh clean start
      * sets texlabels to show how many players are playing.
      */
-<<<<<<< HEAD
-/*  Varför? Låste upp sum, bonus och total
+
+//  Varför? Låste upp sum, bonus och total
     for(int i = 0; i < ui->Agrid->count(); i++){
         QWidget *button = ui->Agrid->itemAt(i)->widget();
-        button->setEnabled(true);
+        if(button == ui->A7 || button == ui->A8 || button == ui->A19)
+            button->setDisabled(true);
+        else
+            button->setEnabled(true);
     }
     for(int i = 0; i < ui->Bgrid->count(); i++){
         QWidget *button = ui->Bgrid->itemAt(i)->widget();
@@ -186,12 +189,7 @@ void YahtzeeMainWin::chooseAmountOfPlayers(int num)
         QWidget *button = ui->Dgrid->itemAt(i)->widget();
         button->setEnabled(true);
     }
-*/
-=======
 
-
-
->>>>>>> master
     _activePlayer = PLAYERONE;
     showPlayerBlockersOnClick();
     gameBrain.resetChecked();

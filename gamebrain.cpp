@@ -207,6 +207,7 @@ QString GameBrain::calculateScoreBoard(int player, int sumBonusOrTotal)
             score = 0;
             if(_scoreArray[7][player] >= 63)
                 _scoreArray[8][player] = 35;
+
             else
                 _scoreArray[8][player] = 0;
 
@@ -215,12 +216,10 @@ QString GameBrain::calculateScoreBoard(int player, int sumBonusOrTotal)
         }
         case 2:
         {                                            // sums upp the total score.
-<<<<<<< HEAD
             for(int i = 6; i < 18; i++)
-=======
-            score = 0;
+                score = 0;
+
             for(int i = 7; i <= 18; i++)
->>>>>>> master
                 score += _scoreArray[i][player];
             break;
         }
