@@ -255,6 +255,8 @@ void YahtzeeMainWin::displayDiceOnScreen() // Removed rollDice func
     setDieImage(ui->dice3Button, arrayWithDice[2]);
     setDieImage(ui->dice4Button, arrayWithDice[3]);
     setDieImage(ui->dice5Button, arrayWithDice[4]);
+    // removed delete, it does not work in mac, crashed application
+    // does work on windows tho, for some reason
     //delete arrayWithDice;
 }
 
@@ -449,7 +451,8 @@ void YahtzeeMainWin::resetDice()
     setDieImage(ui->dice3Button, resetDiceArray[2]);
     setDieImage(ui->dice4Button, resetDiceArray[3]);
     setDieImage(ui->dice5Button, resetDiceArray[4]);
-
+    // removed delete, it does not work in mac, crashed application
+    // does work on windows tho, for some reason
     //delete resetDiceArray;
 }
 
