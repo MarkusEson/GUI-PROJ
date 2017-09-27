@@ -172,19 +172,31 @@ void YahtzeeMainWin::chooseAmountOfPlayers(int num)
 // Varför? Låste upp sum, bonus och total
     for(int i = 0; i < ui->Agrid->count(); i++){
         QWidget *button = ui->Agrid->itemAt(i)->widget();
-        button->setEnabled(true);
+        if(button == ui->A7 || button == ui->A8 || button == ui->A19)
+            button->setEnabled(false);
+        else
+            button->setEnabled(true);
     }
     for(int i = 0; i < ui->Bgrid->count(); i++){
         QWidget *button = ui->Bgrid->itemAt(i)->widget();
-        button->setEnabled(true);
+        if(button == ui->B7 || button == ui->B8 || button == ui->B19)
+            button->setEnabled(false);
+        else
+            button->setEnabled(true);
     }
     for(int i = 0; i < ui->Cgrid->count(); i++){
         QWidget *button = ui->Cgrid->itemAt(i)->widget();
-        button->setEnabled(true);
+        if(button == ui->C7 || button == ui->C8 || button == ui->C19)
+            button->setEnabled(false);
+        else
+            button->setEnabled(true);
     }
     for(int i = 0; i < ui->Dgrid->count(); i++){
         QWidget *button = ui->Dgrid->itemAt(i)->widget();
-        button->setEnabled(true);
+        if(button == ui->D7 || button == ui->D8 || button == ui->D19)
+            button->setEnabled(false);
+        else
+            button->setEnabled(true);
     }
 
     _activePlayer = PLAYERONE;

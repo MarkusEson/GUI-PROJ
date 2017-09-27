@@ -100,7 +100,7 @@ int GameBrain::xOfAKind(int keyId)
     else if(keyId== gridYahzee){xOfAKindValue = 5;}
 
     int sum = 0;
-    for(int j=1; j<6; j++)
+    for(int j=1; j<7; j++)  // Ändrade 6 -> 7 så att den räknar med 6or
     {
         int count = 0;
         for( int i = 0; i < 5; i++ )
@@ -138,7 +138,6 @@ int GameBrain::fullHouse()
         ((_diceArray[2].getValue() == _diceArray[3].getValue()) && (_diceArray[3].getValue() == _diceArray[4].getValue())) && // Three of a Kind
         (_diceArray[1].getValue() != _diceArray[2].getValue())) )
     {
-        sum = _diceArray[0].getValue()+_diceArray[1].getValue()+_diceArray[2].getValue()+_diceArray[3].getValue()+_diceArray[4].getValue();
         sum = _diceArray[0].getValue() + _diceArray[1].getValue() + _diceArray[2].getValue() + _diceArray[3].getValue() + _diceArray[4].getValue();
     }
     return  sum;
@@ -180,14 +179,11 @@ int GameBrain::chance()
 {
     int sum = 0;
     for(int i=0; i<5; i++){
-        //sum += _diceArray[i];
         sum += _diceArray[i].getValue();
     }
     qDebug() << "chance sum: " << sum;
     return sum;
 }
-
-
 
 QString GameBrain::calculateScoreBoard(int player, int sumBonusOrTotal)
 {
@@ -249,7 +245,7 @@ int GameBrain::functionHandler(int keyId)
     int functionId = keyId;
     int summa = 0;
 
-    if (functionId >= gridOnes && functionId <=gridSixes ){
+    if (functionId >= gridOnes && functionId <= gridSixes ){
         summa = oneToSix(keyId);
     }
 
@@ -293,8 +289,7 @@ int GameBrain::functionHandler(int keyId)
 
 QString GameBrain::getScoreFromArray(int keyID, int playerNr)   //inlagd
 {
-    QString mystr;
-    mystr = QString::number(_scoreArray[keyID][playerNr]);
+    QString mystr = QString::number(_scoreArray[keyID][playerNr]);
 
     return mystr;
 }
