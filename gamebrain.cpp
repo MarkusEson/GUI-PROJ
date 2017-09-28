@@ -50,6 +50,7 @@ Die * GameBrain::getDiceArray() // Returns copy of array
     Die * pointerToDiceArrayCopy = new Die[5];
     for (int i = 0; i < 5; i++)
         pointerToDiceArrayCopy[i] = _diceArray[i];
+
     return pointerToDiceArrayCopy;
 }
 
@@ -108,6 +109,7 @@ int GameBrain::xOfAKind(int keyId)
         {
             if( _diceArray[i].getValue() == j )
                 count +=1;
+
             if(count >= xOfAKindValue)
               sum = j * xOfAKindValue;
         }

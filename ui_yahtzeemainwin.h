@@ -22,6 +22,7 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -33,6 +34,7 @@ public:
     QAction *twoPlayerButton;
     QAction *threePlayerButton;
     QAction *fourPlayerButton;
+    QAction *actionGuide;
     QWidget *centralWidget;
     QGraphicsView *gameBackground;
     QWidget *gridLayoutWidget_4;
@@ -138,8 +140,11 @@ public:
     QLabel *player2Label;
     QLabel *player3Label;
     QLabel *player4Label;
+    QTextBrowser *helpBrowser;
+    QPushButton *closeHelpButton;
     QMenuBar *menuBar;
     QMenu *menuOptions;
+    QMenu *menuHelp;
 
     void setupUi(QMainWindow *YahtzeeMainWin)
     {
@@ -157,6 +162,8 @@ public:
         threePlayerButton->setObjectName(QStringLiteral("threePlayerButton"));
         fourPlayerButton = new QAction(YahtzeeMainWin);
         fourPlayerButton->setObjectName(QStringLiteral("fourPlayerButton"));
+        actionGuide = new QAction(YahtzeeMainWin);
+        actionGuide->setObjectName(QStringLiteral("actionGuide"));
         centralWidget = new QWidget(YahtzeeMainWin);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gameBackground = new QGraphicsView(centralWidget);
@@ -1108,20 +1115,31 @@ public:
 
         playerIndicatorLayout->addWidget(player4Label);
 
+        helpBrowser = new QTextBrowser(centralWidget);
+        helpBrowser->setObjectName(QStringLiteral("helpBrowser"));
+        helpBrowser->setGeometry(QRect(150, 40, 285, 601));
+        helpBrowser->setStyleSheet(QStringLiteral("border-radius: 15"));
+        closeHelpButton = new QPushButton(centralWidget);
+        closeHelpButton->setObjectName(QStringLiteral("closeHelpButton"));
+        closeHelpButton->setGeometry(QRect(390, 30, 21, 21));
         YahtzeeMainWin->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(YahtzeeMainWin);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 650, 22));
         menuOptions = new QMenu(menuBar);
         menuOptions->setObjectName(QStringLiteral("menuOptions"));
+        menuHelp = new QMenu(menuBar);
+        menuHelp->setObjectName(QStringLiteral("menuHelp"));
         YahtzeeMainWin->setMenuBar(menuBar);
 
         menuBar->addAction(menuOptions->menuAction());
+        menuBar->addAction(menuHelp->menuAction());
         menuOptions->addAction(onePlayerButton);
         menuOptions->addAction(twoPlayerButton);
         menuOptions->addAction(threePlayerButton);
         menuOptions->addAction(fourPlayerButton);
         menuOptions->addSeparator();
+        menuHelp->addAction(actionGuide);
 
         retranslateUi(YahtzeeMainWin);
 
@@ -1135,6 +1153,7 @@ public:
         twoPlayerButton->setText(QApplication::translate("YahtzeeMainWin", "2 Player", Q_NULLPTR));
         threePlayerButton->setText(QApplication::translate("YahtzeeMainWin", "3 Player", Q_NULLPTR));
         fourPlayerButton->setText(QApplication::translate("YahtzeeMainWin", "4 Players", Q_NULLPTR));
+        actionGuide->setText(QApplication::translate("YahtzeeMainWin", "Guide", Q_NULLPTR));
         A8->setText(QString());
         A17->setText(QString());
         A18->setText(QString());
@@ -1222,7 +1241,69 @@ public:
         player2Label->setText(QApplication::translate("YahtzeeMainWin", "<html><head/><body><p><span style=\" font-weight:600;\"/></p></body></html>", Q_NULLPTR));
         player3Label->setText(QApplication::translate("YahtzeeMainWin", "<html><head/><body><p><span style=\" font-weight:600;\"/></p></body></html>", Q_NULLPTR));
         player4Label->setText(QApplication::translate("YahtzeeMainWin", "<html><head/><body><p><span style=\" font-weight:600;\"/></p></body></html>", Q_NULLPTR));
+        helpBrowser->setHtml(QApplication::translate("YahtzeeMainWin", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'.SF NS Text'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:24pt; font-weight:600;\">Yahtzee Guide</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">This is a simple game of Dice. If you have never played Yahtzee before i reccomend that you read through this small guide.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; ma"
+                        "rgin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">The Object of the Game:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Roll dice for scoring combinations and get the highest total score!</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Game Summary:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">On each turn, you roll the dice up to 3 times "
+                        "to get the best and highest scoring combination of dice in one of the scoring categories. After you have rolled your dice and are hapy with the result you then place the points onto the scoreboard by clicking the score field.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">You can play 1-4 players, and you play in turns, so first you choose who goes first, then when you are done rolling it is the next persons turn to Roll.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">A Turn:</span></p>\n"
+"<p style="
+                        "\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">On your turn you may roll the 5 dice up to 3 times. If you are happy with the result of one dice you may SAVE that dice by clicking it with your mouse. When clicked the Dice turns yellow to indicate that you saved the die.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">When you have rolled the dice 3 times you click the Score area, for example: You rolled {3,3,3,5,5} which scores you a pretty good House. You then click the House score area to place your points.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-"
+                        "bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">When you have done this, the game automatically switches to the next player in line to play. This is signified both by the Score Areas getting blocked and a small textbox appearing at the top of the game Screen.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">The Scoring:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">The Top Section</span> - i.e. ones through sixes (including Sum and Bonus).</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">This section co"
+                        "ntains scoring points for Ones, Twos, Threes, Fours, Fives, Sixes, and if you are lucky it also includes the Bonus.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">To score in the Top section you only add dice with the same numbers.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">For example: if you roll {5,5,5,5,3} you have 4x5:s, this grants you 20 points if you put it in the &quot;Fives&quot; section.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">If y"
+                        "ou are lucky and manage to score &gt; 63 points in the Top section you get a prestigious BONUS 35 points! So play smart! </p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">The Lower Section</span> - i.e. the score boxes under Sum and Bonus.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">These scoring options are a bit different. These contains scoring systems such as Full House, Small Straight and Yahtzee.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Here is an explanation for all these scorings:</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; mar"
+                        "gin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" text-decoration: underline;\">1 Pair:</span> A pair of equal dice is a 1 Pair, i.e. {5,4,2,1,5} gives you a pair of 5:s</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" text-decoration: underline;\">2 Pair:</span> same as above but with two pairs, i.e. {5,5,2,2,3} gives you the 2 Pairs on 5, and 2.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" text-decoration: underline;\">3 of A Kind:</span> Score here if you get 3 of the same kind on your dice rolls.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" text-deco"
+                        "ration: underline;\">4 of A Kind:</span> Score here if you get 4 of the same kind on your dice rolls.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" text-decoration: underline;\">Full house: </span>Score here if you roll 3 of one kind, and 2 of another. i.e. {3,3,3,2,2}.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" text-decoration: underline;\">Small Straight:</span> if you score from 1-5, i.e. {1,2,3,4,5}, you score here.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" text-decoration: underline;\">Large Straight: </span>if you score from 2-6, i.e. {2,3,4,5,6} you score here.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" text-"
+                        "decoration: underline;\">Yahtzee:</span> If you get 5 of the same kind of dice, you score here! </p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" text-decoration: underline;\">Yahtzee Bonus:</span> Since getting yahtzee is so hard, you get a chance to place two yahtzees if you roll another one. Score here on your second Yahtzee</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" text-decoration: underline;\">Chance:</span> If you score the total on ay 5 dice, you can use this catch all cathegory. Place points here if you cant or dont want to place your score anywhere else.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">	</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-in"
+                        "dent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", Q_NULLPTR));
+        closeHelpButton->setText(QApplication::translate("YahtzeeMainWin", "X", Q_NULLPTR));
         menuOptions->setTitle(QApplication::translate("YahtzeeMainWin", "New Game", Q_NULLPTR));
+        menuHelp->setTitle(QApplication::translate("YahtzeeMainWin", "Help", Q_NULLPTR));
     } // retranslateUi
 
 };

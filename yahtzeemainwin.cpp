@@ -6,12 +6,17 @@
 #include <cstdlib>
 #include <QString>
 #include <QSound>
+#include <QGraphicsScene>
 
 YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::YahtzeeMainWin)
 {
     ui->setupUi(this);
+    ui->helpBrowser->hide();
+    ui->closeHelpButton->hide();
+
+
     ui->A18->setEnabled(false);
     ui->B18->setEnabled(false);
     ui->C18->setEnabled(false);
@@ -106,10 +111,10 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
         {ui->C17, WIPenum::chance},
         {ui->D17, WIPenum::chance},
 
-        {ui->A18, WIPenum::yahzeebonus},
-        {ui->B18, WIPenum::yahzeebonus},
-        {ui->C18, WIPenum::yahzeebonus},
-        {ui->D18, WIPenum::yahzeebonus},
+        {ui->A18, WIPenum::yahzee},
+        {ui->B18, WIPenum::yahzee},
+        {ui->C18, WIPenum::yahzee},
+        {ui->D18, WIPenum::yahzee},
 
         {ui->A19, WIPenum::total},
         {ui->B19, WIPenum::total},
@@ -271,6 +276,7 @@ void YahtzeeMainWin::displayDiceOnScreen() // Removed rollDice func
     setDieImage(ui->dice3Button, arrayWithDice[2]);
     setDieImage(ui->dice4Button, arrayWithDice[3]);
     setDieImage(ui->dice5Button, arrayWithDice[4]);
+
     // removed delete, it does not work in mac, crashed application
     // does work on windows tho, for some reason
     //delete arrayWithDice;
@@ -429,8 +435,9 @@ void YahtzeeMainWin::aDiceWasClicked()
 
     displayDiceOnScreen();
 
-
-    // shows and hides playerblockers accordingly.
+    // shows and hides playerblockers according to who'sturn it is.
+    // unblocks scorerows when you click the Roll button by the dice.
+    // Roll button is part of the DiceLayout
     if(_activePlayer == 1){
         showPlayerBlockersOnClick();
         ui->playerBlockerA->hide();
@@ -479,6 +486,7 @@ void YahtzeeMainWin::resetDice()
     setDieImage(ui->dice3Button, resetDiceArray[2]);
     setDieImage(ui->dice4Button, resetDiceArray[3]);
     setDieImage(ui->dice5Button, resetDiceArray[4]);
+
     // removed delete, it does not work in mac, crashed application
     // does work on windows tho, for some reason
     //delete resetDiceArray;
@@ -585,4 +593,21 @@ void YahtzeeMainWin::setPlayerScoreToUi()
         }
     }
 
+}
+
+void YahtzeeMainWin::openHelpWindow()
+{
+    ui->helpBrowser->show();
+    ui->closeHelpButton->show();
+}
+
+void YahtzeeMainWin::on_actionGuide_triggered()
+{
+    openHelpWindow();
+}
+
+void YahtzeeMainWin::on_closeHelpButton_clicked()
+{
+    ui->helpBrowser->hide();
+    ui->closeHelpButton->hide();
 }

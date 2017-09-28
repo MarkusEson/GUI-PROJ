@@ -809,7 +809,9 @@ yahtzeemainwin.o: yahtzeemainwin.cpp yahtzeemainwin.h \
 		../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QString \
 		../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		../../Qt/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/QSound \
-		../../Qt/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/qsound.h
+		../../Qt/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/qsound.h \
+		../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsscene.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o yahtzeemainwin.o yahtzeemainwin.cpp
 
 gamebrain.o: gamebrain.cpp gamebrain.h \
