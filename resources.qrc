@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/new/pictures">
         <file>DMPYZY BACKGROUND.png</file>
-        <file>DMPYZY OPTIONS BACKGROUND.png</file>
         <file>1dice.png</file>
         <file>2dice.png</file>
         <file>3dice.png</file>
@@ -17,9 +16,6 @@
         <file>YAHTZEE BACKGROUND THREE.png</file>
         <file>shakedice.wav</file>
         <file>dicethrowshort.wav</file>
-        <file>backgroundplayer1.png</file>
-        <file>backgroundplayer2.png</file>
-        <file>backgroundplayer3.png</file>
         <file>backgroundplayer4.png</file>
         <file>backgroundplayer3test.png</file>
         <file>backgroundplayer1test.png</file>

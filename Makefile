@@ -727,10 +727,7 @@ qrc_resources.cpp: resources.qrc \
 		shakedice.wav \
 		6dice.png \
 		4dice.png \
-		backgroundplayer1.png \
-		backgroundplayer2.png \
 		backgroundplayer3test.png \
-		backgroundplayer3.png \
 		backgroundplayer4.png \
 		backgroundplayer1test.png
 	/Users/markus/Qt/5.9.1/clang_64/bin/rcc -name resources resources.qrc -o qrc_resources.cpp
