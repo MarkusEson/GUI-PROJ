@@ -33,6 +33,9 @@ public:
     void unlockDice();
     void resetDice();
     std::map<QObject*, WIPenum> _keyPressedFromUI;
+    void uiScoreCalculator();
+    void setPlayerScoreToUi();
+    void openHelpWindow();
 
 private:
     Ui::YahtzeeMainWin *ui;
@@ -40,6 +43,7 @@ private:
     int _activePlayer = 1;
     int _timesRolled = 0;
     int _rounds = 0;
+
     GameBrain gameBrain;
 
 
@@ -54,6 +58,8 @@ private slots:
     void on_twoPlayerButton_triggered();
     void on_fourPlayerButton_triggered();
 
+    void on_actionGuide_triggered();
+    void on_closeHelpButton_clicked();
 };
 
 #endif // YAHTZEEMAINWIN_H

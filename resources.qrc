@@ -25,4 +25,5 @@
         <file>backgroundplayer1test.png</file>
         <file>backgroundplayer2test.png</file>
     </qresource>
+    <qresource prefix="/new/files"/>
 </RCC>

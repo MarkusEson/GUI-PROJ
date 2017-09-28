@@ -6,12 +6,17 @@
 #include <cstdlib>
 #include <QString>
 #include <QSound>
+#include <QGraphicsScene>
 
 YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::YahtzeeMainWin)
 {
     ui->setupUi(this);
+    ui->helpBrowser->hide();
+    ui->closeHelpButton->hide();
+
+
     ui->A18->setEnabled(false);
     ui->B18->setEnabled(false);
     ui->C18->setEnabled(false);
@@ -106,10 +111,10 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
         {ui->C17, WIPenum::chance},
         {ui->D17, WIPenum::chance},
 
-        {ui->A18, WIPenum::yahzeebonus},
-        {ui->B18, WIPenum::yahzeebonus},
-        {ui->C18, WIPenum::yahzeebonus},
-        {ui->D18, WIPenum::yahzeebonus},
+        {ui->A18, WIPenum::yahzee},
+        {ui->B18, WIPenum::yahzee},
+        {ui->C18, WIPenum::yahzee},
+        {ui->D18, WIPenum::yahzee},
 
         {ui->A19, WIPenum::total},
         {ui->B19, WIPenum::total},
@@ -169,22 +174,34 @@ void YahtzeeMainWin::chooseAmountOfPlayers(int num)
      * resets scoreboard to get fresh clean start
      * sets texlabels to show how many players are playing.
      */
-// Varför? Låste upp sum, bonus och total
+    // forloops unlocks all buttons except for the sum,bonus and totals
     for(int i = 0; i < ui->Agrid->count(); i++){
         QWidget *button = ui->Agrid->itemAt(i)->widget();
-        button->setEnabled(true);
+        if(button == ui->A7 || button == ui->A8 || button == ui->A19)
+            button->setEnabled(false);
+        else
+            button->setEnabled(true);
     }
     for(int i = 0; i < ui->Bgrid->count(); i++){
         QWidget *button = ui->Bgrid->itemAt(i)->widget();
-        button->setEnabled(true);
+        if(button == ui->B7 || button == ui->B8 || button == ui->B19)
+            button->setEnabled(false);
+        else
+            button->setEnabled(true);
     }
     for(int i = 0; i < ui->Cgrid->count(); i++){
         QWidget *button = ui->Cgrid->itemAt(i)->widget();
-        button->setEnabled(true);
+        if(button == ui->C7 || button == ui->C8 || button == ui->C19)
+            button->setEnabled(false);
+        else
+            button->setEnabled(true);
     }
     for(int i = 0; i < ui->Dgrid->count(); i++){
         QWidget *button = ui->Dgrid->itemAt(i)->widget();
-        button->setEnabled(true);
+        if(button == ui->D7 || button == ui->D8 || button == ui->D19)
+            button->setEnabled(false);
+        else
+            button->setEnabled(true);
     }
 
     _activePlayer = PLAYERONE;
@@ -194,6 +211,10 @@ void YahtzeeMainWin::chooseAmountOfPlayers(int num)
     resetScoreboardUI();            // resets the UI scores
     resetDice();
 
+    /*
+     * This code changes the playertexts to show how many players are actively plaing.
+     * also changes background to visually show how many are playing.
+     */
     if(num == 1){
         ui->gameBackground->setStyleSheet("background-image: url(:/new/pictures/backgroundplayer1test.png);");
         ui->rollDiceButton->setEnabled(true);
@@ -255,6 +276,9 @@ void YahtzeeMainWin::displayDiceOnScreen() // Removed rollDice func
     setDieImage(ui->dice3Button, arrayWithDice[2]);
     setDieImage(ui->dice4Button, arrayWithDice[3]);
     setDieImage(ui->dice5Button, arrayWithDice[4]);
+
+    // removed delete, it does not work in mac, crashed application
+    // does work on windows tho, for some reason
     //delete arrayWithDice;
 }
 
@@ -291,6 +315,11 @@ void YahtzeeMainWin::playerTurn(int numplayers)
 
 void YahtzeeMainWin::resetScoreboardUI()
 {
+    /*
+     * Goes through the scoreboard Grids to reset the text on the PusshButtons.
+     * sets all text to "".
+     * this is only visual, i.e. UI. Another function resets the _scoreArray
+     */
     for(int i = 0; i < ui->Agrid->count(); i++){
         QWidget *button = ui->Agrid->itemAt(i)->widget();
         QPushButton *resetButton = dynamic_cast<QPushButton*>(button);
@@ -349,6 +378,7 @@ void YahtzeeMainWin::aButtonWasClicked()
 
     if(theButton){
         dynamic_cast<QPushButton*>(sender())->setEnabled(false); // theButton ist för dynamic cast?
+        theButton->setStyleSheet("color: rgb(0, 0, 0);");
 
         if(_activePlayer == PLAYERONE){
             ui->A7->setText(gameBrain.calculateScoreBoard(_activePlayer, 0));
@@ -371,6 +401,11 @@ void YahtzeeMainWin::aButtonWasClicked()
             ui->D19->setText(gameBrain.calculateScoreBoard(_activePlayer, 2));
         }
 
+        /*
+         * Sets the possible scores on the screen, in green.
+         * increments player, so that it is next players turn.
+         */
+        setPlayerScoreToUi();
         _activePlayer++;
         gameBrain.resetChecked();
         playerTurn(_numOfPlayers); // player func that changes turns to next player.
@@ -400,8 +435,9 @@ void YahtzeeMainWin::aDiceWasClicked()
 
     displayDiceOnScreen();
 
-
-    // shows and hides playerblockers accordingly.
+    // shows and hides playerblockers according to who'sturn it is.
+    // unblocks scorerows when you click the Roll button by the dice.
+    // Roll button is part of the DiceLayout
     if(_activePlayer == 1){
         showPlayerBlockersOnClick();
         ui->playerBlockerA->hide();
@@ -429,6 +465,7 @@ void YahtzeeMainWin::on_rollDiceButton_clicked() // Added rollDice func
         gameBrain.rollDice();
         displayDiceOnScreen();
         QSound::play(":/new/pictures/dicethrowshort.wav");
+        uiScoreCalculator();
     }
     if(_timesRolled == 3)
         ui->rollDiceButton->setEnabled(false);
@@ -450,6 +487,8 @@ void YahtzeeMainWin::resetDice()
     setDieImage(ui->dice4Button, resetDiceArray[3]);
     setDieImage(ui->dice5Button, resetDiceArray[4]);
 
+    // removed delete, it does not work in mac, crashed application
+    // does work on windows tho, for some reason
     //delete resetDiceArray;
 }
 
@@ -471,4 +510,104 @@ void YahtzeeMainWin::on_threePlayerButton_triggered()
 void YahtzeeMainWin::on_fourPlayerButton_triggered()
 {
     chooseAmountOfPlayers(4);
+}
+
+void YahtzeeMainWin::uiScoreCalculator()
+{
+    /*
+     * Shows the possible scores you can add to the board, it does this by printing the scores on the UI, and changing the text to a green color
+     * the green color differentiates the scores that CAN be placed, with the black scores that you have already placed.
+     * the green POSSIBLE scores are then removed after you are done.
+     */
+    if(_activePlayer==1){
+    for(int i = 1; i < ui->Agrid->count(); i++){
+                QWidget *button = ui->Agrid->itemAtPosition(i-1, 0)->widget();
+                QPushButton *theButton = dynamic_cast<QPushButton*>(button);
+                if(theButton->isEnabled()) {
+                    theButton->setText(gameBrain.getPossibleScores(i));
+                    theButton->setStyleSheet("color: rgb(30, 217, 4);");
+                }
+    }
+    }
+
+    else if(_activePlayer==2){
+        for(int i = 1; i < ui->Bgrid->count(); i++){
+                QWidget *button = ui->Bgrid->itemAtPosition(i-1, 0)->widget();
+                QPushButton *theButton = dynamic_cast<QPushButton*>(button);
+                if(theButton->isEnabled()) {
+                    theButton->setText(gameBrain.getPossibleScores(i));
+                    theButton->setStyleSheet("color: rgb(30, 217, 4);");
+                }
+            }
+    }
+   else if(_activePlayer==3){
+        for(int i = 1; i < ui->Cgrid->count(); i++){
+                QWidget *button = ui->Cgrid->itemAtPosition(i-1, 0)->widget();
+                QPushButton *theButton = dynamic_cast<QPushButton*>(button);
+                if(theButton->isEnabled()) {
+                    theButton->setText(gameBrain.getPossibleScores(i));
+                    theButton->setStyleSheet("color: rgb(30, 217, 4);");
+                }
+            }
+    }
+    else{
+        for(int i = 1; i < ui->Dgrid->count(); i++){
+                QWidget *button = ui->Dgrid->itemAtPosition(i-1, 0)->widget();
+                QPushButton *theButton = dynamic_cast<QPushButton*>(button);
+                if(theButton->isEnabled()) {
+                    theButton->setText(gameBrain.getPossibleScores(i));
+                    theButton->setStyleSheet("color: rgb(30, 217, 4);");
+                }
+            }
+    }
+}
+
+void YahtzeeMainWin::setPlayerScoreToUi()
+{
+    if(_activePlayer == 1){
+        for(int i = 1; i < ui->Agrid->count(); i++){
+                QWidget *button = ui->Agrid->itemAtPosition(i-1, 0)->widget();
+                QPushButton *theButton = dynamic_cast<QPushButton*>(button);
+                theButton->setText(gameBrain.putPlayerScoreToUi(i,_activePlayer));
+        }
+    }
+    else if(_activePlayer == 2){
+        for(int i = 1; i < ui->Bgrid->count(); i++){
+                QWidget *button = ui->Bgrid->itemAtPosition(i-1, 0)->widget();
+                QPushButton *theButton = dynamic_cast<QPushButton*>(button);
+                theButton->setText(gameBrain.putPlayerScoreToUi(i,_activePlayer));
+        }
+    }
+    else if(_activePlayer == 3){
+        for(int i = 1; i < ui->Cgrid->count(); i++){
+                QWidget *button = ui->Cgrid->itemAtPosition(i-1, 0)->widget();
+                QPushButton *theButton = dynamic_cast<QPushButton*>(button);
+                theButton->setText(gameBrain.putPlayerScoreToUi(i,_activePlayer));
+        }
+    }
+    else{
+        for(int i = 1; i < ui->Dgrid->count(); i++){
+                QWidget *button = ui->Dgrid->itemAtPosition(i-1, 0)->widget();
+                QPushButton *theButton = dynamic_cast<QPushButton*>(button);
+                theButton->setText(gameBrain.putPlayerScoreToUi(i,_activePlayer));
+        }
+    }
+
+}
+
+void YahtzeeMainWin::openHelpWindow()
+{
+    ui->helpBrowser->show();
+    ui->closeHelpButton->show();
+}
+
+void YahtzeeMainWin::on_actionGuide_triggered()
+{
+    openHelpWindow();
+}
+
+void YahtzeeMainWin::on_closeHelpButton_clicked()
+{
+    ui->helpBrowser->hide();
+    ui->closeHelpButton->hide();
 }

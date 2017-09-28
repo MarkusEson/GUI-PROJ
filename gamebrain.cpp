@@ -17,6 +17,7 @@
 
 GameBrain::GameBrain()
 {
+
 }
 
 GameBrain::~GameBrain()
@@ -49,6 +50,7 @@ Die * GameBrain::getDiceArray() // Returns copy of array
     Die * pointerToDiceArrayCopy = new Die[5];
     for (int i = 0; i < 5; i++)
         pointerToDiceArrayCopy[i] = _diceArray[i];
+
     return pointerToDiceArrayCopy;
 }
 
@@ -107,6 +109,7 @@ int GameBrain::xOfAKind(int keyId)
         {
             if( _diceArray[i].getValue() == j )
                 count +=1;
+
             if(count >= xOfAKindValue)
               sum = j * xOfAKindValue;
         }
@@ -187,6 +190,7 @@ int GameBrain::chance()
 
 QString GameBrain::calculateScoreBoard(int player, int sumBonusOrTotal)
 {
+
     /*
      * A function that takes the active player, and on click sums all the players currents points and returns these to be displayed.
      * Calculates the Sum, Bonus, and Total scores.
@@ -236,7 +240,7 @@ void GameBrain::resetChecked()
 void GameBrain::resetScoreBoard()
 {
     for(int i = 0; i < 19; i++)
-        for(int j = 0; j < 4; j++)
+        for(int j = 0; j < 5; j++)
             _scoreArray[i][j] = 0;
 }
 
@@ -314,6 +318,29 @@ void GameBrain::calculateScoreFromChoice(int keyId, int playerNr)
     int score = 0;
     score = functionHandler(keyId);
     addScoreToArray(keyId,playerNr,score);
+}
+
+QString GameBrain::getPossibleScores(int keyId)
+{
+    QString score;
+    score = QString::number(functionHandler(keyId));
+    if(score== "0"){
+        return 0;
+    }
+    else
+        return score;
+}
+
+QString GameBrain::putPlayerScoreToUi(int keyId, int playerNr)
+{
+    QString score;
+    score = QString::number(_scoreArray[keyId][playerNr]);
+
+    if(score== "0"){
+        return 0;
+    }
+    else
+        return score;
 }
 
 // ------ Die - koden -----------------
