@@ -3,10 +3,11 @@
 #include <QDebug>
 #include <QAbstractButton>
 #include <unistd.h>
-#include <cstdlib>
 #include <QString>
 #include <QSound>
 #include <QGraphicsScene>
+
+
 
 YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     QMainWindow(parent),
@@ -15,6 +16,7 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     ui->setupUi(this);
     ui->helpBrowser->hide();
     ui->closeHelpButton->hide();
+    ui->gameOverLabel->hide();
 
 
     ui->A18->setEnabled(false);
@@ -23,103 +25,103 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     ui->D18->setEnabled(false);
 
     _keyPressedFromUI = {
-        {ui->rollDiceButton, WIPenum::rolldice},
+        {ui->rollDiceButton, Key::rolldice},
 
         // Maps the keys in the 1st section of the grid to the FUNK ones
-        {ui->A1, WIPenum::ones},
-        {ui->B1, WIPenum::ones},
-        {ui->C1, WIPenum::ones},
-        {ui->D1, WIPenum::ones},
+        {ui->A1, Key::ones},
+        {ui->B1, Key::ones},
+        {ui->C1, Key::ones},
+        {ui->D1, Key::ones},
 
-        {ui->A2, WIPenum::twos},
-        {ui->B2, WIPenum::twos},
-        {ui->C2, WIPenum::twos},
-        {ui->D2, WIPenum::twos},
+        {ui->A2, Key::twos},
+        {ui->B2, Key::twos},
+        {ui->C2, Key::twos},
+        {ui->D2, Key::twos},
 
-        {ui->A3, WIPenum::threes},
-        {ui->B3, WIPenum::threes},
-        {ui->C3, WIPenum::threes},
-        {ui->D3, WIPenum::threes},
+        {ui->A3, Key::threes},
+        {ui->B3, Key::threes},
+        {ui->C3, Key::threes},
+        {ui->D3, Key::threes},
 
-        {ui->A4, WIPenum::fours},
-        {ui->B4, WIPenum::fours},
-        {ui->C4, WIPenum::fours},
-        {ui->D4, WIPenum::fours},
+        {ui->A4, Key::fours},
+        {ui->B4, Key::fours},
+        {ui->C4, Key::fours},
+        {ui->D4, Key::fours},
 
-        {ui->A5, WIPenum::fives},
-        {ui->B5, WIPenum::fives},
-        {ui->C5, WIPenum::fives},
-        {ui->D5, WIPenum::fives},
+        {ui->A5, Key::fives},
+        {ui->B5, Key::fives},
+        {ui->C5, Key::fives},
+        {ui->D5, Key::fives},
 
-        {ui->A6, WIPenum::sixes},
-        {ui->B6, WIPenum::sixes},
-        {ui->C6, WIPenum::sixes},
-        {ui->D6, WIPenum::sixes},
+        {ui->A6, Key::sixes},
+        {ui->B6, Key::sixes},
+        {ui->C6, Key::sixes},
+        {ui->D6, Key::sixes},
 
-        {ui->A7, WIPenum::sum},
-        {ui->B7, WIPenum::sum},
-        {ui->C7, WIPenum::sum},
-        {ui->D7, WIPenum::sum},
+        {ui->A7, Key::sum},
+        {ui->B7, Key::sum},
+        {ui->C7, Key::sum},
+        {ui->D7, Key::sum},
 
-        {ui->A8, WIPenum::bonus},
-        {ui->B8, WIPenum::bonus},
-        {ui->C8, WIPenum::bonus},
-        {ui->D8, WIPenum::bonus},
+        {ui->A8, Key::bonus},
+        {ui->B8, Key::bonus},
+        {ui->C8, Key::bonus},
+        {ui->D8, Key::bonus},
 
-        {ui->A9, WIPenum::onepair},
-        {ui->B9, WIPenum::onepair},
-        {ui->C9, WIPenum::onepair},
-        {ui->D9, WIPenum::onepair},
+        {ui->A9, Key::onepair},
+        {ui->B9, Key::onepair},
+        {ui->C9, Key::onepair},
+        {ui->D9, Key::onepair},
 
-        {ui->A10, WIPenum::twopairs},
-        {ui->B10, WIPenum::twopairs},
-        {ui->C10, WIPenum::twopairs},
-        {ui->D10, WIPenum::twopairs},
+        {ui->A10, Key::twopairs},
+        {ui->B10, Key::twopairs},
+        {ui->C10, Key::twopairs},
+        {ui->D10, Key::twopairs},
 
-        {ui->A11, WIPenum::threeofakind},
-        {ui->B11, WIPenum::threeofakind},
-        {ui->C11, WIPenum::threeofakind},
-        {ui->D11, WIPenum::threeofakind},
+        {ui->A11, Key::threeofakind},
+        {ui->B11, Key::threeofakind},
+        {ui->C11, Key::threeofakind},
+        {ui->D11, Key::threeofakind},
 
-        {ui->A12, WIPenum::fourofakind},
-        {ui->B12, WIPenum::fourofakind},
-        {ui->C12, WIPenum::fourofakind},
-        {ui->D12, WIPenum::fourofakind},
+        {ui->A12, Key::fourofakind},
+        {ui->B12, Key::fourofakind},
+        {ui->C12, Key::fourofakind},
+        {ui->D12, Key::fourofakind},
 
-        {ui->A13, WIPenum::fullhouse},
-        {ui->B13, WIPenum::fullhouse},
-        {ui->C13, WIPenum::fullhouse},
-        {ui->D13, WIPenum::fullhouse},
+        {ui->A13, Key::fullhouse},
+        {ui->B13, Key::fullhouse},
+        {ui->C13, Key::fullhouse},
+        {ui->D13, Key::fullhouse},
 
-        {ui->A14, WIPenum::smallstraight},
-        {ui->B14, WIPenum::smallstraight},
-        {ui->C14, WIPenum::smallstraight},
-        {ui->D14, WIPenum::smallstraight},
+        {ui->A14, Key::smallstraight},
+        {ui->B14, Key::smallstraight},
+        {ui->C14, Key::smallstraight},
+        {ui->D14, Key::smallstraight},
 
-        {ui->A15, WIPenum::largestraight},
-        {ui->B15, WIPenum::largestraight},
-        {ui->C15, WIPenum::largestraight},
-        {ui->D15, WIPenum::largestraight},
+        {ui->A15, Key::largestraight},
+        {ui->B15, Key::largestraight},
+        {ui->C15, Key::largestraight},
+        {ui->D15, Key::largestraight},
 
-        {ui->A16, WIPenum::yahzee},
-        {ui->B16, WIPenum::yahzee},
-        {ui->C16, WIPenum::yahzee},
-        {ui->D16, WIPenum::yahzee},
+        {ui->A16, Key::yahzee},
+        {ui->B16, Key::yahzee},
+        {ui->C16, Key::yahzee},
+        {ui->D16, Key::yahzee},
 
-        {ui->A17, WIPenum::chance},
-        {ui->B17, WIPenum::chance},
-        {ui->C17, WIPenum::chance},
-        {ui->D17, WIPenum::chance},
+        {ui->A17, Key::chance},
+        {ui->B17, Key::chance},
+        {ui->C17, Key::chance},
+        {ui->D17, Key::chance},
 
-        {ui->A18, WIPenum::yahzee},
-        {ui->B18, WIPenum::yahzee},
-        {ui->C18, WIPenum::yahzee},
-        {ui->D18, WIPenum::yahzee},
+        {ui->A18, Key::yahzee},
+        {ui->B18, Key::yahzee},
+        {ui->C18, Key::yahzee},
+        {ui->D18, Key::yahzee},
 
-        {ui->A19, WIPenum::total},
-        {ui->B19, WIPenum::total},
-        {ui->C19, WIPenum::total},
-        {ui->D19, WIPenum::total},
+        {ui->A19, Key::total},
+        {ui->B19, Key::total},
+        {ui->C19, Key::total},
+        {ui->D19, Key::total},
 
     };
 
@@ -205,9 +207,10 @@ void YahtzeeMainWin::chooseAmountOfPlayers(int num)
     }
 
     _activePlayer = PLAYERONE;
+    ui->gameOverLabel->hide();      // hides the game over/ win label when you restart new game
     showPlayerBlockersOnClick();
-    gameBrain.resetChecked();
-    gameBrain.resetScoreBoard();    // resets the score array
+    _gameBrain.resetChecked();
+    _gameBrain.resetScoreBoard();    // resets the score array
     resetScoreboardUI();            // resets the UI scores
     resetDice();
 
@@ -270,7 +273,7 @@ void YahtzeeMainWin::setDieImage(QPushButton * button, Die die)
 
 void YahtzeeMainWin::displayDiceOnScreen() // Removed rollDice func
 {
-    Die * arrayWithDice = gameBrain.getDiceArray();
+    Die * arrayWithDice = _gameBrain.getDiceArray();
     setDieImage(ui->dice1Button, arrayWithDice[0]);
     setDieImage(ui->dice2Button, arrayWithDice[1]);
     setDieImage(ui->dice3Button, arrayWithDice[2]);
@@ -372,33 +375,33 @@ void YahtzeeMainWin::aButtonWasClicked()
      * - Markus
      */
 
-    WIPenum keyValue = _keyPressedFromUI[theButton];
+    Key keyValue = _keyPressedFromUI[theButton];
         int keyId = intFromKey(keyValue);
-        dynamic_cast<QPushButton*>(sender())->setText(gameBrain.endTurnChoice(keyId, _activePlayer)); // theButton ist för dynamic cast?
+        dynamic_cast<QPushButton*>(sender())->setText(_gameBrain.endTurnChoice(keyId, _activePlayer)); // theButton ist för dynamic cast?
 
     if(theButton){
         dynamic_cast<QPushButton*>(sender())->setEnabled(false); // theButton ist för dynamic cast?
         theButton->setStyleSheet("color: rgb(0, 0, 0);");
 
         if(_activePlayer == PLAYERONE){
-            ui->A7->setText(gameBrain.calculateScoreBoard(_activePlayer, 0));
-            ui->A8->setText(gameBrain.calculateScoreBoard(_activePlayer, 1));
-            ui->A19->setText(gameBrain.calculateScoreBoard(_activePlayer, 2));
+            ui->A7->setText(_gameBrain.calculateScoreBoard(_activePlayer, 0));
+            ui->A8->setText(_gameBrain.calculateScoreBoard(_activePlayer, 1));
+            ui->A19->setText(_gameBrain.calculateScoreBoard(_activePlayer, 2));
         }
         if(_activePlayer == PLAYERTWO){
-            ui->B7->setText(gameBrain.calculateScoreBoard(_activePlayer, 0));
-            ui->B8->setText(gameBrain.calculateScoreBoard(_activePlayer, 1));
-            ui->B19->setText(gameBrain.calculateScoreBoard(_activePlayer, 2));
+            ui->B7->setText(_gameBrain.calculateScoreBoard(_activePlayer, 0));
+            ui->B8->setText(_gameBrain.calculateScoreBoard(_activePlayer, 1));
+            ui->B19->setText(_gameBrain.calculateScoreBoard(_activePlayer, 2));
         }
         if(_activePlayer == PLAYERTHREE){
-            ui->C7->setText(gameBrain.calculateScoreBoard(_activePlayer, 0));
-            ui->C8->setText(gameBrain.calculateScoreBoard(_activePlayer, 1));
-            ui->C19->setText(gameBrain.calculateScoreBoard(_activePlayer, 2));
+            ui->C7->setText(_gameBrain.calculateScoreBoard(_activePlayer, 0));
+            ui->C8->setText(_gameBrain.calculateScoreBoard(_activePlayer, 1));
+            ui->C19->setText(_gameBrain.calculateScoreBoard(_activePlayer, 2));
         }
         if(_activePlayer == PLAYERFOUR){
-            ui->D7->setText(gameBrain.calculateScoreBoard(_activePlayer, 0));
-            ui->D8->setText(gameBrain.calculateScoreBoard(_activePlayer, 1));
-            ui->D19->setText(gameBrain.calculateScoreBoard(_activePlayer, 2));
+            ui->D7->setText(_gameBrain.calculateScoreBoard(_activePlayer, 0));
+            ui->D8->setText(_gameBrain.calculateScoreBoard(_activePlayer, 1));
+            ui->D19->setText(_gameBrain.calculateScoreBoard(_activePlayer, 2));
         }
 
         /*
@@ -406,11 +409,15 @@ void YahtzeeMainWin::aButtonWasClicked()
          * increments player, so that it is next players turn.
          */
         setPlayerScoreToUi();
+        _winTimer ++;       // advances the winTimer, when at max the game ends
         _activePlayer++;
-        gameBrain.resetChecked();
+        _gameBrain.resetChecked();
         playerTurn(_numOfPlayers); // player func that changes turns to next player.
         displayDiceOnScreen();
         lockDice();
+
+        if(_winTimer == _winTimerEnd)
+            gameEnding();
     }
 }
 
@@ -423,15 +430,15 @@ void YahtzeeMainWin::aDiceWasClicked()
     QPushButton *theButton = dynamic_cast<QPushButton*>(sender());
 
     if (theButton == ui->dice1Button)
-        gameBrain.checkDie(1);
+        _gameBrain.checkDie(1);
     else if (theButton == ui->dice2Button)
-        gameBrain.checkDie(2);
+        _gameBrain.checkDie(2);
     else if (theButton == ui->dice3Button)
-        gameBrain.checkDie(3);
+        _gameBrain.checkDie(3);
     else if (theButton == ui->dice4Button)
-        gameBrain.checkDie(4);
+        _gameBrain.checkDie(4);
     else if (theButton == ui->dice5Button)
-        gameBrain.checkDie(5);
+        _gameBrain.checkDie(5);
 
     displayDiceOnScreen();
 
@@ -462,7 +469,7 @@ void YahtzeeMainWin::on_rollDiceButton_clicked() // Added rollDice func
     _timesRolled++;
     if(_timesRolled <= 3 )
     {
-        gameBrain.rollDice();
+        _gameBrain.rollDice();
         displayDiceOnScreen();
         QSound::play(":/new/pictures/dicethrowshort.wav");
         uiScoreCalculator();
@@ -476,7 +483,7 @@ void YahtzeeMainWin::on_rollDiceButton_clicked() // Added rollDice func
 
 void YahtzeeMainWin::resetDice()
 {
-    Die *resetDiceArray = gameBrain.getDiceArray();
+    Die *resetDiceArray = _gameBrain.getDiceArray();
 
     for(int i = 0; i < 5; i++)
         resetDiceArray[i].setValue(6);
@@ -495,21 +502,29 @@ void YahtzeeMainWin::resetDice()
 void YahtzeeMainWin::on_onePlayerButton_triggered()
 {
     chooseAmountOfPlayers(1);
+    _winTimer = 0;
+    _winTimerEnd = 16;
 }
 
 void YahtzeeMainWin::on_twoPlayerButton_triggered()
 {
     chooseAmountOfPlayers(2);
+    _winTimer = 0;
+    _winTimerEnd = 32;
 }
 
 void YahtzeeMainWin::on_threePlayerButton_triggered()
 {
     chooseAmountOfPlayers(3);
+    _winTimer = 0;
+    _winTimerEnd = 48;
 }
 
 void YahtzeeMainWin::on_fourPlayerButton_triggered()
 {
     chooseAmountOfPlayers(4);
+    _winTimer = 0;
+    _winTimerEnd = 64;
 }
 
 void YahtzeeMainWin::uiScoreCalculator()
@@ -524,7 +539,7 @@ void YahtzeeMainWin::uiScoreCalculator()
                 QWidget *button = ui->Agrid->itemAtPosition(i-1, 0)->widget();
                 QPushButton *theButton = dynamic_cast<QPushButton*>(button);
                 if(theButton->isEnabled()) {
-                    theButton->setText(gameBrain.getPossibleScores(i));
+                    theButton->setText(_gameBrain.getPossibleScores(i));
                     theButton->setStyleSheet("color: rgb(30, 217, 4);");
                 }
     }
@@ -535,7 +550,7 @@ void YahtzeeMainWin::uiScoreCalculator()
                 QWidget *button = ui->Bgrid->itemAtPosition(i-1, 0)->widget();
                 QPushButton *theButton = dynamic_cast<QPushButton*>(button);
                 if(theButton->isEnabled()) {
-                    theButton->setText(gameBrain.getPossibleScores(i));
+                    theButton->setText(_gameBrain.getPossibleScores(i));
                     theButton->setStyleSheet("color: rgb(30, 217, 4);");
                 }
             }
@@ -545,7 +560,7 @@ void YahtzeeMainWin::uiScoreCalculator()
                 QWidget *button = ui->Cgrid->itemAtPosition(i-1, 0)->widget();
                 QPushButton *theButton = dynamic_cast<QPushButton*>(button);
                 if(theButton->isEnabled()) {
-                    theButton->setText(gameBrain.getPossibleScores(i));
+                    theButton->setText(_gameBrain.getPossibleScores(i));
                     theButton->setStyleSheet("color: rgb(30, 217, 4);");
                 }
             }
@@ -555,7 +570,7 @@ void YahtzeeMainWin::uiScoreCalculator()
                 QWidget *button = ui->Dgrid->itemAtPosition(i-1, 0)->widget();
                 QPushButton *theButton = dynamic_cast<QPushButton*>(button);
                 if(theButton->isEnabled()) {
-                    theButton->setText(gameBrain.getPossibleScores(i));
+                    theButton->setText(_gameBrain.getPossibleScores(i));
                     theButton->setStyleSheet("color: rgb(30, 217, 4);");
                 }
             }
@@ -568,28 +583,28 @@ void YahtzeeMainWin::setPlayerScoreToUi()
         for(int i = 1; i < ui->Agrid->count(); i++){
                 QWidget *button = ui->Agrid->itemAtPosition(i-1, 0)->widget();
                 QPushButton *theButton = dynamic_cast<QPushButton*>(button);
-                theButton->setText(gameBrain.putPlayerScoreToUi(i,_activePlayer));
+                theButton->setText(_gameBrain.putPlayerScoreToUi(i,_activePlayer));
         }
     }
     else if(_activePlayer == 2){
         for(int i = 1; i < ui->Bgrid->count(); i++){
                 QWidget *button = ui->Bgrid->itemAtPosition(i-1, 0)->widget();
                 QPushButton *theButton = dynamic_cast<QPushButton*>(button);
-                theButton->setText(gameBrain.putPlayerScoreToUi(i,_activePlayer));
+                theButton->setText(_gameBrain.putPlayerScoreToUi(i,_activePlayer));
         }
     }
     else if(_activePlayer == 3){
         for(int i = 1; i < ui->Cgrid->count(); i++){
                 QWidget *button = ui->Cgrid->itemAtPosition(i-1, 0)->widget();
                 QPushButton *theButton = dynamic_cast<QPushButton*>(button);
-                theButton->setText(gameBrain.putPlayerScoreToUi(i,_activePlayer));
+                theButton->setText(_gameBrain.putPlayerScoreToUi(i,_activePlayer));
         }
     }
     else{
         for(int i = 1; i < ui->Dgrid->count(); i++){
                 QWidget *button = ui->Dgrid->itemAtPosition(i-1, 0)->widget();
                 QPushButton *theButton = dynamic_cast<QPushButton*>(button);
-                theButton->setText(gameBrain.putPlayerScoreToUi(i,_activePlayer));
+                theButton->setText(_gameBrain.putPlayerScoreToUi(i,_activePlayer));
         }
     }
 
@@ -599,6 +614,24 @@ void YahtzeeMainWin::openHelpWindow()
 {
     ui->helpBrowser->show();
     ui->closeHelpButton->show();
+}
+
+void YahtzeeMainWin::gameEnding()
+{
+    // Simple function that prints the winner of the game
+    // -markus
+
+    ui->gameOverLabel->show();
+
+    if(_gameBrain.checkWinner() == PLAYERONE)
+        ui->gameOverLabel->setStyleSheet("background-image: url(:/new/pictures/winplayer1.png);");
+    else if(_gameBrain.checkWinner() == PLAYERTWO)
+        ui->gameOverLabel->setStyleSheet("background-image: url(:/new/pictures/winplayer2.png);");
+    else if(_gameBrain.checkWinner() == PLAYERTHREE)
+        ui->gameOverLabel->setStyleSheet("background-image: url(:/new/pictures/winplayer3.png);");
+    else if(_gameBrain.checkWinner() == PLAYERFOUR)
+        ui->gameOverLabel->setStyleSheet("background-image: url(:/new/pictures/winplayer4.png);");
+
 }
 
 void YahtzeeMainWin::on_actionGuide_triggered()

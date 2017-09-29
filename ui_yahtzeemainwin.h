@@ -142,6 +142,7 @@ public:
     QLabel *player4Label;
     QTextBrowser *helpBrowser;
     QPushButton *closeHelpButton;
+    QLabel *gameOverLabel;
     QMenuBar *menuBar;
     QMenu *menuOptions;
     QMenu *menuHelp;
@@ -182,7 +183,7 @@ public:
         Agrid->setSpacing(0);
         Agrid->setContentsMargins(11, 11, 11, 11);
         Agrid->setObjectName(QStringLiteral("Agrid"));
-        Agrid->setSizeConstraint(QLayout::SetDefaultConstraint);
+        Agrid->setSizeConstraint(QLayout::SetMaximumSize);
         Agrid->setContentsMargins(0, 0, 0, 0);
         A8 = new QPushButton(gridLayoutWidget_4);
         A8->setObjectName(QStringLiteral("A8"));
@@ -385,7 +386,7 @@ public:
         Bgrid->setSpacing(0);
         Bgrid->setContentsMargins(11, 11, 11, 11);
         Bgrid->setObjectName(QStringLiteral("Bgrid"));
-        Bgrid->setSizeConstraint(QLayout::SetDefaultConstraint);
+        Bgrid->setSizeConstraint(QLayout::SetMaximumSize);
         Bgrid->setContentsMargins(0, 0, 0, 0);
         B14 = new QPushButton(gridLayoutWidget_5);
         B14->setObjectName(QStringLiteral("B14"));
@@ -587,7 +588,7 @@ public:
         Cgrid->setSpacing(0);
         Cgrid->setContentsMargins(11, 11, 11, 11);
         Cgrid->setObjectName(QStringLiteral("Cgrid"));
-        Cgrid->setSizeConstraint(QLayout::SetDefaultConstraint);
+        Cgrid->setSizeConstraint(QLayout::SetMaximumSize);
         Cgrid->setContentsMargins(0, 0, 0, 0);
         C17 = new QPushButton(gridLayoutWidget_6);
         C17->setObjectName(QStringLiteral("C17"));
@@ -789,7 +790,7 @@ public:
         Dgrid->setSpacing(0);
         Dgrid->setContentsMargins(11, 11, 11, 11);
         Dgrid->setObjectName(QStringLiteral("Dgrid"));
-        Dgrid->setSizeConstraint(QLayout::SetDefaultConstraint);
+        Dgrid->setSizeConstraint(QLayout::SetMaximumSize);
         Dgrid->setContentsMargins(0, 0, 0, 0);
         D4 = new QPushButton(gridLayoutWidget_7);
         D4->setObjectName(QStringLiteral("D4"));
@@ -1122,6 +1123,11 @@ public:
         closeHelpButton = new QPushButton(centralWidget);
         closeHelpButton->setObjectName(QStringLiteral("closeHelpButton"));
         closeHelpButton->setGeometry(QRect(390, 30, 21, 21));
+        gameOverLabel = new QLabel(centralWidget);
+        gameOverLabel->setObjectName(QStringLiteral("gameOverLabel"));
+        gameOverLabel->setGeometry(QRect(116, 38, 350, 200));
+        gameOverLabel->setStyleSheet(QStringLiteral("background-image: url(:/new/pictures/winplayer1.png);"));
+        gameOverLabel->setAlignment(Qt::AlignCenter);
         YahtzeeMainWin->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(YahtzeeMainWin);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -1302,6 +1308,7 @@ public:
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", Q_NULLPTR));
         closeHelpButton->setText(QApplication::translate("YahtzeeMainWin", "X", Q_NULLPTR));
+        gameOverLabel->setText(QString());
         menuOptions->setTitle(QApplication::translate("YahtzeeMainWin", "New Game", Q_NULLPTR));
         menuHelp->setTitle(QApplication::translate("YahtzeeMainWin", "Help", Q_NULLPTR));
     } // retranslateUi

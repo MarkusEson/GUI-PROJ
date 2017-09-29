@@ -714,10 +714,14 @@ qrc_resources.cpp: resources.qrc \
 		../../Qt/5.9.1/clang_64/bin/rcc \
 		2dice.png \
 		5dice.png \
+		winplayer1.png \
 		dicethrowshort.wav \
+		winplayer2.png \
 		3dice.png \
+		winplayer3.png \
 		1diceClicked.png \
 		backgroundplayer2test.png \
+		winplayer4.png \
 		1dice.png \
 		4diceClicked.png \
 		3diceClicked.png \
@@ -727,10 +731,7 @@ qrc_resources.cpp: resources.qrc \
 		shakedice.wav \
 		6dice.png \
 		4dice.png \
-		backgroundplayer1.png \
-		backgroundplayer2.png \
 		backgroundplayer3test.png \
-		backgroundplayer3.png \
 		backgroundplayer4.png \
 		backgroundplayer1test.png
 	/Users/markus/Qt/5.9.1/clang_64/bin/rcc -name resources resources.qrc -o qrc_resources.cpp

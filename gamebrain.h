@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-enum class WIPenum {
+enum class Key {
     rolldice = 0,
     ones,
     twos,
@@ -32,7 +32,7 @@ enum class WIPenum {
     total,
 };
 
-inline int intFromKey(WIPenum key) {
+inline int intFromKey(Key key) {
     return int(key);
 }
 
@@ -80,10 +80,13 @@ public:
     int getDieValue();
     QString getPossibleScores(int keyId);
     QString putPlayerScoreToUi(int keyId, int playerNr);
+    int checkWinner();
+
+
 private:
     Die _diceArray[5];
 
-    int _scoreArray[19][5];
+    int _scoreArray[20][5];
 };
 
 #endif // GAMEBRAIN_H
