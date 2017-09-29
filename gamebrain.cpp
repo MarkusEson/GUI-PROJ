@@ -50,7 +50,6 @@ Die * GameBrain::getDiceArray() // Returns copy of array
     Die * pointerToDiceArrayCopy = new Die[5];
     for (int i = 0; i < 5; i++)
         pointerToDiceArrayCopy[i] = _diceArray[i];
-
     return pointerToDiceArrayCopy;
 }
 
@@ -68,7 +67,6 @@ int GameBrain::pairs()
              sum = _diceArray[i].getValue() + _diceArray[i+1].getValue();
          }
     }
-     qDebug() <<"pair sum: " << sum;
      return sum;
 }
 
@@ -84,14 +82,9 @@ int GameBrain::twoPairs()
          }
     }
     if(countPairs==2)
-    {
-        qDebug() << "firstPairSum:" << sum;
         return sum;
-    }
     else
         return false;
-
-    qDebug() << "firstPair false";
 }
 
 int GameBrain::xOfAKind(int keyId)
@@ -109,8 +102,9 @@ int GameBrain::xOfAKind(int keyId)
         {
             if( _diceArray[i].getValue() == j )
                 count +=1;
-
-            if(count >= xOfAKindValue)
+            if(count == 5)
+                return sum = 50;
+            else if(count >= xOfAKindValue)
               sum = j * xOfAKindValue;
         }
     }
@@ -128,7 +122,6 @@ int GameBrain::oneToSix(int keyId)
       for (unsigned int i = 0; i < sizeof(_diceArray)/sizeof(_diceArray[0]); i++)
           qDebug() << "Dice nummer " << (i + 1) << " har värdet" << _diceArray[i].getValue();
       return sum;
-      qDebug() << "Sum i oneToSix: " << sum;
 }
 
 int GameBrain::fullHouse()
@@ -144,8 +137,6 @@ int GameBrain::fullHouse()
         sum = _diceArray[0].getValue() + _diceArray[1].getValue() + _diceArray[2].getValue() + _diceArray[3].getValue() + _diceArray[4].getValue();
     }
     return  sum;
-
-    qDebug() << "Sum i fullhouse:" << sum;
 }
 
 int GameBrain::smallLargeStraight(int keyId)
@@ -184,7 +175,6 @@ int GameBrain::chance()
     for(int i=0; i<5; i++){
         sum += _diceArray[i].getValue();
     }
-    qDebug() << "chance sum: " << sum;
     return sum;
 }
 
@@ -222,6 +212,7 @@ QString GameBrain::calculateScoreBoard(int player, int sumBonusOrTotal)
             score = 0;
             for(int i = 7; i <= 18; i++)
                 score += _scoreArray[i][player];
+            _scoreArray[19][player] = score;
             break;
         }
     }
@@ -255,37 +246,25 @@ int GameBrain::functionHandler(int keyId)
 
     else if (functionId == gridPairs ){
         summa = pairs();
-        qDebug() << summa;
-        qDebug() << "pairs";
     }
 
     else if (functionId == gridTwoPairs ){
         summa = twoPairs();
-        qDebug() << summa;
-        qDebug() << "twoPairs";
     }
 
     else if (functionId == gridThreeOfAkind || functionId == gridFourOfAkind || functionId == gridYahzee ){
         summa = xOfAKind(keyId);
-        qDebug() << summa;
-        qDebug() << "345ofakind";
     }
 
     else if (functionId == gridFullHouse ){
         summa = fullHouse();
-        qDebug() << summa;
-        qDebug() << "fullhouse";
     }
 
     else if (functionId >=gridSmallStraight && functionId <=gridLargeStraight){
         summa = smallLargeStraight(keyId);
-        qDebug() << summa;
-        qDebug() << "straight";
     }
     else if (functionId == gridChance ){
         summa = chance();
-        qDebug() << summa;
-        qDebug() << "chance";
     }
     return summa;
 
@@ -309,7 +288,6 @@ QString GameBrain::endTurnChoice(int keyId, int playerNr)
     calculateScoreFromChoice(keyId,playerNr);
 
     QString score = getScoreFromArray(keyId,playerNr);
-    qDebug() << score << "Du är BÄST!!!";
     return score;
 }
 
@@ -341,6 +319,19 @@ QString GameBrain::putPlayerScoreToUi(int keyId, int playerNr)
     }
     else
         return score;
+}
+
+int GameBrain::checkWinner()
+{
+    // returns int id of winner player, i.e. the player who has the highest total score.
+    if(_scoreArray[19][1] > _scoreArray[19][2] && _scoreArray[19][1] > _scoreArray[19][3] && _scoreArray[19][1] > _scoreArray[19][4])
+        return 1;
+    else if(_scoreArray[19][2] > _scoreArray[19][1] && _scoreArray[19][2] > _scoreArray[19][3] && _scoreArray[19][2] > _scoreArray[19][4])
+        return 2;
+    else if(_scoreArray[19][3] > _scoreArray[19][1] && _scoreArray[19][3] > _scoreArray[19][2] && _scoreArray[19][3] > _scoreArray[19][4])
+        return 3;
+    else if(_scoreArray[19][4] > _scoreArray[19][1] && _scoreArray[19][4] > _scoreArray[19][2] && _scoreArray[19][4] > _scoreArray[19][3])
+        return 4;
 }
 
 // ------ Die - koden -----------------

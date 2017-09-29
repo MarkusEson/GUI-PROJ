@@ -59,7 +59,7 @@
     </property>
     <layout class="QGridLayout" name="Agrid">
      <property name="sizeConstraint">
-      <enum>QLayout::SetDefaultConstraint</enum>
+      <enum>QLayout::SetMaximumSize</enum>
      </property>
      <property name="spacing">
       <number>0</number>
@@ -621,7 +621,7 @@
     </property>
     <layout class="QGridLayout" name="Bgrid">
      <property name="sizeConstraint">
-      <enum>QLayout::SetDefaultConstraint</enum>
+      <enum>QLayout::SetMaximumSize</enum>
      </property>
      <property name="spacing">
       <number>0</number>
@@ -1180,7 +1180,7 @@
     </property>
     <layout class="QGridLayout" name="Cgrid">
      <property name="sizeConstraint">
-      <enum>QLayout::SetDefaultConstraint</enum>
+      <enum>QLayout::SetMaximumSize</enum>
      </property>
      <property name="spacing">
       <number>0</number>
@@ -1739,7 +1739,7 @@
     </property>
     <layout class="QGridLayout" name="Dgrid">
      <property name="sizeConstraint">
-      <enum>QLayout::SetDefaultConstraint</enum>
+      <enum>QLayout::SetMaximumSize</enum>
      </property>
      <property name="spacing">
       <number>0</number>
@@ -2624,6 +2624,25 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="text">
      <string>X</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="gameOverLabel">
+    <property name="geometry">
+     <rect>
+      <x>116</x>
+      <y>38</y>
+      <width>350</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/new/pictures/winplayer1.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>

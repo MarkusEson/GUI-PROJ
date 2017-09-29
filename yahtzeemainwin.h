@@ -32,10 +32,11 @@ public:
     void lockDice();
     void unlockDice();
     void resetDice();
-    std::map<QObject*, WIPenum> _keyPressedFromUI;
+    std::map<QObject*, Key> _keyPressedFromUI;
     void uiScoreCalculator();
     void setPlayerScoreToUi();
     void openHelpWindow();
+    void gameEnding();
 
 private:
     Ui::YahtzeeMainWin *ui;
@@ -43,8 +44,10 @@ private:
     int _activePlayer = 1;
     int _timesRolled = 0;
     int _rounds = 0;
+    int _winTimer = 0;
+    int _winTimerEnd = 0;
 
-    GameBrain gameBrain;
+    GameBrain _gameBrain;
 
 
 private slots:

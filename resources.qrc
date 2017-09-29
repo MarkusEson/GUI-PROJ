@@ -20,6 +20,10 @@
         <file>backgroundplayer3test.png</file>
         <file>backgroundplayer1test.png</file>
         <file>backgroundplayer2test.png</file>
+        <file>winplayer1.png</file>
+        <file>winplayer2.png</file>
+        <file>winplayer3.png</file>
+        <file>winplayer4.png</file>
     </qresource>
     <qresource prefix="/new/files"/>
 </RCC>
