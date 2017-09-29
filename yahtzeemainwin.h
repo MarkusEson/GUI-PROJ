@@ -29,6 +29,7 @@ public:
     void displayDiceOnScreen();
     void playerTurn(int _numOfPlayers);
     void resetScoreboardUI();
+    void resetPlayerScoreboardUI();
     void lockDice();
     void unlockDice();
     void resetDice();

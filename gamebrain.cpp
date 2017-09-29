@@ -14,6 +14,7 @@
 #define gridLargeStraight 15
 #define gridYahzee 16
 #define gridChance 17
+#define gridYahzeeBonus 18
 
 GameBrain::GameBrain()
 {
@@ -92,7 +93,7 @@ int GameBrain::xOfAKind(int keyId)
     int xOfAKindValue = 0;
     if(keyId == gridThreeOfAkind){xOfAKindValue = 3;}
     else if(keyId == gridFourOfAkind){xOfAKindValue = 4;}
-    else if(keyId== gridYahzee){xOfAKindValue = 5;}
+    else if(keyId == gridYahzee || keyId == gridYahzeeBonus){xOfAKindValue = 5;}
 
     int sum = 0;
     for(int j=1; j<7; j++)  // Ändrade 6 -> 7 så att den räknar med 6or
@@ -313,11 +314,7 @@ QString GameBrain::putPlayerScoreToUi(int keyId, int playerNr)
 {
     QString score;
     score = QString::number(_scoreArray[keyId][playerNr]);
-
-    if(score == "0")
-        return 0;
-    else
-        return score;
+    return score;
 }
 
 int GameBrain::checkWinner()

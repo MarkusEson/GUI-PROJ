@@ -339,6 +339,39 @@ void YahtzeeMainWin::resetScoreboardUI()
     }
 }
 
+void YahtzeeMainWin::resetPlayerScoreboardUI()
+{
+    if(_activePlayer == 1){
+            for(int i = 1; i < ui->Agrid->count(); i++){
+                    QWidget *button = ui->Agrid->itemAtPosition(i-1, 0)->widget();
+                    QPushButton *theButton = dynamic_cast<QPushButton*>(button);
+                    theButton->setText("");
+            }
+        }
+        else if(_activePlayer == 2){
+            for(int i = 1; i < ui->Bgrid->count(); i++){
+                    QWidget *button = ui->Bgrid->itemAtPosition(i-1, 0)->widget();
+                    QPushButton *theButton = dynamic_cast<QPushButton*>(button);
+                    theButton->setText("");
+            }
+        }
+        else if(_activePlayer == 3){
+            for(int i = 1; i < ui->Cgrid->count(); i++){
+                    QWidget *button = ui->Cgrid->itemAtPosition(i-1, 0)->widget();
+                    QPushButton *theButton = dynamic_cast<QPushButton*>(button);
+                    theButton->setText("");
+            }
+        }
+        else{
+            for(int i = 1; i < ui->Dgrid->count(); i++){
+                    QWidget *button = ui->Dgrid->itemAtPosition(i-1, 0)->widget();
+                    QPushButton *theButton = dynamic_cast<QPushButton*>(button);
+                        theButton->setText("");
+            }
+        }
+}
+
+
 void YahtzeeMainWin::lockDice()
 {
     for(int i = 0; i < ui->diceButtonLayout->count() - 1; i++){
@@ -402,6 +435,7 @@ void YahtzeeMainWin::aButtonWasClicked()
          * Sets the possible scores on the screen, in green.
          * increments player, so that it is next players turn.
          */
+        resetPlayerScoreboardUI();
         setPlayerScoreToUi();
         _winTimer ++;       // advances the winTimer, when at max the game ends
         _activePlayer++;
@@ -573,32 +607,36 @@ void YahtzeeMainWin::uiScoreCalculator()
 
 void YahtzeeMainWin::setPlayerScoreToUi()
 {
-    if(_activePlayer == 1){
+    if(_activePlayer == PLAYERONE){
         for(int i = 1; i < ui->Agrid->count(); i++){
                 QWidget *button = ui->Agrid->itemAtPosition(i-1, 0)->widget();
                 QPushButton *theButton = dynamic_cast<QPushButton*>(button);
-                theButton->setText(_gameBrain.putPlayerScoreToUi(i,_activePlayer));
+                if(!theButton->isEnabled())
+                    theButton->setText(_gameBrain.putPlayerScoreToUi(i,_activePlayer));
         }
     }
-    else if(_activePlayer == 2){
+    else if(_activePlayer == PLAYERTWO){
         for(int i = 1; i < ui->Bgrid->count(); i++){
                 QWidget *button = ui->Bgrid->itemAtPosition(i-1, 0)->widget();
                 QPushButton *theButton = dynamic_cast<QPushButton*>(button);
-                theButton->setText(_gameBrain.putPlayerScoreToUi(i,_activePlayer));
+                if(!theButton->isEnabled())
+                    theButton->setText(_gameBrain.putPlayerScoreToUi(i,_activePlayer));
         }
     }
-    else if(_activePlayer == 3){
+    else if(_activePlayer == PLAYERTHREE){
         for(int i = 1; i < ui->Cgrid->count(); i++){
                 QWidget *button = ui->Cgrid->itemAtPosition(i-1, 0)->widget();
                 QPushButton *theButton = dynamic_cast<QPushButton*>(button);
-                theButton->setText(_gameBrain.putPlayerScoreToUi(i,_activePlayer));
+                if(!theButton->isEnabled())
+                    theButton->setText(_gameBrain.putPlayerScoreToUi(i,_activePlayer));
         }
     }
     else{
         for(int i = 1; i < ui->Dgrid->count(); i++){
                 QWidget *button = ui->Dgrid->itemAtPosition(i-1, 0)->widget();
                 QPushButton *theButton = dynamic_cast<QPushButton*>(button);
-                theButton->setText(_gameBrain.putPlayerScoreToUi(i,_activePlayer));
+                if(!theButton->isEnabled())
+                    theButton->setText(_gameBrain.putPlayerScoreToUi(i,_activePlayer));
         }
     }
 
