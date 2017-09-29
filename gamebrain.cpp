@@ -105,7 +105,7 @@ int GameBrain::xOfAKind(int keyId)
             if(count == 5)
                 return sum = 50;
             else if(count >= xOfAKindValue)
-              sum = j * xOfAKindValue;
+                return sum = j * xOfAKindValue;
         }
     }
     return sum;
@@ -314,9 +314,8 @@ QString GameBrain::putPlayerScoreToUi(int keyId, int playerNr)
     QString score;
     score = QString::number(_scoreArray[keyId][playerNr]);
 
-    if(score== "0"){
+    if(score == "0")
         return 0;
-    }
     else
         return score;
 }

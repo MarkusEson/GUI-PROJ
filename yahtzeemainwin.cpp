@@ -18,12 +18,6 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     ui->closeHelpButton->hide();
     ui->gameOverLabel->hide();
 
-
-    ui->A18->setEnabled(false);
-    ui->B18->setEnabled(false);
-    ui->C18->setEnabled(false);
-    ui->D18->setEnabled(false);
-
     _keyPressedFromUI = {
         {ui->rollDiceButton, Key::rolldice},
 
@@ -369,7 +363,7 @@ void YahtzeeMainWin::aButtonWasClicked()
     /*
      * Calls the function calculateScoreBoard, which is called every time a player clicks the score board.
      * This Function updates the ui scoreboard to show the updated points in "score", "bonus", and "total score"
-     * calculateScoreBoard(<the players index in _scoreArray>, <the scoreIndexer>)
+     * calculateScoreBoard(<the player>, <the scoreIndexer>)
      *
      * The function then advances to next player. it also locks the score button so that it cannot be clicked agin.
      * - Markus
